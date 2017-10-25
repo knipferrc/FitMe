@@ -1,1 +1,1 @@
-import 'raf/polyfill';
+import 'raf/polyfill'

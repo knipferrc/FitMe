@@ -1,0 +1,9 @@
+{
+  "short_name": "FitMe",
+  "name": "FitMe",
+  "description": "Fitness management made easy",
+  "start_url": "./",
+  "display": "standalone",
+  "theme_color": "#5755d9",
+  "background_color": "#454d5d"
+}

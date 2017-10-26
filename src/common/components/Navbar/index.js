@@ -15,6 +15,7 @@ const NavContainer = styled.div`
   align-items: center;
   width: 100%;
   position: fixed;
+  z-index: 100;
 `
 
 const NavBrand = styled.div`
@@ -51,7 +52,7 @@ const Navbar = () => {
       <NavRight>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/">Dashboard</NavLink>
-        <NavLink to="/">Login</NavLink>
+        <NavLink to="/login">Login</NavLink>
         <NavLink to="/">Register</NavLink>
         <NavLink to="/">Logout</NavLink>
       </NavRight>

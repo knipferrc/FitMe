@@ -6,13 +6,15 @@ injectGlobal`
   * {
     box-sizing: border-box;
   }
-  body {
+  html, body {
     margin: 0;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     font-family: 'Source Sans Pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
     line-height: 26px;
     color: #333;
+    background: #f5f6fa;
   }
 `
 

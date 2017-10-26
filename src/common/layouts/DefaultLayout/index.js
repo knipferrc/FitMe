@@ -14,8 +14,10 @@ const SidebarSection = styled.div`
 `
 
 const ContentSection = styled.div`
-  margin-left: 260px;
+  width: 100%;
+  height: 100%;
   margin-top: 55px;
+  margin-left: 260px;
 `
 
 const DefaultLayout = ({ children }) => {

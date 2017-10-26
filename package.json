@@ -32,7 +32,6 @@
     "babel-plugin-styled-components": "^1.2.1",
     "compression": "^1.7.1",
     "express": "^4.16.2",
-    "firebase": "^4.6.0",
     "formik": "^0.9.4",
     "helmet": "^3.9.0",
     "hpp": "^0.2.2",

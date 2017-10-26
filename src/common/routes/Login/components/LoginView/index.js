@@ -4,14 +4,17 @@ import React from 'react'
 import styled from 'styled-components'
 
 const LoginViewContainer = styled.div`
-margin-left: 100px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const LoginView = () => {
   return (
     <DefaultLayout>
       <LoginViewContainer>
-      <LoginForm />
+        <LoginForm />
       </LoginViewContainer>
     </DefaultLayout>
   )

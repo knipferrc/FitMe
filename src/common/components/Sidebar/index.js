@@ -1,3 +1,4 @@
+import Link from 'react-router-dom/Link'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -25,10 +26,36 @@ const SidebarContent = styled.div`
   padding: 15px;
 `
 
+const NavItem = styled.div`
+  margin-bottom: 15px;
+`
+
+const NavLink = styled(Link)`
+  font-size: 1.1em;
+  color: white;
+  text-decoration: none;
+  &:active {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+`
+
 const Sidebar = () => {
   return (
     <SidebarContainer>
-      <SidebarContent>Some Content</SidebarContent>
+      <SidebarContent>
+        <NavItem>
+          <NavLink to="/">Home</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/">Dashboard</NavLink>
+        </NavItem>
+      </SidebarContent>
     </SidebarContainer>
   )
 }

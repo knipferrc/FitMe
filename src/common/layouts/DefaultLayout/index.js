@@ -11,13 +11,20 @@ const NavSection = styled.div`
 const SidebarSection = styled.div`
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const ContentSection = styled.div`
   width: 100%;
-  height: 100%;
-  margin-top: 55px;
-  margin-left: 260px;
+  height: 100vh;
+  padding-top: 55px;
+  padding-left: 260px;
+  @media (max-width: 768px) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 `
 
 const DefaultLayout = ({ children }) => {

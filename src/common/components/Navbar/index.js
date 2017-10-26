@@ -27,11 +27,14 @@ const NavBrand = styled.div`
 const NavRight = styled.div`
   margin-left: auto;
   padding-right: 15px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const NavLink = styled(Link)`
   font-size: 1.1em;
-  color: white;
+  color: #fff;
   margin-left: 20px;
   text-decoration: none;
   &:active {
@@ -45,13 +48,31 @@ const NavLink = styled(Link)`
   }
 `
 
+const HamburgerMenu = styled.div`
+  margin-left: auto;
+  padding-right: 10px;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
+
+const Bar = styled.div`
+  width: 30px;
+  height: 4px;
+  background-color: #fff;
+  margin: 6px 0;
+`
+
 const Navbar = () => {
   return (
     <NavContainer>
       <NavBrand>FitMe</NavBrand>
+      <HamburgerMenu>
+        <Bar />
+        <Bar />
+        <Bar />
+      </HamburgerMenu>
       <NavRight>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/">Dashboard</NavLink>
         <NavLink to="/login">Login</NavLink>
         <NavLink to="/">Register</NavLink>
         <NavLink to="/">Logout</NavLink>

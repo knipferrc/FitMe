@@ -63,11 +63,11 @@ const Bar = styled.div`
   margin: 6px 0;
 `
 
-const Navbar = () => {
+const Navbar = ({ toggleOpen }) => {
   return (
     <NavContainer>
       <NavBrand>FitMe</NavBrand>
-      <HamburgerMenu>
+      <HamburgerMenu onClick={toggleOpen}>
         <Bar />
         <Bar />
         <Bar />

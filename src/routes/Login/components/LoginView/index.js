@@ -1,3 +1,4 @@
+import { Box } from 'grid-styled'
 import DefaultLayout from 'layouts/DefaultLayout'
 import LoginForm from '../../forms/LoginForm'
 import React from 'react'
@@ -10,11 +11,13 @@ const LoginViewContainer = styled.div`
   align-items: center;
 `
 
-const LoginView = () => {
+const LoginView = ({ history }) => {
   return (
     <DefaultLayout>
       <LoginViewContainer>
-        <LoginForm />
+        <Box width={[1, 1 / 2, 1 / 2]} p={1}>
+          <LoginForm history={history} />
+        </Box>
       </LoginViewContainer>
     </DefaultLayout>
   )

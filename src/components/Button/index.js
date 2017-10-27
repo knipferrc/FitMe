@@ -17,10 +17,16 @@ const StyledButton = styled.button`
   outline: none;
   cursor: pointer;
   border-radius: 2px;
+  height: 35px;
+  width: ${props => props.fullWidth && '100%'};
 `
 
-const Button = ({ type, children }) => {
-  return <StyledButton type={type}>{children}</StyledButton>
+const Button = ({ type, fullWidth, children }) => {
+  return (
+    <StyledButton type={type} fullWidth={fullWidth}>
+      {children}
+    </StyledButton>
+  )
 }
 
 export default Button

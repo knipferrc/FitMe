@@ -18,7 +18,8 @@
     "fitme"
   ],
   "now": {
-    "alias": "fitme"
+    "alias": "fitme",
+    "env": ".env.production.local"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.0.0",
@@ -27,6 +28,7 @@
     "formik": "^0.9.4",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
+    "grid-styled": "^2.0.0-11",
     "koa": "^2.3.0",
     "koa-send": "^4.1.1",
     "koa-static": "^4.0.1",

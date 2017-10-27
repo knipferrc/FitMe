@@ -25,9 +25,7 @@ injectGlobal`
 const App = ({ route }) => {
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter>
-        {renderRoutes(routes)}
-      </BrowserRouter>
+      <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
     </ApolloProvider>
   )
 }

@@ -67,7 +67,7 @@ const Navbar = ({ toggleOpen }) => {
   return (
     <NavContainer>
       <NavBrand>FitMe</NavBrand>
-      <HamburgerMenu onClick={toggleOpen}>
+      <HamburgerMenu onClick={() => toggleOpen(true)}>
         <Bar />
         <Bar />
         <Bar />

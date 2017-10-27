@@ -39,7 +39,7 @@ const DefaultLayout = ({ open, toggleOpen, children }) => {
       <SidebarSection>
         <Sidebar />
       </SidebarSection>
-      {open && <OffCanvas toggleOpen={toggleOpen} />}
+      {open && <OffCanvas open={open} toggleOpen={toggleOpen} />}
       <ContentSection>{children}</ContentSection>
     </div>
   )

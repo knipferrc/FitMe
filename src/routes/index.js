@@ -1,4 +1,4 @@
-import App from 'common/components/App'
+import App from 'components/App'
 import HomeRoute from './Home'
 import LoginRoute from './Login'
 import NotFoundRoute from './NotFound'

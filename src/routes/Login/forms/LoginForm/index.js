@@ -1,5 +1,5 @@
-import Button from 'common/components/Button'
-import Input from 'common/components/Input'
+import Button from 'components/Button'
+import Input from 'components/Input'
 import React from 'react'
 
 const LoginForm = () => {

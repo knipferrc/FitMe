@@ -1,7 +1,7 @@
-import Navbar from 'common/components/Navbar'
-import OffCanvas from 'common/components/OffCanvas'
+import Navbar from 'components/Navbar'
+import OffCanvas from 'components/OffCanvas'
 import React from 'react'
-import Sidebar from 'common/components/Sidebar'
+import Sidebar from 'components/Sidebar'
 import hoc from './hoc'
 import styled from 'styled-components'
 

@@ -1,8 +1,8 @@
-import Button from 'common/components/Button'
-import DefaultLayout from 'common/layouts/DefaultLayout'
-import Input from 'common/components/Input'
+import Button from 'components/Button'
+import DefaultLayout from 'layouts/DefaultLayout'
+import Input from 'components/Input'
 import React from 'react'
-import Textarea from 'common/components/Textarea'
+import Textarea from 'components/Textarea'
 
 const HomeView = () => {
   return (

@@ -27,7 +27,6 @@ const CloseIcon = styled.div`
   text-decoration: none;
   text-shadow: 0 1px 0 #fff;
   top: 5px;
-  cursor: pointer;
   &:after {
     content: 'X';
   }
@@ -38,7 +37,7 @@ const OffCanvas = ({ toggleOpen }) => {
     <Portal>
       <OffCanvasContainer>
         Content
-        <CloseIcon onClick={toggleOpen} />
+        <CloseIcon onClick={() => toggleOpen(false)} />
       </OffCanvasContainer>
     </Portal>
   )

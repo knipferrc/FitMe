@@ -1,4 +1,4 @@
-import DefaultLayout from 'common/layouts/DefaultLayout'
+import DefaultLayout from 'layouts/DefaultLayout'
 import LoginForm from '../../forms/LoginForm'
 import React from 'react'
 import styled from 'styled-components'

@@ -1,12 +1,10 @@
-import BrowserRouter from 'react-router-dom/BrowserRouter'
+import App from 'components/App'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import registerServiceWorker from 'utils/registerServiceWorker'
-import { renderRoutes } from 'react-router-config'
-import routes from './routes'
+import { render } from 'react-dom'
 
-ReactDOM.render(
-  <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>,
+render(
+  <App />,
   document.getElementById('root')
 )
 

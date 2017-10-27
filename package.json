@@ -24,8 +24,12 @@
     "apollo-cache-inmemory": "^1.0.0",
     "apollo-client": "^2.0.1",
     "apollo-link-http": "^1.0.0",
+    "formik": "^0.9.4",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
+    "koa": "^2.3.0",
+    "koa-send": "^4.1.1",
+    "koa-static": "^4.0.1",
     "prettier": "^1.7.4",
     "react": "^16.0.0",
     "react-apollo": "^2.0.0",
@@ -43,6 +47,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "format": "prettier --single-quote --no-semi --trailing-comma none --write \"src/**/*.js\"",
-    "deploy": "now --docker && now alias"
+    "deploy": "now --docker && now alias",
+    "start:prod": "node server.js"
   }
 }

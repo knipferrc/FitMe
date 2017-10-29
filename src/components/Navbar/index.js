@@ -1,5 +1,6 @@
 import Link from 'react-router-dom/Link'
 import React from 'react'
+import firebase from 'lib/firebase'
 import styled from 'styled-components'
 
 const NavContainer = styled.div`
@@ -48,6 +49,23 @@ const NavLink = styled(Link)`
   }
 `
 
+const LogoutButton = styled.div`
+  font-size: 1.1em;
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  &:active {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+`
+
 const HamburgerMenu = styled.div`
   margin-left: auto;
   padding-right: 10px;
@@ -63,7 +81,11 @@ const Bar = styled.div`
   margin: 6px 0;
 `
 
-const Navbar = ({ toggleOpen }) => {
+const logout = async () => {
+  await firebase.auth().signOut()
+}
+
+const Navbar = ({ toggleOpen, user }) => {
   return (
     <NavContainer>
       <NavBrand>FitMe</NavBrand>
@@ -73,9 +95,9 @@ const Navbar = ({ toggleOpen }) => {
         <Bar />
       </HamburgerMenu>
       <NavRight>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/">Register</NavLink>
-        <NavLink to="/">Logout</NavLink>
+        {!user && <NavLink to="/login">Login</NavLink>}
+        {!user && <NavLink to="/register">Register</NavLink>}
+        {user && <LogoutButton onClick={logout}>Logout</LogoutButton>}
       </NavRight>
     </NavContainer>
   )

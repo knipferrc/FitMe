@@ -5,12 +5,14 @@ import Input from 'components/Input'
 import React from 'react'
 import firebase from 'lib/firebase'
 
-const LoginForm = ({ history }) => {
+const RegisterForm = ({ history }) => {
   return (
     <Formik
       initialValues={{
         email: '',
-        password: ''
+        password: '',
+        firstName: '',
+        lastName: ''
       }}
       validate={values => {
         let errors = {}
@@ -30,7 +32,7 @@ const LoginForm = ({ history }) => {
           setSubmitting(true)
           await firebase
             .auth()
-            .signInWithEmailAndPassword(values.email, values.password)
+            .createUserWithEmailAndPassword(values.email, values.password)
           history.push('/dashboard')
         } catch (e) {
           setSubmitting(false)
@@ -47,7 +49,7 @@ const LoginForm = ({ history }) => {
       }) => (
         <form style={{ width: '100%' }} onSubmit={handleSubmit}>
           <fieldset>
-            <legend>Login</legend>
+            <legend>Register</legend>
             {errors.submitError && <div>{errors.submitError}</div>}
             <Box m={20}>
               <label>Email:</label>
@@ -72,8 +74,30 @@ const LoginForm = ({ history }) => {
               />
             </Box>
             <Box m={20}>
+              <label>First Name:</label>
+              <Input
+                name="firstName"
+                fullWidth
+                type="text"
+                value={values.firstName}
+                onChange={handleChange}
+                placeholder="Enter you first name"
+              />
+            </Box>
+            <Box m={20}>
+              <label>Last Name:</label>
+              <Input
+                name="lastName"
+                fullWidth
+                type="text"
+                value={values.lastName}
+                onChange={handleChange}
+                placeholder="Enter you last name"
+              />
+            </Box>
+            <Box m={20}>
               <Button fullWidth type="submit">
-                Login
+                Register
               </Button>
             </Box>
           </fieldset>
@@ -83,4 +107,4 @@ const LoginForm = ({ history }) => {
   )
 }
 
-export default LoginForm
+export default RegisterForm

@@ -1,7 +1,5 @@
-import { ApolloProvider } from 'react-apollo'
 import BrowserRouter from 'react-router-dom/BrowserRouter'
 import React from 'react'
-import client from 'lib/apollo'
 import { injectGlobal } from 'styled-components'
 import { renderRoutes } from 'react-router-config'
 import routes from 'routes'
@@ -23,11 +21,7 @@ injectGlobal`
 `
 
 const App = ({ route }) => {
-  return (
-    <ApolloProvider client={client}>
-      <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
-    </ApolloProvider>
-  )
+  return <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
 }
 
 export default App

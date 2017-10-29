@@ -1,8 +1,9 @@
+import React, { PureComponent } from 'react'
+
 import Navbar from 'components/Navbar'
 import OffCanvas from 'components/OffCanvas'
-import React from 'react'
 import Sidebar from 'components/Sidebar'
-import hoc from './hoc'
+import firebase from 'lib/firebase'
 import styled from 'styled-components'
 
 const NavSection = styled.div`
@@ -30,19 +31,47 @@ const ContentSection = styled.div`
   }
 `
 
-const DefaultLayout = ({ open, toggleOpen, children }) => {
-  return (
-    <div>
-      <NavSection>
-        <Navbar toggleOpen={toggleOpen} />
-      </NavSection>
-      <SidebarSection>
-        <Sidebar />
-      </SidebarSection>
-      {open && <OffCanvas open={open} toggleOpen={toggleOpen} />}
-      <ContentSection>{children}</ContentSection>
-    </div>
-  )
-}
+export default class DefaultLayout extends PureComponent {
+  state = {
+    open: false,
+    user: null
+  }
 
-export default hoc(DefaultLayout)
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          user
+        })
+      } else {
+        this.setState({
+          user: null
+        })
+      }
+    })
+  }
+
+  toggleOpen = value => {
+    this.setState({
+      open: value
+    })
+  }
+
+  render() {
+    const { children } = this.props
+    const { open, user } = this.state
+
+    return [
+      <NavSection key="nav-section">
+        <Navbar toggleOpen={this.toggleOpen} user={user} />
+      </NavSection>,
+      <SidebarSection key="navbar-section">
+        <Sidebar user={user} />
+      </SidebarSection>,
+      <div key="off-canvas">
+        {open && <OffCanvas open={open} toggleOpen={this.toggleOpen} />}
+      </div>,
+      <ContentSection key="content-section">{children}</ContentSection>
+    ]
+  }
+}

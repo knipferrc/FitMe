@@ -45,16 +45,18 @@ const NavLink = styled(Link)`
   }
 `
 
-const Sidebar = () => {
+const Sidebar = ({ user }) => {
   return (
     <SidebarContainer>
       <SidebarContent>
         <NavItem>
           <NavLink to="/">Home</NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink to="/">Dashboard</NavLink>
-        </NavItem>
+        {user && (
+          <NavItem>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </NavItem>
+        )}
       </SidebarContent>
     </SidebarContainer>
   )

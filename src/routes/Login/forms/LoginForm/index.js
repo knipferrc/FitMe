@@ -73,7 +73,7 @@ const LoginForm = ({ history }) => {
             </Box>
             <Box m={20}>
               <Button fullWidth type="submit">
-                Login
+                {isSubmitting ? <i className="fa fa-spinner fa-spin"></i> : 'Login'}
               </Button>
             </Box>
           </fieldset>

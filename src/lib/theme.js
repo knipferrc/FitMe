@@ -7,7 +7,7 @@ export default {
   secondary: 'rgb(84, 106, 120)',
   warning: 'rgb(244, 167, 0)',
   danger: 'rgb(179, 32, 35)',
-  baseFontFamily: '\'Source Sans Pro\', \'Arial\', sans-serif',
+  baseFontFamily: "'Source Sans Pro', 'Arial', sans-serif",
   baseFontSize: '16px',
   fontNormal: 400,
   fontSemibold: 600,

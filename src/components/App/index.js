@@ -23,7 +23,11 @@ injectGlobal`
 `
 
 const App = ({ route }) => {
-  return <ThemeProvider theme={theme}><BrowserRouter>{renderRoutes(routes)}</BrowserRouter></ThemeProvider>
+  return (
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
+    </ThemeProvider>
+  )
 }
 
 export default App

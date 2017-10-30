@@ -1,8 +1,10 @@
+import { ThemeProvider, injectGlobal } from 'styled-components'
+
 import BrowserRouter from 'react-router-dom/BrowserRouter'
 import React from 'react'
-import { injectGlobal } from 'styled-components'
 import { renderRoutes } from 'react-router-config'
 import routes from 'routes'
+import theme from 'lib/theme'
 
 injectGlobal`
   * {
@@ -21,7 +23,7 @@ injectGlobal`
 `
 
 const App = ({ route }) => {
-  return <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
+  return <ThemeProvider theme={theme}><BrowserRouter>{renderRoutes(routes)}</BrowserRouter></ThemeProvider>
 }
 
 export default App

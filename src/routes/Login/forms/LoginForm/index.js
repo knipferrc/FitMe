@@ -44,43 +44,36 @@ const LoginForm = ({ history }) => {
         isSubmitting
       }) => (
         <form style={{ width: '100%' }} onSubmit={handleSubmit}>
-          <fieldset>
-            <legend>Login</legend>
-            {errors.submitError && <div>{errors.submitError}</div>}
-            <Box m={20}>
-              <label>Email:</label>
-              <Input
-                name="email"
-                fullWidth
-                type="email"
-                value={values.email}
-                onChange={handleChange}
-                placeholder="Enter you email"
-                hasError={touched.email && errors.email}
-              />
-            </Box>
-            <Box m={20}>
-              <label>Password:</label>
-              <Input
-                name="password"
-                fullWidth
-                type="password"
-                value={values.password}
-                onChange={handleChange}
-                placeholder="Enter you password"
-                hasError={touched.password && errors.password}
-              />
-            </Box>
-            <Box m={20}>
-              <Button fullWidth type="submit">
-                {isSubmitting ? (
-                  <i className="fa fa-spinner fa-spin" />
-                ) : (
-                  'Login'
-                )}
-              </Button>
-            </Box>
-          </fieldset>
+          {errors.submitError && <div>{errors.submitError}</div>}
+          <Box m={20}>
+            <label>Email:</label>
+            <Input
+              name="email"
+              fullWidth
+              type="email"
+              value={values.email}
+              onChange={handleChange}
+              placeholder="Enter you email"
+              hasError={touched.email && errors.email}
+            />
+          </Box>
+          <Box m={20}>
+            <label>Password:</label>
+            <Input
+              name="password"
+              fullWidth
+              type="password"
+              value={values.password}
+              onChange={handleChange}
+              placeholder="Enter you password"
+              hasError={touched.password && errors.password}
+            />
+          </Box>
+          <Box m={20}>
+            <Button fullWidth type="submit">
+              {isSubmitting ? <i className="fa fa-spinner fa-spin" /> : 'Login'}
+            </Button>
+          </Box>
         </form>
       )}
     />

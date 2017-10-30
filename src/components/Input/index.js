@@ -7,6 +7,7 @@ const Input = styled.input`
   outline: 0;
   height: 35px;
   padding: 10px; 18px;
+  border-radius: ${props => props.theme.baseRadius};
   width: ${props => props.fullWidth && '100%'};
 `
 

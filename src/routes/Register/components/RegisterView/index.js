@@ -1,4 +1,5 @@
 import { Box } from 'grid-styled'
+import Card from 'components/Card'
 import DefaultLayout from 'layouts/DefaultLayout'
 import React from 'react'
 import RegisterForm from '../../forms/RegisterForm'
@@ -16,7 +17,9 @@ const RegisterView = ({ history }) => {
     <DefaultLayout>
       <RegisterViewContainer>
         <Box width={[1, 1 / 2, 1 / 2]} p={1}>
-          <RegisterForm history={history} />
+          <Card title="Welcome to FitMe">
+            <RegisterForm history={history} />
+          </Card>
         </Box>
       </RegisterViewContainer>
     </DefaultLayout>

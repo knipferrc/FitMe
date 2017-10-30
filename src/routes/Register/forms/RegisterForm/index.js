@@ -55,63 +55,64 @@ const RegisterForm = ({ history }) => {
         isSubmitting
       }) => (
         <form style={{ width: '100%' }} onSubmit={handleSubmit}>
-          <fieldset>
-            <legend>Register</legend>
-            {errors.submitError && <div>{errors.submitError}</div>}
-            <Box m={20}>
-              <label>Email:</label>
-              <Input
-                name="email"
-                fullWidth
-                type="email"
-                value={values.email}
-                onChange={handleChange}
-                placeholder="Enter you email"
-                hasError={touched.email && errors.email}
-              />
-            </Box>
-            <Box m={20}>
-              <label>Password:</label>
-              <Input
-                name="password"
-                fullWidth
-                type="password"
-                value={values.password}
-                onChange={handleChange}
-                placeholder="Enter you password"
-                hasError={touched.password && errors.password}
-              />
-            </Box>
-            <Box m={20}>
-              <label>First Name:</label>
-              <Input
-                name="firstName"
-                fullWidth
-                type="text"
-                value={values.firstName}
-                onChange={handleChange}
-                placeholder="Enter you first name"
-                hasError={touched.firstName && errors.firstName}
-              />
-            </Box>
-            <Box m={20}>
-              <label>Last Name:</label>
-              <Input
-                name="lastName"
-                fullWidth
-                type="text"
-                value={values.lastName}
-                onChange={handleChange}
-                placeholder="Enter you last name"
-                hasError={touched.lastName && errors.lastName}
-              />
-            </Box>
-            <Box m={20}>
-              <Button fullWidth type="submit">
-                Register
-              </Button>
-            </Box>
-          </fieldset>
+          {errors.submitError && <div>{errors.submitError}</div>}
+          <Box m={20}>
+            <label>Email:</label>
+            <Input
+              name="email"
+              fullWidth
+              type="email"
+              value={values.email}
+              onChange={handleChange}
+              placeholder="Enter you email"
+              hasError={touched.email && errors.email}
+            />
+          </Box>
+          <Box m={20}>
+            <label>Password:</label>
+            <Input
+              name="password"
+              fullWidth
+              type="password"
+              value={values.password}
+              onChange={handleChange}
+              placeholder="Enter you password"
+              hasError={touched.password && errors.password}
+            />
+          </Box>
+          <Box m={20}>
+            <label>First Name:</label>
+            <Input
+              name="firstName"
+              fullWidth
+              type="text"
+              value={values.firstName}
+              onChange={handleChange}
+              placeholder="Enter you first name"
+              hasError={touched.firstName && errors.firstName}
+            />
+          </Box>
+          <Box m={20}>
+            <label>Last Name:</label>
+            <Input
+              name="lastName"
+              fullWidth
+              type="text"
+              value={values.lastName}
+              onChange={handleChange}
+              placeholder="Enter you last name"
+              hasError={touched.lastName && errors.lastName}
+            />
+          </Box>
+          <Box m={20}>
+            <Button fullWidth type="submit">
+              {isSubmitting ? (
+                <i className="fa fa-spinner fa-spin" />
+              ) : (
+                'Register'
+              )}
+            </Button>
+          </Box>
         </form>
       )}
     />

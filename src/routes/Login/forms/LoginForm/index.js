@@ -58,6 +58,7 @@ const LoginForm = ({ history }) => {
                 value={values.email}
                 onChange={handleChange}
                 placeholder="Enter you email"
+                hasError={touched.email && errors.email}
               />
             </Box>
             <Box m={20}>
@@ -69,6 +70,7 @@ const LoginForm = ({ history }) => {
                 value={values.password}
                 onChange={handleChange}
                 placeholder="Enter you password"
+                hasError={touched.password && errors.password}
               />
             </Box>
             <Box m={20}>

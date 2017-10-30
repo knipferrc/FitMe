@@ -3,7 +3,7 @@ import Button from 'components/Button'
 import { Formik } from 'formik'
 import Input from 'components/Input'
 import React from 'react'
-import firebase from 'lib/firebase'
+import { auth } from 'lib/firebase'
 
 const RegisterForm = ({ history }) => {
   return (
@@ -36,9 +36,10 @@ const RegisterForm = ({ history }) => {
       onSubmit={async (values, { setSubmitting, setErrors }) => {
         try {
           setSubmitting(true)
-          await firebase
-            .auth()
-            .createUserWithEmailAndPassword(values.email, values.password)
+          await auth.createUserWithEmailAndPassword(
+            values.email,
+            values.password
+          )
           history.push('/dashboard')
         } catch (e) {
           setSubmitting(false)

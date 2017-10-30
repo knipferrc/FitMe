@@ -1,6 +1,6 @@
 import Link from 'react-router-dom/Link'
 import React from 'react'
-import firebase from 'lib/firebase'
+import { auth } from 'lib/firebase'
 import styled from 'styled-components'
 
 const NavContainer = styled.div`
@@ -82,7 +82,7 @@ const Bar = styled.div`
 `
 
 const logout = async () => {
-  await firebase.auth().signOut()
+  await auth.signOut()
 }
 
 const Navbar = ({ toggleOpen, user }) => {

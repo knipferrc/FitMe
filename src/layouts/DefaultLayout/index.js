@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import Navbar from 'components/Navbar'
 import OffCanvas from 'components/OffCanvas'
 import Sidebar from 'components/Sidebar'
-import firebase from 'lib/firebase'
+import { auth } from 'lib/firebase'
 import styled from 'styled-components'
 
 const NavSection = styled.div`
@@ -38,7 +38,7 @@ export default class DefaultLayout extends PureComponent {
   }
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({
           user

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 
 import Navbar from 'components/Navbar'
 import OffCanvas from 'components/OffCanvas'
+import PageLoader from 'components/PageLoader'
 import Sidebar from 'components/Sidebar'
 import { auth } from 'lib/firebase'
 import styled from 'styled-components'
@@ -34,21 +35,31 @@ const ContentSection = styled.div`
 export default class DefaultLayout extends PureComponent {
   state = {
     open: false,
-    user: null
+    user: null,
+    authed: false,
+    loading: true
   }
 
   componentDidMount() {
-    auth.onAuthStateChanged(user => {
+    this.removeListener = auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({
-          user
+          user,
+          authed: true,
+          loading: false
         })
       } else {
         this.setState({
-          user: null
+          user: null,
+          authed: false,
+          loading: false
         })
       }
     })
+  }
+
+  componentWillUnmount() {
+    this.removeListener()
   }
 
   toggleOpen = value => {
@@ -59,7 +70,11 @@ export default class DefaultLayout extends PureComponent {
 
   render() {
     const { children } = this.props
-    const { open, user } = this.state
+    const { open, user, loading } = this.state
+
+    if (loading) {
+      return <PageLoader />
+    }
 
     return [
       <NavSection key="nav-section">

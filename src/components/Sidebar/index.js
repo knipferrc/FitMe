@@ -3,12 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const SidebarContainer = styled.div`
-  background-image: linear-gradient(
-    179deg,
-    #2c2f39 2%,
-    #363944 14%,
-    #32353d 100%
-  );
+  background: white;
   width: 260px;
   position: fixed;
   right: auto;
@@ -20,6 +15,7 @@ const SidebarContainer = styled.div`
   overflow-x: hidden;
   z-index: 2;
   color: #fff;
+  border-right: 1px solid #e0e0e0;
 `
 
 const SidebarContent = styled.div`
@@ -32,7 +28,7 @@ const NavItem = styled.div`
 
 const NavLink = styled(Link)`
   font-size: 1.1em;
-  color: white;
+  color: black;
   text-decoration: none;
   &:active {
     text-decoration: none;

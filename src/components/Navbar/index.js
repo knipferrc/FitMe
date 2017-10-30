@@ -4,13 +4,7 @@ import { auth } from 'lib/firebase'
 import styled from 'styled-components'
 
 const NavContainer = styled.div`
-  background-image: linear-gradient(
-    280deg,
-    #141233 2%,
-    #2d365a 55%,
-    #394a74 85%,
-    #3d598b 100%
-  );
+  background: #334e60;
   height: 55px;
   display: flex;
   align-items: center;
@@ -20,14 +14,14 @@ const NavContainer = styled.div`
 `
 
 const NavBrand = styled.div`
-  padding-left: 15px;
+  padding-left: 10px;
   font-size: 2em;
   color: white;
 `
 
 const NavRight = styled.div`
   margin-left: auto;
-  padding-right: 15px;
+  padding-right: 10px;
   @media (max-width: 768px) {
     display: none;
   }

@@ -6,12 +6,13 @@ const LoadingContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  color: #334e60;
 `
 
 const PageLoader = () => {
   return (
     <LoadingContainer>
-      <i className="fa fa-spinner fa-spin fa-4x" />
+      <i className="fa fa-spinner fa-pulse fa-4x" />
     </LoadingContainer>
   )
 }

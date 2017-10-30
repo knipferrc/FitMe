@@ -32,22 +32,14 @@ const CloseIcon = styled.div`
   text-shadow: 0 1px 0 #fff;
   margin-left: auto;
   padding-right: 10px;
-  &:after {
-    content: 'X';
-  }
+  cursor: pointer;
 `
 
 const CanvasHeader = styled.div`
   display: flex;
   align-items: center;
   height: 55px;
-  background-image: linear-gradient(
-    280deg,
-    #141233 2%,
-    #2d365a 55%,
-    #394a74 85%,
-    #3d598b 100%
-  );
+  background: #334e60;
 `
 
 const MenuText = styled.div`
@@ -62,7 +54,9 @@ const OffCanvas = ({ open, toggleOpen }) => {
       <OffCanvasContainer>
         <CanvasHeader open={open}>
           <MenuText>Main Menu</MenuText>
-          <CloseIcon onClick={() => toggleOpen(false)} />
+          <CloseIcon onClick={() => toggleOpen(false)}>
+            <i className="fa fa-window-close" aria-hidden="true" />
+          </CloseIcon>
         </CanvasHeader>
       </OffCanvasContainer>
     </Portal>

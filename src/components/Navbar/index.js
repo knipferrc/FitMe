@@ -69,16 +69,12 @@ const LogoutButton = styled.div`
 const HamburgerMenu = styled.div`
   margin-left: auto;
   padding-right: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 2em;
   @media (min-width: 768px) {
     display: none;
   }
-`
-
-const Bar = styled.div`
-  width: 30px;
-  height: 4px;
-  background-color: #fff;
-  margin: 6px 0;
 `
 
 const logout = async () => {
@@ -90,9 +86,7 @@ const Navbar = ({ toggleOpen, user }) => {
     <NavContainer>
       <NavBrand>FitMe</NavBrand>
       <HamburgerMenu onClick={() => toggleOpen(true)}>
-        <Bar />
-        <Bar />
-        <Bar />
+        <i className="fa fa-align-right" aria-hidden="true" />
       </HamburgerMenu>
       <NavRight>
         {!user && <NavLink to="/login">Login</NavLink>}

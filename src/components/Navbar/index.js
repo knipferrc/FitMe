@@ -21,7 +21,7 @@ const NavBrand = styled.div`
 
 const NavRight = styled.div`
   margin-left: auto;
-  padding-right: 10px;
+  margin-right: 10px;
   @media (max-width: 768px) {
     display: none;
   }
@@ -62,7 +62,7 @@ const LogoutButton = styled.div`
 
 const HamburgerMenu = styled.div`
   margin-left: auto;
-  padding-right: 10px;
+  margin-right: 10px;
   color: #fff;
   cursor: pointer;
   font-size: 2em;

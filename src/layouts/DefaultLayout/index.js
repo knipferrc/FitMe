@@ -84,7 +84,9 @@ export default class DefaultLayout extends PureComponent {
         <Sidebar user={user} />
       </SidebarSection>,
       <div key="off-canvas">
-        {open && <OffCanvas open={open} toggleOpen={this.toggleOpen} />}
+        {open && (
+          <OffCanvas open={open} toggleOpen={this.toggleOpen} user={user} />
+        )}
       </div>,
       <ContentSection key="content-section">{children}</ContentSection>
     ]

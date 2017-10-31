@@ -1,7 +1,9 @@
 import styled, { keyframes } from 'styled-components'
 
+import Link from 'react-router-dom/Link'
 import { Portal } from 'react-portal'
 import React from 'react'
+import { auth } from 'lib/firebase'
 
 const slideUp = keyframes`
   0% {
@@ -48,7 +50,60 @@ const MenuText = styled.div`
   padding-left: 10px;
 `
 
-const OffCanvas = ({ open, toggleOpen }) => {
+const CanvasContent = styled.div`
+  text-align: center;
+`
+
+const NavItem = styled.div`
+  text-align: center;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-bottom: ${props => props.theme.baseBorder};
+  margin-top: 10px;
+  padding-bottom: 10px;
+`
+
+const NavLink = styled(Link)`
+  font-size: 1.1em;
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  &:active {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+`
+
+const LogoutButton = styled.a`
+  font-size: 1.1em;
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  &:active {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+`
+
+const logout = async toggleOpen => {
+  await auth.signOut()
+  toggleOpen(false)
+}
+
+const OffCanvas = ({ open, toggleOpen, user }) => {
   return (
     <Portal>
       <OffCanvasContainer>
@@ -58,6 +113,33 @@ const OffCanvas = ({ open, toggleOpen }) => {
             <i className="fa fa-window-close" aria-hidden="true" />
           </CloseIcon>
         </CanvasHeader>
+        <CanvasContent>
+          {!user && (
+            <NavItem>
+              <NavLink to="/">Home</NavLink>
+            </NavItem>
+          )}
+          {!user && (
+            <NavItem>
+              <NavLink to="/login">Login</NavLink>
+            </NavItem>
+          )}
+          {!user && (
+            <NavItem>
+              <NavLink to="/register">Register</NavLink>
+            </NavItem>
+          )}
+          {user && (
+            <NavItem>
+              <NavLink to="/dashboard">Dashboard</NavLink>
+            </NavItem>
+          )}
+          {user && (
+            <NavItem onClick={() => logout(toggleOpen)}>
+              <LogoutButton>Logout</LogoutButton>
+            </NavItem>
+          )}
+        </CanvasContent>
       </OffCanvasContainer>
     </Portal>
   )

@@ -18,17 +18,22 @@ const SidebarContainer = styled.div`
   border-right: 1px solid #e0e0e0;
 `
 
-const SidebarContent = styled.div`
-  padding: 15px;
-`
-
 const NavItem = styled.div`
-  margin-bottom: 15px;
+  text-align: center;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-bottom: ${props => props.theme.baseBorder};
+  margin-top: 10px;
+  padding-bottom: 10px;
 `
 
 const NavLink = styled(Link)`
   font-size: 1.1em;
   color: black;
+  text-transform: uppercase;
   text-decoration: none;
   &:active {
     text-decoration: none;
@@ -44,16 +49,14 @@ const NavLink = styled(Link)`
 const Sidebar = ({ user }) => {
   return (
     <SidebarContainer>
-      <SidebarContent>
+      <NavItem>
+        <NavLink to="/">Home</NavLink>
+      </NavItem>
+      {user && (
         <NavItem>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
         </NavItem>
-        {user && (
-          <NavItem>
-            <NavLink to="/dashboard">Dashboard</NavLink>
-          </NavItem>
-        )}
-      </SidebarContent>
+      )}
     </SidebarContainer>
   )
 }

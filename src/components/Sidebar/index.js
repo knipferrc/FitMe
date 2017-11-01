@@ -1,6 +1,6 @@
-import Link from 'react-router-dom/Link'
-import React from 'react'
-import styled from 'styled-components'
+import Link from 'react-router-dom/Link';
+import React from 'react';
+import styled from 'styled-components';
 
 const SidebarContainer = styled.div`
   background: #f8f9f9;
@@ -16,7 +16,7 @@ const SidebarContainer = styled.div`
   z-index: 2;
   color: #fff;
   border-right: 1px solid #e0e0e0;
-`
+`;
 
 const NavItem = styled.div`
   text-align: center;
@@ -28,7 +28,7 @@ const NavItem = styled.div`
   border-bottom: ${props => props.theme.baseBorder};
   margin-top: 10px;
   padding-bottom: 10px;
-`
+`;
 
 const NavLink = styled(Link)`
   font-size: 1.1em;
@@ -44,21 +44,23 @@ const NavLink = styled(Link)`
   &:hover {
     text-decoration: none;
   }
-`
+`;
 
 const Sidebar = ({ user }) => {
   return (
     <SidebarContainer>
-      <NavItem>
-        <NavLink to="/">Home</NavLink>
-      </NavItem>
+      {!user && (
+        <NavItem>
+          <NavLink to="/">Home</NavLink>
+        </NavItem>
+      )}
       {user && (
         <NavItem>
           <NavLink to="/dashboard">Dashboard</NavLink>
         </NavItem>
       )}
     </SidebarContainer>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

@@ -1,6 +1,3 @@
-import NotFoundView from './components/NotFoundView'
+import NotFoundView from './components/NotFoundView';
 
-export default {
-  path: '*',
-  component: NotFoundView
-}
+export default NotFoundView;

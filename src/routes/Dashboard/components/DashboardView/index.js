@@ -1,12 +1,12 @@
-import DefaultLayout from 'layouts/DefaultLayout'
-import React from 'react'
+import DefaultLayout from 'layouts/DefaultLayout';
+import React from 'react';
 
-const DashboardView = () => {
+const DashboardView = ({ user }) => {
   return (
-    <DefaultLayout>
+    <DefaultLayout user={user}>
       <h1>Dashboard</h1>
     </DefaultLayout>
-  )
-}
+  );
+};
 
-export default DashboardView
+export default DashboardView;

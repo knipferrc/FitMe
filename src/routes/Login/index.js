@@ -1,7 +1,3 @@
-import LoginView from './components/LoginView'
+import LoginView from './components/LoginView';
 
-export default {
-  path: '/login',
-  exact: true,
-  component: LoginView
-}
+export default LoginView;

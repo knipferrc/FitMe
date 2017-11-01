@@ -1,7 +1,3 @@
-import DashboardView from './components/DashboardView'
+import DashboardView from './components/DashboardView';
 
-export default {
-  path: '/dashboard',
-  exact: true,
-  component: DashboardView
-}
+export default DashboardView;

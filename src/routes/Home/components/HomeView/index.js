@@ -1,20 +1,14 @@
-import Button from 'components/Button'
-import DefaultLayout from 'layouts/DefaultLayout'
-import Input from 'components/Input'
-import React from 'react'
-import Textarea from 'components/Textarea'
+import DefaultLayout from 'layouts/DefaultLayout';
+import React from 'react';
 
-const HomeView = () => {
+const HomeView = ({ user }) => {
   return (
-    <DefaultLayout>
-      <div style={{ height: 1000 }}>
+    <DefaultLayout user={user}>
+      <div>
         <div>Home</div>
-        <Button>Test</Button>
-        <Input placeholder="Enter some text" />
-        <Textarea placeholder="Enter some text" rows="4" />
       </div>
     </DefaultLayout>
-  )
-}
+  );
+};
 
-export default HomeView
+export default HomeView;

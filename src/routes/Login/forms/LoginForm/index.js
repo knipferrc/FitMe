@@ -2,6 +2,7 @@ import { Box } from 'grid-styled'
 import Button from 'components/Button'
 import { Formik } from 'formik'
 import Input from 'components/Input'
+import Loader from 'components/Loader'
 import React from 'react'
 import { auth } from 'lib/firebase'
 
@@ -71,7 +72,7 @@ const LoginForm = ({ history }) => {
           </Box>
           <Box m={20}>
             <Button fullWidth type="submit">
-              {isSubmitting ? <i className="fa fa-spinner fa-spin" /> : 'Login'}
+              {isSubmitting ? <Loader /> : 'Login'}
             </Button>
           </Box>
         </form>

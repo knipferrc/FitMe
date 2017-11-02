@@ -17,7 +17,7 @@ const slideUp = keyframes`
 `
 
 const OffCanvasContainer = styled.div`
-  background: #e1e2e1;
+  background: #fff;
   position: fixed;
   top: 0;
   bottom: 0;

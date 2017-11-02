@@ -25,7 +25,7 @@ injectGlobal`
     font-size: 16px;
     line-height: 16px;
     color: #333;
-    background: #E1E2E1;
+    background: #fff;
   }
 `
 

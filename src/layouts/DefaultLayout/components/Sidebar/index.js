@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const SidebarContainer = styled.div`
   background: #f5f5f6;
-  width: 260px;
+  width: 120px;
   position: fixed;
   right: auto;
   bottom: 0;
@@ -20,10 +20,12 @@ const SidebarContainer = styled.div`
 
 const NavItem = styled.div`
   text-align: center;
-  height: 40px;
+  height: 50px;
   display: flex;
+  color: #000;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
   border-bottom: ${props => props.theme.baseBorder};
   margin-top: 10px;
@@ -33,7 +35,6 @@ const NavItem = styled.div`
 const NavLink = styled(Link)`
   font-size: 1.1em;
   color: black;
-  text-transform: uppercase;
   text-decoration: none;
   &:active {
     text-decoration: none;
@@ -51,11 +52,13 @@ const Sidebar = ({ user }) => {
     <SidebarContainer>
       {!user && (
         <NavItem>
+          <i className="material-icons">home</i>
           <NavLink to="/">Home</NavLink>
         </NavItem>
       )}
       {user && (
         <NavItem>
+          <i className="material-icons">dashboard</i>
           <NavLink to="/dashboard">Dashboard</NavLink>
         </NavItem>
       )}

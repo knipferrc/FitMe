@@ -22,11 +22,11 @@ const ContentSection = styled.div`
   width: 100%;
   height: 100vh;
   padding-top: 55px;
-  padding-left: 260px;
+  padding-left: 120px;
   overflow-y: auto;
   @media (max-width: 768px) {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 `
 

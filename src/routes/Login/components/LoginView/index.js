@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 const LoginViewContainer = styled.div`
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +17,7 @@ const LoginView = ({ history, user }) => {
   return (
     <DefaultLayout user={user}>
       <LoginViewContainer>
-        <Box width={[1, 1 / 2, 1 / 2]} p={1}>
+        <Box width={[1, 1 / 2, 1 / 2, 1 / 3]} p={1}>
           <Card title="Welcome back to FitMe">
             <LoginForm history={history} />
           </Card>

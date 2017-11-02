@@ -16,7 +16,7 @@ const NavContainer = styled.div`
 
 const NavBrand = styled.div`
   padding-left: 10px;
-  font-size: 2em;
+  font-size: 1.5em;
   color: white;
 `
 
@@ -66,7 +66,6 @@ const HamburgerMenu = styled.div`
   margin-right: 10px;
   color: #fff;
   cursor: pointer;
-  font-size: 2em;
   @media (min-width: 768px) {
     display: none;
   }
@@ -81,7 +80,7 @@ const Navbar = ({ toggleOpen, user }) => {
     <NavContainer>
       <NavBrand>FitMe</NavBrand>
       <HamburgerMenu onClick={() => toggleOpen(true)}>
-        <i className="fa fa-align-right" aria-hidden="true" />
+        <i className="material-icons">subject</i>
       </HamburgerMenu>
       <NavRight>
         {!user && <NavLink to="/login">Login</NavLink>}

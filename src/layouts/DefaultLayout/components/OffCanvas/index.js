@@ -29,7 +29,6 @@ const OffCanvasContainer = styled.div`
 
 const CloseIcon = styled.div`
   color: #fff;
-  font-size: 2em;
   font-weight: bolder;
   text-decoration: none;
   text-shadow: 0 1px 0 #fff;
@@ -54,6 +53,8 @@ const MenuText = styled.div`
 
 const NavItem = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
 `
 
 const NavLink = styled(Link)`
@@ -88,7 +89,7 @@ const OffCanvas = ({ open, toggleOpen, user }) => {
         <CanvasHeader open={open}>
           <MenuText>Main Menu</MenuText>
           <CloseIcon onClick={() => toggleOpen(false)}>
-            <i className="fa fa-window-close" aria-hidden="true" />
+            <i className="material-icons">close</i>
           </CloseIcon>
         </CanvasHeader>
         {!user && (
@@ -96,6 +97,7 @@ const OffCanvas = ({ open, toggleOpen, user }) => {
             <Box width={1 / 2} m={1}>
               <Card>
                 <NavItem>
+                  <i className="material-icons">home</i>
                   <NavLink to="/">Home</NavLink>
                 </NavItem>
               </Card>
@@ -103,6 +105,7 @@ const OffCanvas = ({ open, toggleOpen, user }) => {
             <Box width={1 / 2} m={1}>
               <Card>
                 <NavItem>
+                  <i className="material-icons">open_in_browser</i>
                   <NavLink to="/login">Login</NavLink>
                 </NavItem>
               </Card>
@@ -114,6 +117,7 @@ const OffCanvas = ({ open, toggleOpen, user }) => {
             <Box width={1 / 2} m={1} pr={2}>
               <Card>
                 <NavItem>
+                  <i className="material-icons">perm_contact_calendar</i>
                   <NavLink to="/register">Register</NavLink>
                 </NavItem>
               </Card>
@@ -125,6 +129,7 @@ const OffCanvas = ({ open, toggleOpen, user }) => {
             <Box width={1 / 2} m={1}>
               <Card>
                 <NavItem>
+                  <i className="material-icons">dashboard</i>
                   <NavLink to="/dashboard">Dashboard</NavLink>
                 </NavItem>
               </Card>
@@ -132,6 +137,7 @@ const OffCanvas = ({ open, toggleOpen, user }) => {
             <Box width={1 / 2} m={1}>
               <Card>
                 <NavItem>
+                  <i className="material-icons">power_settings_new</i>
                   <LogoutButton onClick={() => logout(toggleOpen)}>
                     Logout
                   </LogoutButton>

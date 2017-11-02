@@ -21,7 +21,7 @@ injectGlobal`
     margin: 0;
     height: 100%;
     width: 100%;
-    font-family: 'Source Sans Pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     line-height: 16px;
     color: #333;

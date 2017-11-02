@@ -1,3 +1,3 @@
-import DashboardView from './components/DashboardView';
+import DashboardView from './components/DashboardView'
 
-export default DashboardView;
+export default DashboardView

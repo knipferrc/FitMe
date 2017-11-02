@@ -1,16 +1,16 @@
-import { Box } from 'grid-styled';
-import Card from 'components/Card';
-import DefaultLayout from 'layouts/DefaultLayout';
-import LoginForm from '../../forms/LoginForm';
-import React from 'react';
-import styled from 'styled-components';
+import { Box } from 'grid-styled'
+import Card from 'components/Card'
+import DefaultLayout from 'layouts/DefaultLayout'
+import LoginForm from '../../forms/LoginForm'
+import React from 'react'
+import styled from 'styled-components'
 
 const LoginViewContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const LoginView = ({ history, user }) => {
   return (
@@ -23,7 +23,7 @@ const LoginView = ({ history, user }) => {
         </Box>
       </LoginViewContainer>
     </DefaultLayout>
-  );
-};
+  )
+}
 
-export default LoginView;
+export default LoginView

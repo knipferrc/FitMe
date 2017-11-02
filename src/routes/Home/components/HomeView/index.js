@@ -1,5 +1,5 @@
-import DefaultLayout from 'layouts/DefaultLayout';
-import React from 'react';
+import DefaultLayout from 'layouts/DefaultLayout'
+import React from 'react'
 
 const HomeView = ({ user }) => {
   return (
@@ -8,7 +8,7 @@ const HomeView = ({ user }) => {
         <div>Home</div>
       </div>
     </DefaultLayout>
-  );
-};
+  )
+}
 
-export default HomeView;
+export default HomeView

@@ -1,3 +1,3 @@
-import LoginView from './components/LoginView';
+import LoginView from './components/LoginView'
 
-export default LoginView;
+export default LoginView

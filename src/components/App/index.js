@@ -1,17 +1,17 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import React, { PureComponent } from 'react';
-import { ThemeProvider, injectGlobal } from 'styled-components';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React, { PureComponent } from 'react'
+import { ThemeProvider, injectGlobal } from 'styled-components'
 
-import AuthorizedRoute from 'components/AuthorizedRoute';
-import DashboardRoute from 'routes/Dashboard';
-import HomeRoute from 'routes/Home';
-import LoginRoute from 'routes/Login';
-import NotFoundRoute from 'routes/NotFound';
-import PageLoader from 'components/PageLoader';
-import PublicRoute from 'components/PublicRoute';
-import RegisterRoute from 'routes/Register';
-import { auth } from 'lib/firebase';
-import theme from 'lib/theme';
+import AuthorizedRoute from 'components/AuthorizedRoute'
+import DashboardRoute from 'routes/Dashboard'
+import HomeRoute from 'routes/Home'
+import LoginRoute from 'routes/Login'
+import NotFoundRoute from 'routes/NotFound'
+import PageLoader from 'components/PageLoader'
+import PublicRoute from 'components/PublicRoute'
+import RegisterRoute from 'routes/Register'
+import { auth } from 'lib/firebase'
+import theme from 'lib/theme'
 
 injectGlobal`
   * {
@@ -27,14 +27,14 @@ injectGlobal`
     color: #333;
     background: #E1E2E1;
   }
-`;
+`
 
 export default class App extends PureComponent {
   state = {
     user: null,
     authed: false,
     loading: true
-  };
+  }
 
   componentDidMount() {
     this.removeListener = auth.onAuthStateChanged(user => {
@@ -43,26 +43,26 @@ export default class App extends PureComponent {
           user,
           authed: true,
           loading: false
-        });
+        })
       } else {
         this.setState({
           user: null,
           authed: false,
           loading: false
-        });
+        })
       }
-    });
+    })
   }
 
   componentWillUnmount() {
-    this.removeListener();
+    this.removeListener()
   }
 
   render() {
-    const { loading, authed, user } = this.state;
+    const { loading, authed, user } = this.state
 
     if (loading) {
-      return <PageLoader />;
+      return <PageLoader />
     }
 
     return (
@@ -93,6 +93,6 @@ export default class App extends PureComponent {
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
-    );
+    )
   }
 }

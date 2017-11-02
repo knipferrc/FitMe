@@ -1,6 +1,6 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom'
 
-import React from 'react';
+import React from 'react'
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   return (
@@ -13,7 +13,7 @@ const PublicRoute = ({ component: Component, authed, ...rest }) => {
           <Redirect to={{ pathname: '/dashboard' }} />
         )}
     />
-  );
-};
+  )
+}
 
-export default PublicRoute;
+export default PublicRoute

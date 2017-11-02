@@ -1,6 +1,6 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom'
 
-import React from 'react';
+import React from 'react'
 
 const AuthorizedRoute = ({ component: Component, authed, ...rest }) => {
   return (
@@ -15,7 +15,7 @@ const AuthorizedRoute = ({ component: Component, authed, ...rest }) => {
           />
         )}
     />
-  );
-};
+  )
+}
 
-export default AuthorizedRoute;
+export default AuthorizedRoute

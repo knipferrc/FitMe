@@ -1,3 +1,3 @@
-import RegisterView from './components/RegisterView';
+import RegisterView from './components/RegisterView'
 
-export default RegisterView;
+export default RegisterView

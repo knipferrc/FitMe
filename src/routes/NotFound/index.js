@@ -1,3 +1,3 @@
-import NotFoundView from './components/NotFoundView';
+import NotFoundView from './components/NotFoundView'
 
-export default NotFoundView;
+export default NotFoundView

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Button = styled.button`
   background: ${props => props.theme.secondary};
@@ -18,6 +18,6 @@ const Button = styled.button`
   &:hover {
     background: rgba(0, 0, 0, 0.4);
   }
-`;
+`
 
-export default Button;
+export default Button

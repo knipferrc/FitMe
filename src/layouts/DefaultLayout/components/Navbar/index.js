@@ -1,23 +1,24 @@
-import Link from 'react-router-dom/Link'
-import React from 'react'
-import { auth } from 'lib/firebase'
-import styled from 'styled-components'
+import Link from 'react-router-dom/Link';
+import React from 'react';
+import { auth } from 'lib/firebase';
+import styled from 'styled-components';
 
 const NavContainer = styled.div`
-  background: #334e60;
+  background: ${props => props.theme.primary};
   height: 55px;
   display: flex;
   align-items: center;
   width: 100%;
   position: fixed;
   z-index: 100;
-`
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+`;
 
 const NavBrand = styled.div`
   padding-left: 10px;
   font-size: 2em;
   color: white;
-`
+`;
 
 const NavRight = styled.div`
   margin-left: auto;
@@ -25,7 +26,7 @@ const NavRight = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
-`
+`;
 
 const NavLink = styled(Link)`
   font-size: 1.1em;
@@ -41,7 +42,7 @@ const NavLink = styled(Link)`
   &:hover {
     text-decoration: none;
   }
-`
+`;
 
 const LogoutButton = styled.div`
   font-size: 1.1em;
@@ -58,7 +59,7 @@ const LogoutButton = styled.div`
   &:hover {
     text-decoration: none;
   }
-`
+`;
 
 const HamburgerMenu = styled.div`
   margin-left: auto;
@@ -69,11 +70,11 @@ const HamburgerMenu = styled.div`
   @media (min-width: 768px) {
     display: none;
   }
-`
+`;
 
 const logout = async () => {
-  await auth.signOut()
-}
+  await auth.signOut();
+};
 
 const Navbar = ({ toggleOpen, user }) => {
   return (
@@ -88,7 +89,7 @@ const Navbar = ({ toggleOpen, user }) => {
         {user && <LogoutButton onClick={logout}>Logout</LogoutButton>}
       </NavRight>
     </NavContainer>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

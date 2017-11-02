@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SidebarContainer = styled.div`
-  background: #f8f9f9;
+  background: #f5f5f6;
   width: 260px;
   position: fixed;
   right: auto;

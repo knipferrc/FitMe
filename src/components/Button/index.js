@@ -1,11 +1,13 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Button = styled.button`
+  background: ${props => props.theme.secondary};
+  color: white;
   outline: none;
   border: ${props =>
     props.inverted ? `1px solid ${props.theme.primary}` : 'none'};
   cursor: pointer;
-  font-size: 0.8em;
+  font-size: 1em;
   display: inline-block;
   width: ${props => props.fullWidth && '100%'};
   font-weight: 600;
@@ -16,6 +18,6 @@ const Button = styled.button`
   &:hover {
     background: rgba(0, 0, 0, 0.4);
   }
-`
+`;
 
-export default Button
+export default Button;

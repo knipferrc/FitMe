@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 
-import Navbar from 'components/Navbar';
-import OffCanvas from 'components/OffCanvas';
-import Sidebar from 'components/Sidebar';
+import Navbar from './components/Navbar';
+import OffCanvas from './components/OffCanvas';
+import Sidebar from './components/Sidebar';
 import styled from 'styled-components';
 
 const NavSection = styled.div`

@@ -1,9 +1,9 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components';
 
-import Link from 'react-router-dom/Link'
-import { Portal } from 'react-portal'
-import React from 'react'
-import { auth } from 'lib/firebase'
+import Link from 'react-router-dom/Link';
+import { Portal } from 'react-portal';
+import React from 'react';
+import { auth } from 'lib/firebase';
 
 const slideUp = keyframes`
   0% {
@@ -12,7 +12,7 @@ const slideUp = keyframes`
   100% {
     transform:  translate(0px,0px)  ;
   }
-`
+`;
 
 const OffCanvasContainer = styled.div`
   background: #f5f6fa;
@@ -24,7 +24,7 @@ const OffCanvasContainer = styled.div`
   z-index: 100;
   color: white;
   animation: ${slideUp} ease 0.3s;
-`
+`;
 
 const CloseIcon = styled.div`
   color: #fff;
@@ -35,24 +35,24 @@ const CloseIcon = styled.div`
   margin-left: auto;
   padding-right: 10px;
   cursor: pointer;
-`
+`;
 
 const CanvasHeader = styled.div`
   display: flex;
   align-items: center;
   height: 55px;
   background: #334e60;
-`
+`;
 
 const MenuText = styled.div`
   font-size: 1.5em;
   color: white;
   padding-left: 10px;
-`
+`;
 
 const CanvasContent = styled.div`
   text-align: center;
-`
+`;
 
 const NavItem = styled.div`
   text-align: center;
@@ -64,7 +64,7 @@ const NavItem = styled.div`
   border-bottom: ${props => props.theme.baseBorder};
   margin-top: 10px;
   padding-bottom: 10px;
-`
+`;
 
 const NavLink = styled(Link)`
   font-size: 1.1em;
@@ -80,7 +80,7 @@ const NavLink = styled(Link)`
   &:hover {
     text-decoration: none;
   }
-`
+`;
 
 const LogoutButton = styled.a`
   font-size: 1.1em;
@@ -96,12 +96,12 @@ const LogoutButton = styled.a`
   &:hover {
     text-decoration: none;
   }
-`
+`;
 
 const logout = async toggleOpen => {
-  await auth.signOut()
-  toggleOpen(false)
-}
+  await auth.signOut();
+  toggleOpen(false);
+};
 
 const OffCanvas = ({ open, toggleOpen, user }) => {
   return (
@@ -142,7 +142,7 @@ const OffCanvas = ({ open, toggleOpen, user }) => {
         </CanvasContent>
       </OffCanvasContainer>
     </Portal>
-  )
-}
+  );
+};
 
-export default OffCanvas
+export default OffCanvas;

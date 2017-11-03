@@ -17,9 +17,18 @@
     "firebase",
     "fitme"
   ],
+  "scripts": {
+    "precommit": "lint-staged",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "format": "prettier --single-quote --no-semi --trailing-comma none --write \"src/**/*.js\"",
+    "deploy": "npm run build && firebase deploy"
+  },
   "dependencies": {
-    "firebase": "^4.6.0",
-    "formik": "^0.9.4",
+    "firebase": "^4.6.1",
+    "formik": "^0.10.0",
     "grid-styled": "^2.0.0-11",
     "husky": "^0.14.3",
     "lint-staged": "^4.3.0",
@@ -37,14 +46,5 @@
       "prettier --single-quote --no-semi --trailing-comma none --write",
       "git add"
     ]
-  },
-  "scripts": {
-    "precommit": "lint-staged",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "format": "prettier --single-quote --no-semi --trailing-comma none --write \"src/**/*.js\"",
-    "deploy": "npm run build && firebase deploy"
   }
 }

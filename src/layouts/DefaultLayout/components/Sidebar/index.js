@@ -3,14 +3,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 const SidebarContainer = styled.div`
-  background: #f5f5f6;
-  width: 120px;
+  background: linear-gradient(179deg, #2c2f39 2%, #363944 14%, #32353d 100%);
+  width: 260px;
   position: fixed;
   right: auto;
   bottom: 0;
   left: 0;
   height: 100%;
-  top: 55px;
+  top: 64px;
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 2;
@@ -19,22 +19,19 @@ const SidebarContainer = styled.div`
 `
 
 const NavItem = styled.div`
-  text-align: center;
   height: 50px;
   display: flex;
-  color: #000;
-  align-items: center;
-  justify-content: center;
+  color: #fff;
   flex-direction: column;
+  margin-left: 20px;
   width: 100%;
-  border-bottom: ${props => props.theme.baseBorder};
-  margin-top: 10px;
+  margin-top: 20px;
   padding-bottom: 10px;
 `
 
 const NavLink = styled(Link)`
   font-size: 1.1em;
-  color: black;
+  color: #fff;
   text-decoration: none;
   &:active {
     text-decoration: none;
@@ -52,13 +49,11 @@ const Sidebar = ({ user }) => {
     <SidebarContainer>
       {!user && (
         <NavItem>
-          <i className="material-icons">home</i>
           <NavLink to="/">Home</NavLink>
         </NavItem>
       )}
       {user && (
         <NavItem>
-          <i className="material-icons">dashboard</i>
           <NavLink to="/dashboard">Dashboard</NavLink>
         </NavItem>
       )}

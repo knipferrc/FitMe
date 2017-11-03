@@ -41,8 +41,13 @@ const CanvasHeader = styled.div`
   display: flex;
   align-items: center;
   height: 55px;
-  background: ${props => props.theme.primary};
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  background: linear-gradient(
+    280deg,
+    #141233 2%,
+    #2d365a 55%,
+    #394a74 85%,
+    #3d598b 100%
+  );
 `
 
 const MenuText = styled.div`

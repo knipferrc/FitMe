@@ -1,15 +1,9 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import React, { PureComponent } from 'react'
 import { ThemeProvider, injectGlobal } from 'styled-components'
 
-import AuthorizedRoute from 'components/AuthorizedRoute'
-import DashboardRoute from 'routes/Dashboard'
-import HomeRoute from 'routes/Home'
-import LoginRoute from 'routes/Login'
-import NotFoundRoute from 'routes/NotFound'
+import { BrowserRouter } from 'react-router-dom'
 import PageLoader from 'components/PageLoader'
-import PublicRoute from 'components/PublicRoute'
-import RegisterRoute from 'routes/Register'
+import Routes from 'routes'
 import { auth } from 'lib/firebase'
 import theme from 'lib/theme'
 
@@ -25,7 +19,7 @@ injectGlobal`
     font-size: 16px;
     line-height: 16px;
     color: #333;
-    background: #fff;
+    background-image: url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg');
   }
 `
 
@@ -68,29 +62,7 @@ export default class App extends PureComponent {
     return (
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Switch>
-            <PublicRoute exact authed={authed} path="/" component={HomeRoute} />
-            <PublicRoute
-              exact
-              authed={authed}
-              path="/login"
-              component={LoginRoute}
-            />
-            <PublicRoute
-              exact
-              authed={authed}
-              path="/register"
-              component={RegisterRoute}
-            />
-            <AuthorizedRoute
-              exact
-              authed={authed}
-              path="/dashboard"
-              component={DashboardRoute}
-              user={user}
-            />
-            <Route path="*" component={NotFoundRoute} />
-          </Switch>
+          <Routes authed={authed} user={user} />
         </BrowserRouter>
       </ThemeProvider>
     )

@@ -21,8 +21,8 @@ const SidebarSection = styled.div`
 const ContentSection = styled.div`
   width: 100%;
   height: 100vh;
-  padding-top: 55px;
-  padding-left: 120px;
+  padding-top: 64px;
+  padding-left: 260px;
   overflow-y: auto;
   @media (max-width: 768px) {
     padding-left: 0px;

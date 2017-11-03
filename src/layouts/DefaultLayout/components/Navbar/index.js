@@ -4,14 +4,19 @@ import { auth } from 'lib/firebase'
 import styled from 'styled-components'
 
 const NavContainer = styled.div`
-  background: ${props => props.theme.primary};
-  height: 55px;
+  background: linear-gradient(
+    280deg,
+    #141233 2%,
+    #2d365a 55%,
+    #394a74 85%,
+    #3d598b 100%
+  );
+  height: 64px;
   display: flex;
   align-items: center;
   width: 100%;
   position: fixed;
   z-index: 100;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
 `
 
 const NavBrand = styled.div`

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
-  background: ${props => props.theme.secondary};
+  background: linear-gradient(180deg, #516fad 4%, #3b5a9e 97%);
   color: white;
   outline: none;
   border: ${props =>

@@ -53,10 +53,10 @@ export default {
 </script>
 
 <style>
-  .container {
-    padding: 100px;
-  }
-  .error {
-    color: red;
-  }
+.container {
+  padding: 100px;
+}
+.error {
+  color: red;
+}
 </style>

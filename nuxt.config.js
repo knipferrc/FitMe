@@ -18,8 +18,11 @@ module.exports = {
       }
     ]
   },
+  build: {
+    vendor: ['axios']
+  },
   loading: { color: '#00bcd4' },
-  modules: ['@nuxtjs/pwa', '@nuxtjs/axios'],
+  modules: ['@nuxtjs/pwa'],
   plugins: ['plugins/element-ui.js'],
   css: ['element-ui/lib/theme-chalk/index.css'],
   serverMiddleware: [

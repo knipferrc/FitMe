@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const state = () => ({
   authUser: null
 })
@@ -17,10 +19,7 @@ export const actions = {
   },
   async login({ commit }, { username, password }) {
     try {
-      const { data } = await this.$axios.$post('/api/login', {
-        username,
-        password
-      })
+      const { data } = await axios.post('/api/login', { username, password })
       commit('SET_USER', data)
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -31,7 +30,7 @@ export const actions = {
   },
 
   async logout({ commit }) {
-    await this.$axios.$post('/api/logout')
+    await axios.post('/api/logout')
     commit('SET_USER', null)
   }
 }

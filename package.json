@@ -12,39 +12,30 @@
     "url": "https://github.com/knipferrc/fitme/issues"
   },
   "keywords": [
-    "CRA",
-    "react",
-    "firebase",
+    "Vue",
+    "NuxtJS",
+    "SQLite",
     "fitme"
   ],
+  "engines": {
+    "node": "9.0.0"
+  },
   "scripts": {
-    "precommit": "lint-staged",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "format": "prettier --single-quote --no-semi --trailing-comma none --write \"src/**/*.js\"",
-    "deploy": "npm run build && firebase deploy"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "format": "prettier --single-quote --no-semi --trailing-comma none --write \"{,!(node_modules|.nuxt|static)/**/}*.js\"",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
-    "firebase": "^4.6.1",
-    "formik": "^0.10.0",
-    "grid-styled": "^2.0.0-11",
-    "husky": "^0.14.3",
-    "lint-staged": "^4.3.0",
-    "prettier": "^1.7.4",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-helmet": "^5.2.0",
-    "react-portal": "^4.0.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.16",
-    "styled-components": "^2.2.3"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --single-quote --no-semi --trailing-comma none --write",
-      "git add"
-    ]
+    "@nuxtjs/axios": "^4.4.0",
+    "@nuxtjs/pwa": "^1.0.2",
+    "axios": "^0.17.0",
+    "element-ui": "^2.0.3",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "nuxt": "^1.0.0-rc11",
+    "prettier": "^1.7.4"
   }
 }

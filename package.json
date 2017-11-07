@@ -36,6 +36,6 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "nuxt": "^1.0.0-rc11",
-    "prettier": "^1.7.4"
+    "prettier": "^1.8.1"
   }
 }

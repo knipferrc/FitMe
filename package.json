@@ -1,41 +1,48 @@
 {
   "name": "fitme",
-  "version": "0.1.0",
-  "description": "Fitness management made easy",
+  "version": "0.0.3",
+  "description": "FitMe - Fitness management made easy",
   "author": "Tyler Knipfer <knipferrc@gmail.com>",
   "license": "GPL-3.0",
+  "scripts": {
+    "start":
+      "concurrently \"bsb -make-world -w\" \"cross-env NODE_ENV=development node server\"",
+    "build": "bsb -make-world && parcel build index.html --public-url /",
+    "start:prod": "cross-env NODE_ENV=production node server",
+    "clean": "bsb -clean-world",
+    "precommit": "lint-staged",
+    "format:css": "prettier --write ./*.css ./**/*.css",
+    "format:js": "prettier --write ./*.{js,json} ./**/*.{js,json}",
+    "format:reason": "refmt --in-place src/**/*.re",
+    "format": "npm run format:js && npm run format:css && npm run format:reason"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/knipferrc/fitme.git"
+    "url": "git+https://github.com/knipferrc/fitme.git"
   },
   "bugs": {
     "url": "https://github.com/knipferrc/fitme/issues"
   },
-  "keywords": [
-    "Vue",
-    "NuxtJS",
-    "SQLite",
-    "fitme"
-  ],
-  "engines": {
-    "node": "8.9.0"
-  },
-  "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "format": "prettier --single-quote --no-semi --trailing-comma none --write \"{,!(node_modules|.nuxt|static)/**/}*.js\"",
-    "heroku-postbuild": "npm run build"
-  },
+  "keywords": ["reason-react", "reason", "fitme", "ocaml"],
   "dependencies": {
-    "@nuxtjs/pwa": "^1.0.2",
-    "axios": "^0.17.0",
-    "better-sqlite3": "^4.0.3",
-    "element-ui": "^2.0.3",
+    "autoprefixer": "^7.2.5",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "express-session": "^1.15.6",
-    "nuxt": "^1.0.0-rc11",
-    "prettier": "^1.8.1"
+    "reason-react": "^0.3.1"
+  },
+  "devDependencies": {
+    "bs-platform": "^2.1.0",
+    "bsb-js": "^1.0.2",
+    "concurrently": "^3.5.1",
+    "cross-env": "^5.1.3",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "parcel-bundler": "^1.4.1",
+    "prettier": "^1.10.2"
+  },
+  "lint-staged": {
+    "*.{js,json}": ["prettier --write", "git add"],
+    "*.css": ["prettier --write", "git add"],
+    "src/**/*.re": ["refmt --in-place", "git add"]
   }
 }

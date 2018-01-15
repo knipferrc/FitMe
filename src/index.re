@@ -1,9 +1,6 @@
 open Utils;
 
-ReactDOMRe.renderToElementWithId(
-  <App message="Welcome to Parcel Reason React" />,
-  "root"
-);
+ReactDOMRe.renderToElementWithId(<App message="FitMe" />, "root");
 
 if (hot) {
   accept();

@@ -1,6 +1,6 @@
 open Utils;
 
-ReactDOMRe.renderToElementWithId(<App message="FitMe" />, "root");
+ReactDOMRe.renderToElementWithId(<App />, "root");
 
 if (hot) {
   accept();

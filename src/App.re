@@ -4,10 +4,12 @@ requireCSS("fit.css/dist/fit.min.css");
 
 let component = ReasonReact.statelessComponent("App");
 
-let make = (~message, _children) => {
+let make = _children => {
   ...component,
   render: _self =>
-    <button className="btn btn-primary">
-      (ReasonReact.stringToElement(message))
-    </button>
+    <nav className="nav bg-blue">
+      <div className="nav-brand text-white">
+        (ReasonReact.stringToElement("FitMe"))
+      </div>
+    </nav>
 };

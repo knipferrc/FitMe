@@ -1,22 +1,33 @@
-const Bundler = require('parcel-bundler')
 const express = require('express')
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
 const bodyParser = require('body-parser')
+const helmet = require('helmet')
+const Bundler = require('parcel-bundler')
+const schema = require('./api')
 
 let bundler = new Bundler('index.html')
 let app = express()
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(helmet())
 
-app.get('/user', function(req, res) {
-  var data = {
-    firstName: 'Tyler',
-    lastName: 'Knipfer',
-    username: 'knipferrc',
-    email: 'knipferrc@gmail.com'
-  }
-  res.status(200).send(data)
-})
+app.use(
+  '/graphql',
+  bodyParser.json(),
+  graphqlExpress(req => ({
+    schema,
+    rootValue: {
+      db: 'db-test'
+    }
+  }))
+)
+
+app.use(
+  '/graphiql',
+  graphiqlExpress({
+    endpointURL: 'graphql'
+  })
+)
 
 app.use(bundler.middleware())
 

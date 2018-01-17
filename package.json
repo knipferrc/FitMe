@@ -6,7 +6,7 @@
   "license": "GPL-3.0",
   "scripts": {
     "start":
-      "concurrently \"bsb -make-world -w\" \"cross-env NODE_ENV=development nodemon --verbose server\"",
+      "concurrently \"bsb -make-world -w\" \"cross-env NODE_ENV=development nodemon server\"",
     "build": "bsb -make-world && parcel build index.html --public-url /",
     "start:prod": "cross-env NODE_ENV=production node server",
     "clean": "bsb -clean-world",
@@ -50,8 +50,5 @@
     "*.{js,json}": ["prettier --write", "git add"],
     "*.css": ["prettier --write", "git add"],
     "src/**/*.re": ["refmt --in-place", "git add"]
-  },
-  "nodemonConfig": {
-    "ignore": ["dist/*"]
   }
 }

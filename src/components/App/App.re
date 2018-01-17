@@ -1,5 +1,7 @@
 open Utils;
 
+requireCSS("./App.css");
+
 requireCSS("fit.css/dist/fit.min.css");
 
 let component = ReasonReact.statelessComponent("App");

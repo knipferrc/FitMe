@@ -1,4 +1,4 @@
-open Utils;
+open ModuleUtils;
 
 ReactDOMRe.renderToElementWithId(<App />, "root");
 

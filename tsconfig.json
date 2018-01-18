@@ -1,29 +1,23 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "build/dist",
-    "module": "commonjs",
+    "allowSyntheticDefaultImports": false,
     "target": "es5",
-    "lib": ["es6", "dom", "esnext.asynciterable"],
-    "sourceMap": true,
-    "allowJs": true,
+    "module": "commonjs",
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "src",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
     "noImplicitAny": false,
-    "strictNullChecks": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
-  },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
-  ]
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "removeComments": true,
+    "strictNullChecks": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "lib": ["es2015", "es2016", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": ["node", "webpack-env"]
+  }
 }

@@ -1,11 +1,16 @@
 const express = require('express')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
+const { SubscriptionServer } = require('subscriptions-transport-ws')
+const { execute, subscribe } = require('graphql')
 const helmet = require('helmet')
 const Bundler = require('parcel-bundler')
 const compression = require('compression')
 const hpp = require('hpp')
+const { createServer } = require('http')
 
 const schema = require('./api')
+
+const PORT = 1234
 
 const bundler = new Bundler('index.html')
 const app = express()
@@ -31,10 +36,30 @@ app.use(
 app.use(
   '/graphiql',
   graphiqlExpress({
-    endpointURL: 'graphql'
+    endpointURL: 'graphql',
+    subscriptionsEndpoint: `ws://localhost:${PORT}/subscriptions`
   })
 )
 
 app.use(bundler.middleware())
 
-app.listen(Number(process.env.PORT || 1234))
+const ws = createServer(app)
+
+ws.listen(PORT, err => {
+  if (err) throw err
+
+  console.log(`Server is now running on http://localhost:${PORT}`)
+
+  new SubscriptionServer(
+    {
+      execute,
+      subscribe,
+      schema,
+      onConnect: () => console.log('Client connected')
+    },
+    {
+      server: ws,
+      path: '/subscriptions'
+    }
+  )
+})

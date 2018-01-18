@@ -1,7 +1,8 @@
 const Schema = `
   type Schema {
     query: Query
-  	mutation: Mutation
+    mutation: Mutation
+    subscription: Subscription
   }
 `
 

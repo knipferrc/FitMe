@@ -1,4 +1,5 @@
 import * as React from 'react'
+
 import Navbar from '../../components/Navbar'
 
 interface IDefaultLayoutProps {
@@ -6,10 +7,10 @@ interface IDefaultLayoutProps {
 }
 
 const DefaultLayout: React.SFC<IDefaultLayoutProps> = ({ children }) => (
-  <div>
+  <React.Fragment>
     <Navbar />
-    {children}
-  </div>
+    <div className="container">{children}</div>
+  </React.Fragment>
 )
 
 export default DefaultLayout

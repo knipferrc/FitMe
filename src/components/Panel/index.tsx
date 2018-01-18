@@ -2,7 +2,7 @@ import * as React from 'react'
 
 interface IPanelProps {
   title: string
-  extra: any
+  extra?: any
   children: any
 }
 

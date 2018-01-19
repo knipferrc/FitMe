@@ -4,7 +4,7 @@ const Bundler = require('parcel-bundler')
 const hpp = require('hpp')
 const compression = require('compression')
 const MongoClient = require('mongodb').MongoClient
-require('dotenv').config()
+require('dotenv').config({ path: './server/.env' })
 
 const { SubscriptionServer } = require('subscriptions-transport-ws')
 const { execute, subscribe } = require('graphql')

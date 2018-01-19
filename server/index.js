@@ -3,6 +3,8 @@ const helmet = require('helmet')
 const Bundler = require('parcel-bundler')
 const hpp = require('hpp')
 const compression = require('compression')
+const MongoClient = require('mongodb').MongoClient
+require('dotenv').config()
 
 const { SubscriptionServer } = require('subscriptions-transport-ws')
 const { execute, subscribe } = require('graphql')
@@ -25,23 +27,31 @@ app.use(hpp())
 app.use(routes)
 app.use(bundler.middleware())
 
-const ws = createServer(app)
+MongoClient.connect(process.env.DB_CONNECTION_STRING)
+  .catch(err => console.error(err.stack))
+  .then(db => {
+    app.locals.db = db
+    console.log('Database connection successful.')
+  })
+  .then(() => {
+    const ws = createServer(app)
 
-ws.listen(PORT, err => {
-  if (err) throw err
+    ws.listen(PORT, err => {
+      if (err) throw err
 
-  console.log(`Server is now running on http://localhost:${PORT}`)
+      console.log(`Server is now running on http://localhost:${PORT}`)
 
-  new SubscriptionServer(
-    {
-      execute,
-      subscribe,
-      schema,
-      onConnect: () => console.log('Client connected')
-    },
-    {
-      server: ws,
-      path: '/subscriptions'
-    }
-  )
-})
+      new SubscriptionServer(
+        {
+          execute,
+          subscribe,
+          schema,
+          onConnect: () => console.log('Client connected')
+        },
+        {
+          server: ws,
+          path: '/subscriptions'
+        }
+      )
+    })
+  })

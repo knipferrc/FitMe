@@ -1,10 +1,11 @@
 import React from 'react'
 
 import DefaultLayout from '../../../layouts/DefaultLayout'
+import LoginForm from '../LoginForm'
 
 const LandingView = () => (
   <DefaultLayout>
-    <h3>Landing View</h3>
+    <LoginForm />
   </DefaultLayout>
 )
 

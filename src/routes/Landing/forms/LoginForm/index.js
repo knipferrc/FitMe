@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd'
 
+import Button from 'antd/lib/button'
+import Checkbox from 'antd/lib/checkbox'
+import Form from 'antd/lib/form'
+import Icon from 'antd/lib/icon'
+import Input from 'antd/lib/input'
 import hoc from './hoc'
 
 const FormItem = Form.Item
@@ -62,6 +66,4 @@ class LoginForm extends Component {
   }
 }
 
-const WrappedLoginForm = Form.create()(LoginForm)
-
-export default hoc(WrappedLoginForm)
+export default hoc(LoginForm)

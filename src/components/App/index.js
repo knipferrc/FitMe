@@ -1,14 +1,13 @@
 import './App.css'
 
-import React from 'react'
-
-import { BrowserRouter } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
-import client from '../../lib/apollo'
-import Routes from '../../routes'
+import { BrowserRouter } from 'react-router-dom'
+import React from 'react'
+import Routes from 'routes'
+import client from 'lib/apollo'
 
 const App = () => (
-  <ApolloProvider {...{ client }}>
+  <ApolloProvider client={client}>
     <BrowserRouter>
       <Routes />
     </BrowserRouter>

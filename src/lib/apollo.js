@@ -1,9 +1,9 @@
 import { ApolloClient } from 'apollo-client'
-import { HttpLink } from 'apollo-link-http'
-import { WebSocketLink } from 'apollo-link-ws'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { getOperationAST } from 'graphql'
 import { ApolloLink } from 'apollo-link'
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { WebSocketLink } from 'apollo-link-ws'
+import { getOperationAST } from 'graphql'
 
 const httpUri =
   process.env.NODE_ENV === 'production'
@@ -18,6 +18,7 @@ const link = ApolloLink.split(
       operation.query,
       operation.operationName
     )
+
     return !!operationAST && operationAST.operation === 'subscription'
   },
   new WebSocketLink({

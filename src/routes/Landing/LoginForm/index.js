@@ -9,10 +9,10 @@ class LoginForm extends Component {
   handleSubmit = async e => {
     e.preventDefault()
 
-    const { login } = this.props
+    const { form, login } = this.props
 
-    const email = e.target.email.value
-    const password = e.target.password.value
+    const email = form.getFieldValue('email')
+    const password = form.getFieldValue('password')
 
     await login(email, password)
   }

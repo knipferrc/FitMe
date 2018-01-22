@@ -13,7 +13,7 @@ const NavbarContainer = styled.div`
   align-items: center;
   position: fixed;
   width: 100%;
-  box-shadow: 0 0.5px 0.5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 8px #f0f1f2;
 `
 
 const Brand = styled.div`

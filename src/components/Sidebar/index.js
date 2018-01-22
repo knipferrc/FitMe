@@ -12,16 +12,16 @@ const Sidebar = () => (
       <Icon type="appstore-o" />Dashboard
     </Menu.Item>
     <Menu.Item key="2">
-      <Icon type="api" />Workouts
+      <Icon type="api" />Workout Builder
     </Menu.Item>
     <Menu.Item key="3">
-      <Icon type="database" />Exercises
+      <Icon type="database" />Exercise Creator
     </Menu.Item>
     <Menu.Item key="4">
-      <Icon type="calendar" /> Schedule
+      <Icon type="calendar" /> My Schedule
     </Menu.Item>
     <Menu.Item key="5">
-      <Icon type="contacts" />Chat
+      <Icon type="contacts" />Live Chat
     </Menu.Item>
   </Menu>
 )

@@ -8,7 +8,7 @@ import styled from 'styled-components'
 
 const NavbarContainer = styled.div`
   height: 64px;
-  background: #fff;
+  background: #1890ff;
   display: flex;
   align-items: center;
   position: fixed;
@@ -21,6 +21,7 @@ const Brand = styled.div`
   font-weight: 700;
   padding-right: 20px;
   padding-left: 10px;
+  color: #fff;
 `
 
 const NavbarRight = styled.div`
@@ -44,9 +45,8 @@ const MobileMenu = styled.div`
 
 const menu = (
   <Menu>
-    <Menu.Item key="1">Login</Menu.Item>
-    <Menu.Item key="2">Register</Menu.Item>
-    <Menu.Item key="3">Logout</Menu.Item>
+    <Menu.Item key="1">Profile</Menu.Item>
+    <Menu.Item key="2">Logout</Menu.Item>
   </Menu>
 )
 
@@ -80,8 +80,8 @@ const Navbar = () => (
     <NavbarRight>
       <AccountDropdown>
         <Dropdown overlay={menu}>
-          <Button style={{ marginLeft: 8 }}>
-            Account <Icon type="down" />
+          <Button icon="setting" style={{ marginLeft: 8 }}>
+            Username <Icon type="down" />
           </Button>
         </Dropdown>
       </AccountDropdown>

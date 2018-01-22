@@ -12,7 +12,7 @@ const DefaultLayoutContainer = styled.div`
 const SidebarContainer = styled.div`
   height: 100%;
   position: fixed;
-  top: 65px;
+  top: 64px;
   @media (max-width: 740px) {
     display: none;
   }

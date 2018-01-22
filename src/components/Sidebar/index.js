@@ -8,7 +8,7 @@ const Sidebar = () => (
     defaultSelectedKeys={['1']}
     mode="inline"
   >
-    <Menu.Item key="1">
+    <Menu.Item key="1" style={{ marginTop: 0 }}>
       <Icon type="appstore-o" />Dashboard
     </Menu.Item>
     <Menu.Item key="2">

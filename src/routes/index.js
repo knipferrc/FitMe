@@ -1,10 +1,11 @@
-import { Route, Switch } from 'react-router-dom'
-
+import DashboardRoute from './Dashboard'
 import LandingRoute from './Landing'
 import React from 'react'
+import { Switch } from 'react-router-dom'
 
 export default () => (
   <Switch>
-    <Route exact path="/" component={LandingRoute} />
+    <LandingRoute path="/" exact />
+    <DashboardRoute path="/dashboard" exact />
   </Switch>
 )

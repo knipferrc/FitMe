@@ -1,3 +1,53 @@
-import LandingView from './components/LandingView'
+import { Redirect, Route } from 'react-router-dom'
 
-export default LandingView
+import Card from 'antd/lib/card'
+import Col from 'antd/lib/col'
+import LoginForm from './LoginForm'
+import React from 'react'
+import RegisterForm from './RegisterForm'
+import Row from 'antd/lib/row'
+import SimpleLayout from 'layouts/SimpleLayout'
+import Tabs from 'antd/lib/tabs'
+import styled from 'styled-components'
+
+const TabPane = Tabs.TabPane
+
+const LandingContainer = styled.div`
+  padding-top: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+`
+
+const Landing = () => (
+  <Route
+    render={() =>
+      1 === 1 ? (
+        <SimpleLayout>
+          <LandingContainer>
+            <Row type="flex" justify="center">
+              <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                <Card title="Welcome to Fitme!">
+                  <Tabs
+                    defaultActiveKey="1"
+                    tabBarStyle={{ textAlign: 'center' }}
+                  >
+                    <TabPane tab="Login" key="1">
+                      <LoginForm />
+                    </TabPane>
+                    <TabPane tab="Register" key="2">
+                      <RegisterForm />
+                    </TabPane>
+                  </Tabs>
+                </Card>
+              </Col>
+            </Row>
+          </LandingContainer>
+        </SimpleLayout>
+      ) : (
+        <Redirect to="/dashboard" />
+      )
+    }
+  />
+)
+
+export default Landing

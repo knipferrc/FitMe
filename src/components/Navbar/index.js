@@ -38,14 +38,6 @@ const menu = (
 const Navbar = () => (
   <NavbarContainer>
     <Brand>FitMe</Brand>
-    <Menu selectedKeys={['0']} mode="horizontal">
-      <Menu.Item key="mail">
-        <Icon type="mail" />Home
-      </Menu.Item>
-      <Menu.Item key="app">
-        <Icon type="appstore" />Dashboard
-      </Menu.Item>
-    </Menu>
     <NavbarRight>
       <Dropdown overlay={menu}>
         <Button style={{ marginLeft: 8 }}>

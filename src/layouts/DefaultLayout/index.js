@@ -13,6 +13,9 @@ const SidebarContainer = styled.div`
   height: 100%;
   position: fixed;
   top: 65px;
+  @media (max-width: 740px) {
+    display: none;
+  }
 `
 
 const ContentContainer = styled.div`
@@ -21,6 +24,9 @@ const ContentContainer = styled.div`
   height: 100%;
   width: 100%;
   overflow-y: auto;
+  @media (max-width: 740px) {
+    margin-left: 0;
+  }
 `
 
 const DefaultLayout = ({ children }) => (

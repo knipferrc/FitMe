@@ -1,10 +1,10 @@
 import DefaultLayout from 'layouts/DefaultLayout'
 import React from 'react'
 
-const Dashboard = () => (
+const LiveChat = () => (
   <DefaultLayout>
-    <h1 style={{ height: 10000 }}>Dashboard</h1>
+    <h1>Live Chat</h1>
   </DefaultLayout>
 )
 
-export default Dashboard
+export default LiveChat

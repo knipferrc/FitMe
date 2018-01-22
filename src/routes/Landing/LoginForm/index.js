@@ -6,7 +6,7 @@ import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
 import React from 'react'
-import hoc from './hoc'
+import data from './data'
 
 const FormItem = Form.Item
 
@@ -74,4 +74,4 @@ LoginForm.propTypes = {
   login: PropTypes.func
 }
 
-export default hoc(LoginForm)
+export default data(LoginForm)

@@ -1,10 +1,10 @@
 import DefaultLayout from 'layouts/DefaultLayout'
 import React from 'react'
 
-const Dashboard = () => (
+const WorkoutBuilder = () => (
   <DefaultLayout>
-    <h1 style={{ height: 10000 }}>Dashboard</h1>
+    <h1>Workout Builder</h1>
   </DefaultLayout>
 )
 
-export default Dashboard
+export default WorkoutBuilder

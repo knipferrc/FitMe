@@ -1,17 +1,18 @@
+import Button from 'antd/lib/button'
+import Dropdown from 'antd/lib/dropdown'
 import Icon from 'antd/lib/icon'
 import Menu from 'antd/lib/menu'
 import React from 'react'
 import styled from 'styled-components'
-
-const SubMenu = Menu.SubMenu
-const MenuItemGroup = Menu.ItemGroup
 
 const NavbarContainer = styled.div`
   height: 64px;
   background: #fff;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid black;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 0.5px 0.5px rgba(0, 0, 0, 0.4);
 `
 
 const Brand = styled.div`
@@ -21,38 +22,37 @@ const Brand = styled.div`
   padding-left: 10px;
 `
 
+const NavbarRight = styled.div`
+  margin-left: auto;
+  padding-right: 10px;
+`
+
+const menu = (
+  <Menu>
+    <Menu.Item key="1">Login</Menu.Item>
+    <Menu.Item key="2">Register</Menu.Item>
+    <Menu.Item key="3">Logout</Menu.Item>
+  </Menu>
+)
+
 const Navbar = () => (
   <NavbarContainer>
     <Brand>FitMe</Brand>
-    <Menu selectedKeys={[0]} mode="horizontal">
+    <Menu selectedKeys={['0']} mode="horizontal">
       <Menu.Item key="mail">
-        <Icon type="mail" />Navigation One
+        <Icon type="mail" />Home
       </Menu.Item>
-      <Menu.Item key="app" disabled>
-        <Icon type="appstore" />Navigation Two
-      </Menu.Item>
-      <SubMenu
-        title={
-          <span>
-            <Icon type="setting" />Navigation Three - Submenu
-          </span>
-        }
-      >
-        <MenuItemGroup title="Item 1">
-          <Menu.Item key="setting:1">Option 1</Menu.Item>
-          <Menu.Item key="setting:2">Option 2</Menu.Item>
-        </MenuItemGroup>
-        <MenuItemGroup title="Item 2">
-          <Menu.Item key="setting:3">Option 3</Menu.Item>
-          <Menu.Item key="setting:4">Option 4</Menu.Item>
-        </MenuItemGroup>
-      </SubMenu>
-      <Menu.Item key="alipay">
-        <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-          Navigation Four - Link
-        </a>
+      <Menu.Item key="app">
+        <Icon type="appstore" />Dashboard
       </Menu.Item>
     </Menu>
+    <NavbarRight>
+      <Dropdown overlay={menu}>
+        <Button style={{ marginLeft: 8 }}>
+          Account <Icon type="down" />
+        </Button>
+      </Dropdown>
+    </NavbarRight>
   </NavbarContainer>
 )
 

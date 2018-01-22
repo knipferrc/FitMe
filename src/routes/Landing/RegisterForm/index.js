@@ -110,7 +110,6 @@ class RegisterForm extends PureComponent {
           <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
             Register
           </Button>
-          Already have an account? <a href="">Login</a>
         </FormItem>
       </Form>
     )

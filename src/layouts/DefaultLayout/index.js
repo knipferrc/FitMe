@@ -1,7 +1,10 @@
+import React, { Fragment } from 'react'
+
 import Navbar from 'components/Navbar'
+import PageLoader from 'components/PageLoader'
 import PropTypes from 'prop-types'
-import React from 'react'
 import Sidebar from 'components/Sidebar'
+import data from './data'
 import styled from 'styled-components'
 
 const DefaultLayoutContainer = styled.div`
@@ -24,18 +27,25 @@ const ContentContainer = styled.div`
   height: 100%;
   width: 100%;
   overflow-y: auto;
+  background: rgba(0, 0, 0, 0.05);
   @media (max-width: 740px) {
     margin-left: 0;
   }
 `
 
-const DefaultLayout = ({ children }) => (
+const DefaultLayout = ({ children, loading, currentUser }) => (
   <DefaultLayoutContainer>
-    <Navbar />
-    <SidebarContainer>
-      <Sidebar />
-    </SidebarContainer>
-    <ContentContainer>{children}</ContentContainer>
+    {loading ? (
+      <PageLoader />
+    ) : (
+      <Fragment>
+        <Navbar user={currentUser} />
+        <SidebarContainer>
+          <Sidebar />
+        </SidebarContainer>
+        <ContentContainer>{children}</ContentContainer>
+      </Fragment>
+    )}
   </DefaultLayoutContainer>
 )
 
@@ -43,4 +53,4 @@ DefaultLayout.propTypes = {
   children: PropTypes.node
 }
 
-export default DefaultLayout
+export default data(DefaultLayout)

@@ -4,6 +4,7 @@ import Icon from 'antd/lib/icon'
 import { Link } from 'react-router-dom'
 import Menu from 'antd/lib/menu'
 import Popover from 'antd/lib/popover'
+import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -45,12 +46,22 @@ const MobileMenu = styled.div`
   }
 `
 
+const handleLogout = () => {
+  console.log('here')
+  localStorage.removeItem('accesstoken')
+  window.location.href = '/'
+}
+
 const menu = (
   <Menu>
     <Menu.Item key="1">
       <Link to="/my-profile">My Profile</Link>
     </Menu.Item>
-    <Menu.Item key="2">Logout</Menu.Item>
+    <Menu.Item key="2">
+      <a href="#!" onClick={handleLogout}>
+        Logout
+      </a>
+    </Menu.Item>
   </Menu>
 )
 
@@ -87,19 +98,22 @@ const mobileMenu = (
       </Link>
     </Menu.Item>
     <Menu.Item key="7">
-      <Icon type="logout" />Logout
+      <a href="#!" onClick={handleLogout}>
+        <Icon type="logout" />Logout
+      </a>
     </Menu.Item>
   </Menu>
 )
 
-const Navbar = () => (
+const Navbar = ({ user }) => (
   <NavbarContainer>
     <Brand>FitMe</Brand>
     <NavbarRight>
       <AccountDropdown>
         <Dropdown overlay={menu}>
           <Button icon="setting" style={{ marginLeft: 8 }}>
-            Username <Icon type="down" />
+            {user.email}
+            <Icon type="down" />
           </Button>
         </Dropdown>
       </AccountDropdown>
@@ -117,5 +131,13 @@ const Navbar = () => (
     </NavbarRight>
   </NavbarContainer>
 )
+
+Navbar.propTypes = {
+  user: PropTypes.shape({
+    email: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string
+  })
+}
 
 export default Navbar

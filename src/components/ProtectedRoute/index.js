@@ -2,13 +2,11 @@ import { Redirect, Route } from 'react-router-dom'
 
 import React from 'react'
 
-const loggedIn = true
-
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      loggedIn === true ? (
+      localStorage.getItem('accesstoken') ? (
         <Component {...props} />
       ) : (
         <Redirect

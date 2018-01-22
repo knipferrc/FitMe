@@ -12,13 +12,19 @@ const FormItem = Form.Item
 
 const required = value => (value ? undefined : true)
 
-const onSubmit = async (values, login) => {
-  await login(values.email, values.password)
+const onSubmit = async (values, login, history) => {
+  try {
+    const { data } = await login(values.email, values.password)
+    localStorage.setItem('accesstoken', data.login)
+    history.push('/dashboard')
+  } catch (e) {
+    console.log(e)
+  }
 }
 
-const LoginForm = ({ login }) => (
+const LoginForm = ({ login, history }) => (
   <FinalForm
-    onSubmit={values => onSubmit(values, login)}
+    onSubmit={values => onSubmit(values, login, history)}
     render={({ handleSubmit, submitting }) => (
       <Form onSubmit={handleSubmit}>
         <Field name="email" validate={required}>
@@ -71,7 +77,8 @@ const LoginForm = ({ login }) => (
 )
 
 LoginForm.propTypes = {
-  login: PropTypes.func
+  login: PropTypes.func,
+  history: PropTypes.object
 }
 
 export default data(LoginForm)

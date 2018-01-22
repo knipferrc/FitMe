@@ -1,6 +1,7 @@
 import compose from 'recompose/compose'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
+import { withRouter } from 'react-router-dom'
 
 const LoginMutation = gql`
   mutation login($email: String!, $password: String!) {
@@ -14,4 +15,4 @@ const withLogin = graphql(LoginMutation, {
   })
 })
 
-export default compose(withLogin)
+export default compose(withRouter, withLogin)

@@ -8,6 +8,7 @@ import RegisterForm from './RegisterForm'
 import Row from 'antd/lib/row'
 import SimpleLayout from 'layouts/SimpleLayout'
 import Tabs from 'antd/lib/tabs'
+import logo from 'assets/logo.png'
 import styled from 'styled-components'
 
 const TabPane = Tabs.TabPane
@@ -18,6 +19,12 @@ const LandingContainer = styled.div`
   padding-right: 5px;
 `
 
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+`
+
 const Landing = () => (
   <Route
     render={() =>
@@ -26,7 +33,10 @@ const Landing = () => (
           <LandingContainer>
             <Row type="flex" justify="center">
               <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                <Card title="Welcome to Fitme!">
+                <Card bordered={false}>
+                  <ImageContainer>
+                    <img alt="logo" height="100" width="100" src={logo} />
+                  </ImageContainer>
                   <Tabs
                     defaultActiveKey="1"
                     tabBarStyle={{ textAlign: 'center' }}

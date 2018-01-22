@@ -1,118 +1,120 @@
-import { Field, Form as FinalForm } from 'react-final-form'
+import React, { PureComponent } from 'react'
 
 import Button from 'antd/lib/button'
 import Form from 'antd/lib/form'
 import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
-import PropTypes from 'prop-types'
-import React from 'react'
 import data from './data'
 
 const FormItem = Form.Item
 
-const required = value => (value ? undefined : true)
+class RegisterForm extends PureComponent {
+  handleSubmit = e => {
+    e.preventDefault()
+    const { form, register, history } = this.props
 
-const onSubmit = async (values, register) => {
-  await register(
-    values.email,
-    values.password,
-    values.firstName,
-    values.lastName
-  )
-}
+    form.validateFieldsAndScroll(async (err, values) => {
+      if (!err) {
+        try {
+          const { data } = await register(
+            values.email,
+            values.password,
+            values.firstName,
+            values.lastName
+          )
+          localStorage.setItem('accesstoken', data.register)
+          history.push('/dashboard')
+        } catch (e) {
+          console.log(e)
+        }
+      }
+    })
+  }
 
-const RegisterForm = ({ register }) => (
-  <FinalForm
-    onSubmit={values => onSubmit(values, register)}
-    render={({ handleSubmit, submitting }) => (
-      <Form onSubmit={handleSubmit}>
-        <Field name="email" validate={required}>
-          {({ input, meta }) => (
-            <FormItem
-              label="Email"
-              validateStatus={meta.error && meta.touched ? 'error' : null}
-              hasFeedback
-            >
-              <Input
-                prefix={
-                  <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
-                }
-                placeholder="Email"
-                type="email"
-                {...input}
-              />
-            </FormItem>
+  checkPassword = (rule, value, cb) => {
+    const { form } = this.props
+    if (value && value !== form.getFieldValue('password')) {
+      cb('Your passwords must match')
+    } else {
+      cb()
+    }
+  }
+
+  render() {
+    const { form: { getFieldDecorator } } = this.props
+    return (
+      <Form onSubmit={this.handleSubmit} style={{ maxWidth: '100%' }}>
+        <FormItem>
+          {getFieldDecorator('email', {
+            rules: [{ required: true, message: 'Please input your username' }]
+          })(
+            <Input
+              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder="Email"
+              name="email"
+            />
           )}
-        </Field>
-        <Field name="password" validate={required}>
-          {({ input, meta }) => (
-            <FormItem
-              label="Password"
-              validateStatus={meta.error && meta.touched ? 'error' : null}
-              hasFeedback
-            >
-              <Input
-                prefix={
-                  <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
-                }
-                placeholder="password"
-                type="password"
-                {...input}
-              />
-            </FormItem>
+        </FormItem>
+        <FormItem>
+          {getFieldDecorator('password', {
+            rules: [{ required: true, message: 'Please input your password' }]
+          })(
+            <Input
+              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              type="password"
+              placeholder="Password"
+              name="password"
+            />
           )}
-        </Field>
-        <Field name="firstName" validate={required}>
-          {({ input, meta }) => (
-            <FormItem
-              label="First Name"
-              validateStatus={meta.error && meta.touched ? 'error' : null}
-              hasFeedback
-            >
-              <Input
-                prefix={
-                  <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
-                }
-                placeholder="first name"
-                type="text"
-                {...input}
-              />
-            </FormItem>
+        </FormItem>
+        <FormItem>
+          {getFieldDecorator('confirmPassword', {
+            rules: [
+              { required: true, message: 'Please confirm your password' },
+              { validator: this.checkPassword }
+            ]
+          })(
+            <Input
+              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              type="password"
+              placeholder="Confirm Password"
+              name="confirmPassword"
+            />
           )}
-        </Field>
-        <Field name="lastName" validate={required}>
-          {({ input, meta }) => (
-            <FormItem
-              label="Last Name"
-              validateStatus={meta.error && meta.touched ? 'error' : null}
-              hasFeedback
-            >
-              <Input
-                prefix={
-                  <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
-                }
-                placeholder="last name"
-                type="text"
-                {...input}
-              />
-            </FormItem>
+        </FormItem>
+        <FormItem>
+          {getFieldDecorator('firstName', {
+            rules: [{ required: true, message: 'Please enter your first name' }]
+          })(
+            <Input
+              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              type="text"
+              placeholder="First Name"
+              name="firstName"
+            />
           )}
-        </Field>
-        <Button
-          loading={submitting}
-          type="primary"
-          htmlType="submit"
-          style={{ width: '100%' }}
-        >
-          Register
-        </Button>
+        </FormItem>
+        <FormItem>
+          {getFieldDecorator('lastName', {
+            rules: [{ required: true, message: 'Please input your last name' }]
+          })(
+            <Input
+              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              type="text"
+              placeholder="Last Name"
+              name="lastName"
+            />
+          )}
+        </FormItem>
+        <FormItem>
+          <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
+            Register
+          </Button>
+          Already have an account? <a href="">Login</a>
+        </FormItem>
       </Form>
-    )}
-  />
-)
-
-RegisterForm.propTypes = {
-  register: PropTypes.func
+    )
+  }
 }
 
 export default data(RegisterForm)

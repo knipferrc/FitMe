@@ -1,3 +1,4 @@
+import Form from 'antd/lib/form'
 import compose from 'recompose/compose'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
@@ -15,4 +16,4 @@ const withLogin = graphql(LoginMutation, {
   })
 })
 
-export default compose(withRouter, withLogin)
+export default compose(Form.create(), withRouter, withLogin)

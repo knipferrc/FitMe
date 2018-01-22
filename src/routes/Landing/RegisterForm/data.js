@@ -1,6 +1,8 @@
+import Form from 'antd/lib/form'
 import compose from 'recompose/compose'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
+import { withRouter } from 'react-router-dom'
 
 const RegisterMutation = gql`
   mutation register(
@@ -25,4 +27,4 @@ const withRegister = graphql(RegisterMutation, {
   })
 })
 
-export default compose(withRegister)
+export default compose(Form.create(), withRouter, withRegister)

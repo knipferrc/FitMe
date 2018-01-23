@@ -16,9 +16,17 @@ class RegisterForm extends PureComponent {
     history: PropTypes.object
   }
 
+  state = {
+    isSubmitting: false
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     const { form, register, history } = this.props
+
+    this.setState({
+      isSubmitting: true
+    })
 
     form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
@@ -32,8 +40,15 @@ class RegisterForm extends PureComponent {
           localStorage.setItem('accesstoken', data.register)
           history.push('/dashboard')
         } catch (e) {
+          this.setState({
+            isSubmitting: false
+          })
           console.log(e)
         }
+      } else {
+        this.setState({
+          isSubmitting: false
+        })
       }
     })
   }
@@ -49,6 +64,7 @@ class RegisterForm extends PureComponent {
 
   render() {
     const { form: { getFieldDecorator } } = this.props
+    const { isSubmitting } = this.state
     return (
       <Form onSubmit={this.handleSubmit} style={{ maxWidth: '100%' }}>
         <FormItem>
@@ -114,7 +130,12 @@ class RegisterForm extends PureComponent {
           )}
         </FormItem>
         <FormItem>
-          <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
+          <Button
+            loading={isSubmitting}
+            type="primary"
+            htmlType="submit"
+            style={{ width: '100%' }}
+          >
             Register
           </Button>
         </FormItem>

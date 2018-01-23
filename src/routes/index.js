@@ -1,3 +1,4 @@
+import ClientManagementRoute from './ClientManagement'
 import DashboardRoute from './Dashboard'
 import ExerciseBuilderRoute from './ExerciseBuilder'
 import LandingRoute from './Landing'
@@ -14,6 +15,11 @@ export default () => (
   <Switch>
     <PublicRoute path="/" exact component={LandingRoute} />
     <ProtectedRoute path="/dashboard" exact component={DashboardRoute} />
+    <ProtectedRoute
+      path="/client-management"
+      exact
+      component={ClientManagementRoute}
+    />
     <ProtectedRoute
       path="/workout-builder"
       exact

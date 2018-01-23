@@ -36,7 +36,7 @@ const columns = [
 ]
 
 const ClientPreview = () => (
-  <Card title="My Clients">
+  <Card title="My Clients" bodyStyle={{ padding: 10 }}>
     <Table dataSource={dataSource} columns={columns} />
   </Card>
 )

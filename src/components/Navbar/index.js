@@ -51,13 +51,16 @@ const handleLogout = () => {
   window.location.href = '/'
 }
 
-const menu = (
+const dropdownMenu = (
   <Menu>
     <Menu.Item key="1">
-      <Link to="/my-profile">My Profile</Link>
+      <Link to="/my-profile">
+        <Icon type="user" style={{ marginRight: 3 }} />My Profile
+      </Link>
     </Menu.Item>
     <Menu.Item key="2">
       <a href="#!" onClick={handleLogout}>
+        <Icon type="logout" style={{ marginRight: 3 }} />
         Logout
       </a>
     </Menu.Item>
@@ -72,31 +75,36 @@ const mobileMenu = (
       </Link>
     </Menu.Item>
     <Menu.Item key="2">
+      <Link to="/client-management">
+        <Icon type="team" />Client Management
+      </Link>
+    </Menu.Item>
+    <Menu.Item key="3">
       <Link to="/workout-builder">
         <Icon type="api" />Workout Builder
       </Link>
     </Menu.Item>
-    <Menu.Item key="3">
+    <Menu.Item key="4">
       <Link to="/exercise-builder">
         <Icon type="database" />Exercise Builder
       </Link>
     </Menu.Item>
-    <Menu.Item key="4">
+    <Menu.Item key="5">
       <Link to="/my-schedule">
         <Icon type="calendar" /> My Schedule
       </Link>
     </Menu.Item>
-    <Menu.Item key="5">
+    <Menu.Item key="6">
       <Link to="/live-chat">
         <Icon type="contacts" />Live Chat
       </Link>
     </Menu.Item>
-    <Menu.Item key="6">
+    <Menu.Item key="7">
       <Link to="/my-profile">
         <Icon type="team" />My Profile
       </Link>
     </Menu.Item>
-    <Menu.Item key="7">
+    <Menu.Item key="8">
       <a href="#!" onClick={handleLogout}>
         <Icon type="logout" />Logout
       </a>
@@ -109,7 +117,7 @@ const Navbar = ({ user }) => (
     <Brand>FitMe</Brand>
     <NavbarRight>
       <AccountDropdown>
-        <Dropdown overlay={menu}>
+        <Dropdown overlay={dropdownMenu} trigger={['click']}>
           <Button icon="setting" style={{ marginLeft: 8 }}>
             {user.email}
             <Icon type="down" />

@@ -40,6 +40,9 @@ class Sidebar extends PureComponent {
         <Menu.Item key="/dashboard" style={{ marginTop: 0 }}>
           <Icon type="appstore-o" />Dashboard
         </Menu.Item>
+        <Menu.Item key="/client-management">
+          <Icon type="team" />Client Management
+        </Menu.Item>
         <Menu.Item key="/workout-builder">
           <Icon type="api" />Workout Builder
         </Menu.Item>

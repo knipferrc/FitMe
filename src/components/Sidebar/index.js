@@ -1,40 +1,53 @@
 import Icon from 'antd/lib/icon'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import Menu from 'antd/lib/menu'
-import React from 'react'
+import React, { Component } from 'react'
 
-const Sidebar = () => (
-  <Menu
-    style={{ width: 220, height: '100%' }}
-    defaultSelectedKeys={['1']}
-    mode="inline"
-  >
-    <Menu.Item key="1" style={{ marginTop: 0 }}>
-      <Link to="/dashboard">
-        <Icon type="appstore-o" />Dashboard
-      </Link>
-    </Menu.Item>
-    <Menu.Item key="2">
-      <Link to="/workout-builder">
-        <Icon type="api" />Workout Builder
-      </Link>
-    </Menu.Item>
-    <Menu.Item key="3">
-      <Link to="/exercise-builder">
-        <Icon type="database" />Exercise Builder
-      </Link>
-    </Menu.Item>
-    <Menu.Item key="4">
-      <Link to="/my-schedule">
-        <Icon type="calendar" /> My Schedule
-      </Link>
-    </Menu.Item>
-    <Menu.Item key="5">
-      <Link to="/live-chat">
-        <Icon type="contacts" />Live Chat
-      </Link>
-    </Menu.Item>
-  </Menu>
-)
+class Sidebar extends Component {
+  state = {
+    selectedKeys: []
+  }
 
-export default Sidebar
+  componentWillReceiveProps() {
+    const { location } = this.props
+    this.setState({ selectedKeys: [location.pathname] })
+  }
+
+  componentDidMount() {
+    const { location } = this.props
+    this.setState({ selectedKeys: [location.pathname] })
+  }
+
+  render() {
+    const { history } = this.props
+    const { selectedKeys } = this.state
+
+    return (
+      <Menu
+        style={{ width: 220, height: '100%' }}
+        defaultSelectedKeys={['dashboard']}
+        selectedKeys={selectedKeys}
+        mode="inline"
+        onClick={item => history.push(item.key)}
+      >
+        <Menu.Item key="/dashboard" style={{ marginTop: 0 }}>
+          <Icon type="appstore-o" />Dashboard
+        </Menu.Item>
+        <Menu.Item key="/workout-builder">
+          <Icon type="api" />Workout Builder
+        </Menu.Item>
+        <Menu.Item key="/exercise-builder">
+          <Icon type="database" />Exercise Builder
+        </Menu.Item>
+        <Menu.Item key="/my-schedule">
+          <Icon type="calendar" /> My Schedule
+        </Menu.Item>
+        <Menu.Item key="/live-chat">
+          <Icon type="contacts" />Live Chat
+        </Menu.Item>
+      </Menu>
+    )
+  }
+}
+
+export default withRouter(Sidebar)

@@ -10,6 +10,7 @@ import styled from 'styled-components'
 const DefaultLayoutContainer = styled.div`
   display: flex;
   height: 100%;
+  padding-bottom: 64px;
 `
 
 const SidebarContainer = styled.div`

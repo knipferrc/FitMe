@@ -47,7 +47,6 @@ const MobileMenu = styled.div`
 `
 
 const handleLogout = () => {
-  console.log('here')
   localStorage.removeItem('accesstoken')
   window.location.href = '/'
 }

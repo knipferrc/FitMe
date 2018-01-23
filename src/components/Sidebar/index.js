@@ -25,7 +25,7 @@ class Sidebar extends Component {
     return (
       <Menu
         style={{ width: 220, height: '100%' }}
-        defaultSelectedKeys={['dashboard']}
+        defaultSelectedKeys={['/dashboard']}
         selectedKeys={selectedKeys}
         mode="inline"
         onClick={item => history.push(item.key)}

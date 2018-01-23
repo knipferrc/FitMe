@@ -1,9 +1,16 @@
-import Icon from 'antd/lib/icon'
-import { withRouter } from 'react-router-dom'
-import Menu from 'antd/lib/menu'
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-class Sidebar extends Component {
+import Icon from 'antd/lib/icon'
+import Menu from 'antd/lib/menu'
+import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
+
+class Sidebar extends PureComponent {
+  static propTypes = {
+    history: PropTypes.object,
+    location: PropTypes.object
+  }
+
   state = {
     selectedKeys: []
   }

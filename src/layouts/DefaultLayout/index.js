@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 
-import Navbar from 'components/Navbar'
-import PageLoader from 'components/PageLoader'
+import Navbar from '../../components/Navbar'
+import PageLoader from '../../components/PageLoader'
 import PropTypes from 'prop-types'
-import Sidebar from 'components/Sidebar'
+import Sidebar from '../../components/Sidebar'
 import data from './data'
 import styled from 'styled-components'
 
@@ -33,7 +33,7 @@ const ContentContainer = styled.div`
   }
 `
 
-const DefaultLayout = ({ children, loading, currentUser }) => (
+const DefaultLayout = ({ loading, currentUser, children }) => (
   <DefaultLayoutContainer>
     {loading ? (
       <PageLoader />
@@ -50,6 +50,12 @@ const DefaultLayout = ({ children, loading, currentUser }) => (
 )
 
 DefaultLayout.propTypes = {
+  loading: PropTypes.bool,
+  currentUser: PropTypes.shape({
+    email: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string
+  }),
   children: PropTypes.node
 }
 

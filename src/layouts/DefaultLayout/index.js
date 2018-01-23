@@ -4,8 +4,8 @@ import Navbar from '../../components/Navbar'
 import PageLoader from '../../components/PageLoader'
 import PropTypes from 'prop-types'
 import Sidebar from '../../components/Sidebar'
-import data from './data'
 import styled from 'styled-components'
+import withData from './withData'
 
 const DefaultLayoutContainer = styled.div`
   display: flex;
@@ -60,4 +60,4 @@ DefaultLayout.propTypes = {
   children: PropTypes.node
 }
 
-export default data(DefaultLayout)
+export default withData(DefaultLayout)

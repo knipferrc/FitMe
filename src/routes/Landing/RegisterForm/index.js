@@ -5,7 +5,7 @@ import Form from 'antd/lib/form'
 import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
-import data from './data'
+import withData from './withData'
 
 const FormItem = Form.Item
 
@@ -144,4 +144,4 @@ class RegisterForm extends PureComponent {
   }
 }
 
-export default data(RegisterForm)
+export default withData(RegisterForm)

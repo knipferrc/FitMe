@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import Navbar from '../../components/Navbar'
 import PageLoader from '../../components/PageLoader'
 import PropTypes from 'prop-types'
-import Sidebar from '../../components/Sidebar'
+import MainMenu from '../../components/MainMenu'
 import styled from 'styled-components'
 import withData from './withData'
 
@@ -13,7 +13,7 @@ const DefaultLayoutContainer = styled.div`
   padding-bottom: 64px;
 `
 
-const SidebarContainer = styled.div`
+const MainMenuContainer = styled.div`
   height: 100%;
   position: fixed;
   top: 64px;
@@ -41,9 +41,9 @@ const DefaultLayout = ({ loading, currentUser, children }) => (
     ) : (
       <Fragment>
         <Navbar user={currentUser} />
-        <SidebarContainer>
-          <Sidebar />
-        </SidebarContainer>
+        <MainMenuContainer>
+          <MainMenu />
+        </MainMenuContainer>
         <ContentContainer>{children}</ContentContainer>
       </Fragment>
     )}

@@ -5,7 +5,7 @@ import Menu from 'antd/lib/menu'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 
-class Sidebar extends PureComponent {
+class MainMenu extends PureComponent {
   static propTypes = {
     history: PropTypes.object,
     location: PropTypes.object
@@ -60,4 +60,4 @@ class Sidebar extends PureComponent {
   }
 }
 
-export default withRouter(Sidebar)
+export default withRouter(MainMenu)

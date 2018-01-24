@@ -16,7 +16,10 @@ const RegisterMutation = gql`
       password: $password
       firstName: $firstName
       lastName: $lastName
-    )
+    ) {
+      accessToken
+      role
+    }
   }
 `
 

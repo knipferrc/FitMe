@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router-dom'
 import PageLoader from '../PageLoader'
 import withData from './withData'
 
-const PublicRoute = ({
+const ClientRoute = ({
   component: Component,
   loading,
   currentUser,
@@ -17,19 +17,16 @@ const PublicRoute = ({
       <Route
         {...rest}
         render={props =>
-          !currentUser ? (
+          currentUser && currentUser.role === 'CLIENT' ? (
             <Component user={currentUser} {...props} />
           ) : (
             <Redirect
               to={{
-                pathname:
-                  currentUser.role === 'TRAINER'
+                pathname: !currentUser
+                  ? '/'
+                  : currentUser.role === 'TRAINER'
                     ? '/trainer-dashboard'
-                    : currentUser.role === 'ADMIN'
-                      ? '/admin-dashboard'
-                      : currentUser.role === 'CLIENT'
-                        ? '/client-dashboard'
-                        : '/',
+                    : currentUser.role === 'ADMIN' ? '/admin-dashboard' : '/',
                 state: { from: props.location }
               }}
             />
@@ -40,4 +37,4 @@ const PublicRoute = ({
   </Fragment>
 )
 
-export default withData(PublicRoute)
+export default withData(ClientRoute)

@@ -1,7 +1,8 @@
 import AdminDashboardRoute from './AdminRoutes/AdminDashboard'
+import AdminRoute from '../components/AdminRoute'
 import ClientDashboard from './ClientRoutes/ClientDashboard'
+import ClientRoute from '../components/ClientRoute'
 import LandingRoute from './PublicRoutes/Landing'
-import ProtectedRoute from '../components/ProtectedRoute'
 import PublicRoute from '../components/PublicRoute'
 import React from 'react'
 import { Switch } from 'react-router-dom'
@@ -10,6 +11,7 @@ import TrainerDashboardRoute from './TrainerRoutes/TrainerDashboard'
 import TrainerExerciseBuilderRoute from './TrainerRoutes/TrainerExerciseBuilder'
 import TrainerLiveChatRoute from './TrainerRoutes/TrainerChat'
 import TrainerProfileRoute from './TrainerRoutes/TrainerProfile'
+import TrainerRoute from '../components/TrainerRoute'
 import TrainerScheduleRoute from './TrainerRoutes/TrainerSchedule'
 import TrainerWorkoutBuilderRoute from './TrainerRoutes/TrainerWorkoutBuilder'
 
@@ -19,55 +21,43 @@ const Routes = () => (
     <PublicRoute path="/" exact component={LandingRoute} />
 
     {/* TRAINER ROUTES */}
-    <ProtectedRoute
+    <TrainerRoute
       path="/trainer-dashboard"
       exact
       component={TrainerDashboardRoute}
     />
-    <ProtectedRoute
+    <TrainerRoute
       path="/trainer-client-management"
       exact
       component={TrainerClientManagementRoute}
     />
-    <ProtectedRoute
+    <TrainerRoute
       path="/trainer-workout-builder"
       exact
       component={TrainerWorkoutBuilderRoute}
     />
-    <ProtectedRoute
+    <TrainerRoute
       path="/trainer-exercise-builder"
       exact
       component={TrainerExerciseBuilderRoute}
     />
-    <ProtectedRoute
+    <TrainerRoute
       path="/trainer-schedule"
       exact
       component={TrainerScheduleRoute}
     />
-    <ProtectedRoute
-      path="/trainer-chat"
-      exact
-      component={TrainerLiveChatRoute}
-    />
-    <ProtectedRoute
+    <TrainerRoute path="/trainer-chat" exact component={TrainerLiveChatRoute} />
+    <TrainerRoute
       path="/trainer-profile"
       exact
       component={TrainerProfileRoute}
     />
 
     {/* CLIENT ROUTES */}
-    <ProtectedRoute
-      path="/client-dashboard"
-      exact
-      component={ClientDashboard}
-    />
+    <ClientRoute path="/client-dashboard" exact component={ClientDashboard} />
 
     {/* ADMIN ROUTES */}
-    <ProtectedRoute
-      path="/admin-dashboard"
-      exact
-      component={AdminDashboardRoute}
-    />
+    <AdminRoute path="/admin-dashboard" exact component={AdminDashboardRoute} />
   </Switch>
 )
 

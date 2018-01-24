@@ -18,8 +18,8 @@ const StyledCol = styled(Col)`
   }
 `
 
-const TrainerDashboard = () => (
-  <DefaultLayout>
+const TrainerDashboard = ({ user }) => (
+  <DefaultLayout user={user}>
     <DashboardContainer>
       <Row gutter={8} style={{ marginBottom: 10 }}>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>

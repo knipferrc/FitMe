@@ -14,6 +14,7 @@ const CurrentUserQuery = gql`
 `
 
 const withCurrentUser = graphql(CurrentUserQuery, {
+  skip: () => localStorage.getItem('accesstoken') === null,
   options: props => ({
     variables: {
       accesstoken: localStorage.getItem('accesstoken')

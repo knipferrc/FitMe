@@ -1,11 +1,8 @@
-import React, { Fragment } from 'react'
-
-import Navbar from '../../components/Navbar'
-import PageLoader from '../../components/PageLoader'
-import PropTypes from 'prop-types'
 import MainMenu from '../../components/MainMenu'
+import Navbar from '../../components/Navbar'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
-import withData from './withData'
 
 const DefaultLayoutContainer = styled.div`
   display: flex;
@@ -34,25 +31,18 @@ const ContentContainer = styled.div`
   }
 `
 
-const DefaultLayout = ({ loading, currentUser, children }) => (
+const DefaultLayout = ({ user, children }) => (
   <DefaultLayoutContainer>
-    {loading ? (
-      <PageLoader />
-    ) : (
-      <Fragment>
-        <Navbar user={currentUser} />
-        <MainMenuContainer>
-          <MainMenu user={currentUser} />
-        </MainMenuContainer>
-        <ContentContainer>{children}</ContentContainer>
-      </Fragment>
-    )}
+    <Navbar user={user} />
+    <MainMenuContainer>
+      <MainMenu user={user} />
+    </MainMenuContainer>
+    <ContentContainer>{children}</ContentContainer>
   </DefaultLayoutContainer>
 )
 
 DefaultLayout.propTypes = {
-  loading: PropTypes.bool,
-  currentUser: PropTypes.shape({
+  user: PropTypes.shape({
     email: PropTypes.string,
     firstName: PropTypes.string,
     lastName: PropTypes.string,
@@ -61,4 +51,4 @@ DefaultLayout.propTypes = {
   children: PropTypes.node
 }
 
-export default withData(DefaultLayout)
+export default DefaultLayout

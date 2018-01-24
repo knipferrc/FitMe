@@ -11,7 +11,7 @@ const PublicRoute = ({ component: Component, ...rest }) => (
       ) : (
         <Redirect
           to={{
-            pathname: '/dashboard',
+            pathname: '/trainer-dashboard',
             state: { from: props.location }
           }}
         />

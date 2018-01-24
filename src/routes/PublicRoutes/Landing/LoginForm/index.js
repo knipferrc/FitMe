@@ -5,8 +5,8 @@ import Form from 'antd/lib/form'
 import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
+import UserType from '../../../../lib/constants/UserType'
 import withData from './withData'
-import UserType from '../../../lib/constants/UserType'
 
 const { ADMIN, TRAINER } = UserType
 const FormItem = Form.Item

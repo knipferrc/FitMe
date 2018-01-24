@@ -2,12 +2,12 @@ import Button from 'antd/lib/button'
 import Dropdown from 'antd/lib/dropdown'
 import Icon from 'antd/lib/icon'
 import { Link } from 'react-router-dom'
+import MainMenu from '../MainMenu'
 import Menu from 'antd/lib/menu'
 import Popover from 'antd/lib/popover'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import MainMenu from '../MainMenu'
 
 const NavbarContainer = styled.div`
   height: 64px;
@@ -84,7 +84,7 @@ const Navbar = ({ user }) => (
         <Popover
           placement="bottomRight"
           arrowPointAtCenter
-          content={<MainMenu />}
+          content={<MainMenu user={user} isMobile />}
           trigger="click"
           title="Main Menu"
         >

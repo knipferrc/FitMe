@@ -1,6 +1,6 @@
 import ClientPreview from './ClientPreview'
 import Col from 'antd/lib/col'
-import DefaultLayout from '../../layouts/DefaultLayout'
+import DefaultLayout from '../../../layouts/DefaultLayout'
 import ExerciseStats from './ExerciseStats'
 import React from 'react'
 import Row from 'antd/lib/row'
@@ -18,7 +18,7 @@ const StyledCol = styled(Col)`
   }
 `
 
-const Dashboard = () => (
+const TrainerDashboard = () => (
   <DefaultLayout>
     <DashboardContainer>
       <Row gutter={8} style={{ marginBottom: 10 }}>
@@ -41,4 +41,4 @@ const Dashboard = () => (
   </DefaultLayout>
 )
 
-export default Dashboard
+export default TrainerDashboard

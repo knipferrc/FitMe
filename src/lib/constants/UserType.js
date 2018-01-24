@@ -1,4 +1,4 @@
-const UserType = {
+export default {
   get CLIENT() {
     return 'CLIENT'
   },
@@ -9,5 +9,3 @@ const UserType = {
     return 'ADMIN'
   }
 }
-
-module.exports = UserType

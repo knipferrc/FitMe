@@ -3,9 +3,9 @@ import React, { PureComponent } from 'react'
 import Icon from 'antd/lib/icon'
 import Menu from 'antd/lib/menu'
 import PropTypes from 'prop-types'
+import UserType from '../../lib/constants/UserType'
 import { withRouter } from 'react-router-dom'
 
-import UserType from '../../lib/constants/UserType'
 const { ADMIN, TRAINER } = UserType
 
 class MainMenu extends PureComponent {
@@ -17,7 +17,8 @@ class MainMenu extends PureComponent {
       firstName: PropTypes.string,
       lastName: PropTypes.string,
       role: PropTypes.string
-    })
+    }),
+    isMobile: PropTypes.bool
   }
 
   state = {
@@ -34,15 +35,9 @@ class MainMenu extends PureComponent {
     this.setState({ selectedKeys: [location.pathname] })
   }
 
-  render() {
-    const { history, user } = this.props
-    const { selectedKeys } = this.state
-
-    if (user.role === TRAINER) {
-      return this.renderTrainerMenu(history, selectedKeys)
-    } else if (user.role === ADMIN) {
-      return this.renderAdminMenu(history, selectedKeys)
-    }
+  logout = () => {
+    localStorage.removeItem('accesstoken')
+    window.location.href = '/'
   }
 
   renderTrainerMenu = (history, selectedKeys) => (
@@ -51,26 +46,56 @@ class MainMenu extends PureComponent {
       defaultSelectedKeys={['/dashboard']}
       selectedKeys={selectedKeys}
       mode="inline"
-      onClick={item => history.push(item.key)}
+      onClick={item =>
+        item.key === 'logout' ? this.logout() : history.push(item.key)
+      }
     >
-      <Menu.Item key="/dashboard" style={{ marginTop: 0 }}>
+      <Menu.Item key="/trainer-dashboard" style={{ marginTop: 0 }}>
         <Icon type="appstore-o" />Dashboard
       </Menu.Item>
-      <Menu.Item key="/client-management">
+      <Menu.Item key="/trainer-client-management">
         <Icon type="team" />Client Management
       </Menu.Item>
-      <Menu.Item key="/workout-builder">
+      <Menu.Item key="/trainer-workout-builder">
         <Icon type="api" />Workout Builder
       </Menu.Item>
-      <Menu.Item key="/exercise-builder">
+      <Menu.Item key="/trainer-exercise-builder">
         <Icon type="database" />Exercise Builder
       </Menu.Item>
-      <Menu.Item key="/my-schedule">
+      <Menu.Item key="/trainer-schedule">
         <Icon type="calendar" /> My Schedule
       </Menu.Item>
-      <Menu.Item key="/live-chat">
+      <Menu.Item key="/trainer-chat">
         <Icon type="contacts" />Live Chat
       </Menu.Item>
+      {this.props.isMobile && (
+        <Menu.Item key="logout">
+          <Icon type="logout" />
+          Logout
+        </Menu.Item>
+      )}
+    </Menu>
+  )
+
+  renderClientMenu = (history, selectedKeys) => (
+    <Menu
+      style={{ width: 220, height: '100%' }}
+      defaultSelectedKeys={['/admin-dashboard']}
+      selectedKeys={selectedKeys}
+      mode="inline"
+      onClick={item =>
+        item.key === 'logout' ? this.logout() : history.push(item.key)
+      }
+    >
+      <Menu.Item key="/client-dashboard" style={{ marginTop: 0 }}>
+        <Icon type="appstore-o" />Client Dashboard
+      </Menu.Item>
+      {this.props.isMobile && (
+        <Menu.Item key="logout">
+          <Icon type="logout" />
+          Logout
+        </Menu.Item>
+      )}
     </Menu>
   )
 
@@ -80,13 +105,34 @@ class MainMenu extends PureComponent {
       defaultSelectedKeys={['/admin-dashboard']}
       selectedKeys={selectedKeys}
       mode="inline"
-      onClick={item => history.push(item.key)}
+      onClick={item =>
+        item.key === 'logout' ? this.logout() : history.push(item.key)
+      }
     >
       <Menu.Item key="/admin-dashboard" style={{ marginTop: 0 }}>
         <Icon type="appstore-o" />Admin Dashboard
       </Menu.Item>
+      {this.props.isMobile && (
+        <Menu.Item key="logout">
+          <Icon type="logout" />
+          Logout
+        </Menu.Item>
+      )}
     </Menu>
   )
+
+  render() {
+    const { history, user } = this.props
+    const { selectedKeys } = this.state
+
+    if (user.role === TRAINER) {
+      return this.renderTrainerMenu(history, selectedKeys)
+    } else if (user.role === ADMIN) {
+      return this.renderAdminMenu(history, selectedKeys)
+    } else {
+      return this.renderClientMenu(history, selectedKeys)
+    }
+  }
 }
 
 export default withRouter(MainMenu)

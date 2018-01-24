@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import LocaleProvider from 'antd/lib/locale-provider'
 import React from 'react'
 import Routes from '../../routes'
-import client from '../../lib/apollo'
+import client from '../../utils/apollo'
 import enUS from 'antd/lib/locale-provider/en_US'
 import { injectGlobal } from 'styled-components'
 

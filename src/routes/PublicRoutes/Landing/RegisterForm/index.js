@@ -5,7 +5,7 @@ import Form from 'antd/lib/form'
 import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
-import UserType from '../../../../lib/constants/UserType'
+import UserType from '../../../../utils/constants/UserType'
 import withData from './withData'
 
 const { ADMIN, TRAINER } = UserType

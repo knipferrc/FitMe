@@ -77,7 +77,7 @@ class MainMenu extends PureComponent {
   renderAdminMenu = (history, selectedKeys) => (
     <Menu
       style={{ width: 220, height: '100%' }}
-      defaultSelectedKeys={['/dashboard']}
+      defaultSelectedKeys={['/admin-dashboard']}
       selectedKeys={selectedKeys}
       mode="inline"
       onClick={item => history.push(item.key)}

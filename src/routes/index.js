@@ -10,6 +10,7 @@ import PublicRoute from '../components/PublicRoute'
 import React from 'react'
 import { Switch } from 'react-router-dom'
 import WorkoutBuilderRoute from './WorkoutBuilder'
+import AdminDashboardRoute from './AdminRoutes/AdminDashboard'
 
 export default () => (
   <Switch>
@@ -33,5 +34,10 @@ export default () => (
     <ProtectedRoute path="/my-schedule" exact component={MyScheduleRoute} />
     <ProtectedRoute path="/live-chat" exact component={LiveChatRoute} />
     <ProtectedRoute path="/my-profile" exact component={MyProfileRoute} />
+    <ProtectedRoute
+      path="/admin-dashboard"
+      exact
+      component={AdminDashboardRoute}
+    />
   </Switch>
 )

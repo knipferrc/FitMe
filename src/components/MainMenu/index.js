@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import Icon from 'antd/lib/icon'
 import Menu from 'antd/lib/menu'
 import PropTypes from 'prop-types'
-import UserType from '../../lib/constants/UserType'
+import UserType from 'utils/constants/UserType'
 import { withRouter } from 'react-router-dom'
 
 const { ADMIN, TRAINER } = UserType

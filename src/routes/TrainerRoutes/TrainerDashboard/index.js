@@ -1,6 +1,6 @@
 import ClientPreview from './ClientPreview'
 import Col from 'antd/lib/col'
-import DefaultLayout from '../../../layouts/DefaultLayout'
+import DefaultLayout from 'layouts/DefaultLayout'
 import ExerciseStats from './ExerciseStats'
 import React from 'react'
 import Row from 'antd/lib/row'

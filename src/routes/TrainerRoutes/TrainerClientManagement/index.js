@@ -1,4 +1,4 @@
-import DefaultLayout from '../../../layouts/DefaultLayout'
+import DefaultLayout from 'layouts/DefaultLayout'
 import React from 'react'
 
 const TrainerClientManagement = ({ user }) => (

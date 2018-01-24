@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-import PageLoader from '../PageLoader'
+import PageLoader from 'components/PageLoader'
 import withData from './withData'
 
 const AdminRoute = ({

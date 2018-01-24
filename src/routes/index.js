@@ -13,7 +13,7 @@ import TrainerProfileRoute from './TrainerRoutes/TrainerProfile'
 import TrainerScheduleRoute from './TrainerRoutes/TrainerSchedule'
 import TrainerWorkoutBuilderRoute from './TrainerRoutes/TrainerWorkoutBuilder'
 
-export default () => (
+const Routes = () => (
   <Switch>
     {/* PUBLIC ROUTES */}
     <PublicRoute path="/" exact component={LandingRoute} />
@@ -70,3 +70,5 @@ export default () => (
     />
   </Switch>
 )
+
+export default Routes

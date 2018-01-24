@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import UserType from '../../../../lib/constants/UserType'
 import withData from './withData'
 
-const { ADMIN, TRAINER } = UserType
+const { ADMIN, TRAINER, CLIENT } = UserType
 const FormItem = Form.Item
 
 class LoginForm extends PureComponent {
@@ -37,9 +37,11 @@ class LoginForm extends PureComponent {
           localStorage.setItem('accesstoken', data.login.accessToken)
 
           if (data.login.role === TRAINER) {
-            history.push('/dashboard')
+            history.push('/trainer-dashboard')
           } else if (data.login.role === ADMIN) {
             history.push('/admin-dashboard')
+          } else if (data.login.role === CLIENT) {
+            history.push('/client-dashboard')
           }
         } catch (e) {
           this.setState({

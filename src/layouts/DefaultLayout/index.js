@@ -55,7 +55,8 @@ DefaultLayout.propTypes = {
   currentUser: PropTypes.shape({
     email: PropTypes.string,
     firstName: PropTypes.string,
-    lastName: PropTypes.string
+    lastName: PropTypes.string,
+    role: PropTypes.string
   }),
   children: PropTypes.node
 }

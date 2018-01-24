@@ -2,6 +2,7 @@ import ClientPreview from './ClientPreview'
 import Col from 'antd/lib/col'
 import DefaultLayout from 'layouts/DefaultLayout'
 import ExerciseStats from './ExerciseStats'
+import PropTypes from 'prop-types'
 import React from 'react'
 import Row from 'antd/lib/row'
 import SchedulePreview from './SchedulePreview'
@@ -40,5 +41,14 @@ const TrainerDashboard = ({ user }) => (
     </DashboardContainer>
   </DefaultLayout>
 )
+
+TrainerDashboard.propTypes = {
+  user: PropTypes.shape({
+    email: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    role: PropTypes.string
+  })
+}
 
 export default TrainerDashboard

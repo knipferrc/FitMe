@@ -8,6 +8,7 @@ const CurrentUserQuery = gql`
       email
       firstName
       lastName
+      role
     }
   }
 `

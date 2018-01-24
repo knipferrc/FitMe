@@ -6,7 +6,9 @@ import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
 import withData from './withData'
+import UserType from '../../../lib/constants/UserType'
 
+const { ADMIN, TRAINER } = UserType
 const FormItem = Form.Item
 
 class RegisterForm extends PureComponent {
@@ -37,8 +39,13 @@ class RegisterForm extends PureComponent {
             values.firstName,
             values.lastName
           )
-          localStorage.setItem('accesstoken', data.register)
-          history.push('/dashboard')
+          localStorage.setItem('accesstoken', data.register.accessToken)
+
+          if (data.register.role === TRAINER) {
+            history.push('/dashboard')
+          } else if (data.register.role === ADMIN) {
+            history.push('/admin-dashboard')
+          }
         } catch (e) {
           this.setState({
             isSubmitting: false

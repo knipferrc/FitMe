@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import LocaleProvider from 'antd/lib/locale-provider'
 import React from 'react'
 import Routes from 'routes'
+import UserData from 'components/UserData'
 import client from 'utils/apollo'
 import enUS from 'antd/lib/locale-provider/en_US'
 import { injectGlobal } from 'styled-components'
@@ -23,7 +24,9 @@ const App = () => (
   <ApolloProvider client={client}>
     <LocaleProvider locale={enUS}>
       <BrowserRouter>
-        <Routes />
+        <UserData>
+          {({ currentUser }) => <Routes currentUser={currentUser} />}
+        </UserData>
       </BrowserRouter>
     </LocaleProvider>
   </ApolloProvider>

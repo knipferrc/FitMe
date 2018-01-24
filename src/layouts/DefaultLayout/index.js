@@ -42,7 +42,7 @@ const DefaultLayout = ({ loading, currentUser, children }) => (
       <Fragment>
         <Navbar user={currentUser} />
         <MainMenuContainer>
-          <MainMenu />
+          <MainMenu user={currentUser} />
         </MainMenuContainer>
         <ContentContainer>{children}</ContentContainer>
       </Fragment>

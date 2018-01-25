@@ -4,7 +4,7 @@ import React from 'react'
 import UserData from 'components/UserData'
 import UserType from '../../utils/constants/UserType'
 
-const { ADMIN, TRAINER, CLIENT } = UserType
+const { ADMIN, TRAINER } = UserType
 
 const getPathName = role => {
   if (role === TRAINER) {

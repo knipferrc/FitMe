@@ -4,9 +4,9 @@ import LoginForm from './LoginForm'
 import React from 'react'
 import RegisterForm from './RegisterForm'
 import Row from 'antd/lib/row'
-import SimpleLayout from 'layouts/SimpleLayout'
+import SimpleLayout from '../../../layouts/SimpleLayout'
 import Tabs from 'antd/lib/tabs'
-import logo from 'assets/img/logo.png'
+import logo from '../../../assets/img/logo.png'
 import styled from 'styled-components'
 
 const TabPane = Tabs.TabPane

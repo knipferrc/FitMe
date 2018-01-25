@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import PageLoader from 'components/PageLoader'
+import PageLoader from '../PageLoader'
 import withData from './withData'
 
 const UserData = ({ loading, currentUser, children }) => (

@@ -5,10 +5,8 @@
   "author": "Tyler Knipfer <knipferrc@gmail.com>",
   "license": "GPL-3.0",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "start": "NODE_ENV=development webpack-dev-server --open --config webpack.dev.js",
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "precommit": "lint-staged",
     "format": "prettier --write \"src/**/*.js\""
   },
@@ -38,15 +36,27 @@
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^1.1.0",
     "recompose": "^0.26.0",
     "styled-components": "^3.0.2",
     "subscriptions-transport-ws": "^0.9.5"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react-app": "^3.1.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.28.9",
+    "file-loader": "^1.1.6",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.1",
-    "prettier": "^1.10.2"
+    "prettier": "^1.10.2",
+    "style-loader": "^0.19.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1",
+    "webpack-merge": "^4.1.1"
   },
   "lint-staged": {
     "src/**/*.js": [

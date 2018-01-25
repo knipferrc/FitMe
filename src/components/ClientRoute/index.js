@@ -1,7 +1,7 @@
 import { Redirect, Route } from 'react-router-dom'
 
 import React from 'react'
-import UserData from 'components/UserData'
+import UserData from '../UserData'
 import UserType from '../../utils/constants/UserType'
 
 const { ADMIN, TRAINER } = UserType

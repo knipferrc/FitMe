@@ -2,6 +2,19 @@ import { Redirect, Route } from 'react-router-dom'
 
 import React from 'react'
 import UserData from 'components/UserData'
+import UserType from '../../utils/constants/UserType'
+
+const { ADMIN, TRAINER, CLIENT } = UserType
+
+const getPathName = role => {
+  if (role === TRAINER) {
+    return '/trainer-dashboard'
+  } else if (role === CLIENT) {
+    return '/client-dashboard'
+  } else {
+    return '/'
+  }
+}
 
 const AdminRoute = ({ component: Component, currentUser, ...rest }) => (
   <UserData>
@@ -14,11 +27,7 @@ const AdminRoute = ({ component: Component, currentUser, ...rest }) => (
           ) : (
             <Redirect
               to={{
-                pathname: !currentUser
-                  ? '/'
-                  : currentUser.role === 'TRAINER'
-                    ? '/trainer-dashboard'
-                    : currentUser.role === 'CLIENT' ? '/client-dashboard' : '/',
+                pathname: !currentUser ? '/' : getPathName(currentUser.role),
                 state: { from: props.location }
               }}
             />

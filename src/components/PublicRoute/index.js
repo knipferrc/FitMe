@@ -2,6 +2,22 @@ import { Redirect, Route } from 'react-router-dom'
 
 import React from 'react'
 import UserData from 'components/UserData'
+import UserType from '../../utils/constants/UserType'
+
+const { TRAINER, ADMIN, CLIENT } = UserType
+
+const getPathName = role => {
+  switch (role) {
+    case TRAINER:
+      return '/trainer-dashboard'
+    case ADMIN:
+      return '/admin-dashboard'
+    case CLIENT:
+      return '/client-dashboard'
+    default:
+      return '/'
+  }
+}
 
 const PublicRoute = ({ component: Component, currentUser, ...rest }) => (
   <UserData>
@@ -14,14 +30,7 @@ const PublicRoute = ({ component: Component, currentUser, ...rest }) => (
           ) : (
             <Redirect
               to={{
-                pathname:
-                  currentUser.role === 'TRAINER'
-                    ? '/trainer-dashboard'
-                    : currentUser.role === 'ADMIN'
-                      ? '/admin-dashboard'
-                      : currentUser.role === 'CLIENT'
-                        ? '/client-dashboard'
-                        : '/',
+                pathname: getPathName(currentUser.role),
                 state: { from: props.location }
               }}
             />

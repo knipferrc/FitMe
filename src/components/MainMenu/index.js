@@ -4,7 +4,7 @@ import Icon from 'antd/lib/icon'
 import Menu from 'antd/lib/menu'
 import PropTypes from 'prop-types'
 import UserType from '../../utils/constants/UserType'
-import { withRouter } from 'react-router-dom'
+import withData from './withData'
 
 const { ADMIN, TRAINER } = UserType
 
@@ -122,12 +122,12 @@ class MainMenu extends PureComponent {
   )
 
   render() {
-    const { history, user } = this.props
+    const { history, currentUser } = this.props
     const { selectedKeys } = this.state
 
-    if (user.role === TRAINER) {
+    if (currentUser.role === TRAINER) {
       return this.renderTrainerMenu(history, selectedKeys)
-    } else if (user.role === ADMIN) {
+    } else if (currentUser.role === ADMIN) {
       return this.renderAdminMenu(history, selectedKeys)
     } else {
       return this.renderClientMenu(history, selectedKeys)
@@ -135,4 +135,4 @@ class MainMenu extends PureComponent {
   }
 }
 
-export default withRouter(MainMenu)
+export default withData(MainMenu)

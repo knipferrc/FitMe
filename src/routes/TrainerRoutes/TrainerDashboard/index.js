@@ -19,8 +19,8 @@ const StyledCol = styled(Col)`
   }
 `
 
-const TrainerDashboard = ({ user }) => (
-  <DefaultLayout user={user}>
+const TrainerDashboard = () => (
+  <DefaultLayout>
     <DashboardContainer>
       <Row gutter={8} style={{ marginBottom: 10 }}>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
@@ -42,13 +42,6 @@ const TrainerDashboard = ({ user }) => (
   </DefaultLayout>
 )
 
-TrainerDashboard.propTypes = {
-  user: PropTypes.shape({
-    email: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    role: PropTypes.string
-  })
-}
+TrainerDashboard.propTypes = {}
 
 export default TrainerDashboard

@@ -12,6 +12,16 @@ const actions = store => ({
       accesstoken: null,
       authed: false
     }
+  },
+  setCurrentUser: ({ currentUser }, role, email, firstName, lastName) => {
+    return {
+      currentUser: {
+        role,
+        email,
+        firstName,
+        lastName
+      }
+    }
   }
 })
 

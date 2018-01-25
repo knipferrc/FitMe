@@ -2,19 +2,12 @@ import DefaultLayout from '../../../layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const ClientDashboard = ({ user }) => (
-  <DefaultLayout user={user}>
+const ClientDashboard = () => (
+  <DefaultLayout>
     <h1>Client Dashboard</h1>
   </DefaultLayout>
 )
 
-ClientDashboard.propTypes = {
-  user: PropTypes.shape({
-    email: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    role: PropTypes.string
-  })
-}
+ClientDashboard.propTypes = {}
 
 export default ClientDashboard

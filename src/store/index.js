@@ -3,7 +3,8 @@ import devtools from 'unistore/devtools'
 
 const initialState = {
   authed: localStorage.getItem('accesstoken') ? true : false,
-  accesstoken: localStorage.getItem('accesstoken')
+  accesstoken: localStorage.getItem('accesstoken'),
+  currentUser: {}
 }
 
 const store =

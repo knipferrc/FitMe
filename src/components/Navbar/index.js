@@ -8,6 +8,7 @@ import Popover from 'antd/lib/popover'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+import withData from './withData'
 
 const NavbarContainer = styled.div`
   height: 64px;
@@ -68,14 +69,14 @@ const dropdownMenu = (
   </Menu>
 )
 
-const Navbar = ({ user }) => (
+const Navbar = ({ currentUser }) => (
   <NavbarContainer>
     <Brand>FitMe</Brand>
     <NavbarRight>
       <AccountDropdown>
         <Dropdown overlay={dropdownMenu} trigger={['click']}>
           <Button icon="setting" style={{ marginLeft: 8 }}>
-            {user.email}
+            {currentUser.email}
             <Icon type="down" />
           </Button>
         </Dropdown>
@@ -84,7 +85,7 @@ const Navbar = ({ user }) => (
         <Popover
           placement="bottomRight"
           arrowPointAtCenter
-          content={<MainMenu user={user} isMobile />}
+          content={<MainMenu user={currentUser} isMobile />}
           trigger="click"
           title="Main Menu"
         >
@@ -96,11 +97,11 @@ const Navbar = ({ user }) => (
 )
 
 Navbar.propTypes = {
-  user: PropTypes.shape({
+  currentUser: PropTypes.shape({
     email: PropTypes.string,
     firstName: PropTypes.string,
     lastName: PropTypes.string
   })
 }
 
-export default Navbar
+export default withData(Navbar)

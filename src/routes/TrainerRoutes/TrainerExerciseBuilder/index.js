@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Row from 'antd/lib/row'
 
-const TrainerExerciseBuilder = ({ user }) => (
-  <DefaultLayout user={user}>
+const TrainerExerciseBuilder = () => (
+  <DefaultLayout>
     <Row>
       <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
         <CreateExerciseForm />
@@ -15,13 +15,6 @@ const TrainerExerciseBuilder = ({ user }) => (
   </DefaultLayout>
 )
 
-TrainerExerciseBuilder.propTypes = {
-  user: PropTypes.shape({
-    email: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    role: PropTypes.string
-  })
-}
+TrainerExerciseBuilder.propTypes = {}
 
 export default TrainerExerciseBuilder

@@ -23,31 +23,47 @@ const getPathName = role => {
   }
 }
 
+const renderRoute = (Component, currentUser, setCurrentUser, rest) => {
+  currentUser &&
+    setCurrentUser(
+      currentUser.role,
+      currentUser.email,
+      currentUser.firstName,
+      currentUser.lastName
+    )
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        !currentUser ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: getPathName(currentUser.role),
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  )
+}
+
 const PublicRoute = ({
   component: Component,
   loading,
   currentUser,
+  setCurrentUser,
   ...rest
 }) => (
   <Fragment>
     {loading ? (
       <PageLoader />
     ) : (
-      <Route
-        {...rest}
-        render={props =>
-          !currentUser ? (
-            <Component user={currentUser} {...props} />
-          ) : (
-            <Redirect
-              to={{
-                pathname: getPathName(currentUser.role),
-                state: { from: props.location }
-              }}
-            />
-          )
-        }
-      />
+      <Fragment>
+        {renderRoute(Component, currentUser, setCurrentUser, rest)}
+      </Fragment>
     )}
   </Fragment>
 )

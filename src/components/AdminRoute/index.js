@@ -17,31 +17,46 @@ const getPathName = role => {
   }
 }
 
+const renderRoute = (Component, currentUser, setCurrentUser, rest) => {
+  setCurrentUser(
+    currentUser.role,
+    currentUser.email,
+    currentUser.firstName,
+    currentUser.lastName
+  )
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        currentUser && currentUser.role === 'ADMIN' ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: !currentUser ? '/' : getPathName(currentUser.role),
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  )
+}
+
 const AdminRoute = ({
   component: Component,
   loading,
   currentUser,
+  setCurrentUser,
   ...rest
 }) => (
   <Fragment>
     {loading ? (
       <PageLoader />
     ) : (
-      <Route
-        {...rest}
-        render={props =>
-          currentUser && currentUser.role === 'ADMIN' ? (
-            <Component user={currentUser} {...props} />
-          ) : (
-            <Redirect
-              to={{
-                pathname: !currentUser ? '/' : getPathName(currentUser.role),
-                state: { from: props.location }
-              }}
-            />
-          )
-        }
-      />
+      <Fragment>
+        {renderRoute(Component, currentUser, setCurrentUser, rest)}
+      </Fragment>
     )}
   </Fragment>
 )

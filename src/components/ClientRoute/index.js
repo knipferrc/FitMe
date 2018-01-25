@@ -17,19 +17,13 @@ const getPathName = role => {
   }
 }
 
-const renderRoute = (Component, currentUser, setCurrentUser, rest) => {
-  setCurrentUser(
-    currentUser.role,
-    currentUser.email,
-    currentUser.firstName,
-    currentUser.lastName
-  )
+const renderRoute = (Component, currentUser, rest) => {
   return (
     <Route
       {...rest}
       render={props =>
         currentUser && currentUser.role === 'CLIENT' ? (
-          <Component {...props} />
+          <Component currentUser={currentUser} {...props} />
         ) : (
           <Redirect
             to={{
@@ -47,16 +41,13 @@ const ClientRoute = ({
   component: Component,
   loading,
   currentUser,
-  setCurrentUser,
   ...rest
 }) => (
   <Fragment>
     {loading ? (
       <PageLoader />
     ) : (
-      <Fragment>
-        {renderRoute(Component, currentUser, setCurrentUser, rest)}
-      </Fragment>
+      <Fragment>{renderRoute(Component, currentUser, rest)}</Fragment>
     )}
   </Fragment>
 )

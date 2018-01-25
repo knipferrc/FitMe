@@ -8,7 +8,6 @@ import Popover from 'antd/lib/popover'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import withData from './withData'
 
 const NavbarContainer = styled.div`
   height: 64px;
@@ -85,7 +84,7 @@ const Navbar = ({ currentUser }) => (
         <Popover
           placement="bottomRight"
           arrowPointAtCenter
-          content={<MainMenu user={currentUser} isMobile />}
+          content={<MainMenu currentUser={currentUser} isMobile />}
           trigger="click"
           title="Main Menu"
         >
@@ -104,4 +103,4 @@ Navbar.propTypes = {
   })
 }
 
-export default withData(Navbar)
+export default Navbar

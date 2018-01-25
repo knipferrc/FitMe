@@ -2,8 +2,8 @@ import DefaultLayout from '../../../layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const AdminDashboard = () => (
-  <DefaultLayout>
+const AdminDashboard = ({ currentUser }) => (
+  <DefaultLayout currentUser={currentUser}>
     <h1>Admin Dashboard</h1>
   </DefaultLayout>
 )

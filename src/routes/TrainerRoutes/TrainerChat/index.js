@@ -2,8 +2,8 @@ import DefaultLayout from '../../../layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const TrainerChat = () => (
-  <DefaultLayout>
+const TrainerChat = ({ currentUser }) => (
+  <DefaultLayout currentUser={currentUser}>
     <h1>Live Chat</h1>
   </DefaultLayout>
 )

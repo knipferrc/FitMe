@@ -23,14 +23,7 @@ const getPathName = role => {
   }
 }
 
-const renderRoute = (Component, currentUser, setCurrentUser, rest) => {
-  currentUser &&
-    setCurrentUser(
-      currentUser.role,
-      currentUser.email,
-      currentUser.firstName,
-      currentUser.lastName
-    )
+const renderRoute = (Component, currentUser, rest) => {
   return (
     <Route
       {...rest}
@@ -54,16 +47,13 @@ const PublicRoute = ({
   component: Component,
   loading,
   currentUser,
-  setCurrentUser,
   ...rest
 }) => (
   <Fragment>
     {loading ? (
       <PageLoader />
     ) : (
-      <Fragment>
-        {renderRoute(Component, currentUser, setCurrentUser, rest)}
-      </Fragment>
+      <Fragment>{renderRoute(Component, currentUser, rest)}</Fragment>
     )}
   </Fragment>
 )

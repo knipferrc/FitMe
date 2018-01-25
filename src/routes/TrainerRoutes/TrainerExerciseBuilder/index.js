@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Row from 'antd/lib/row'
 
-const TrainerExerciseBuilder = () => (
-  <DefaultLayout>
+const TrainerExerciseBuilder = ({ currentUser }) => (
+  <DefaultLayout currentUser={currentUser}>
     <Row>
       <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
         <CreateExerciseForm />

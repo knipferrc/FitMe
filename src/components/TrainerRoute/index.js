@@ -1,8 +1,9 @@
+import React, { Fragment } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-import React from 'react'
-import UserData from '../UserData'
+import PageLoader from '../PageLoader'
 import UserType from '../../utils/constants/UserType'
+import withData from './withData'
 
 const { ADMIN, TRAINER, CLIENT } = UserType
 
@@ -16,9 +17,16 @@ const getPathName = role => {
   }
 }
 
-const TrainerRoute = ({ component: Component, currentUser, ...rest }) => (
-  <UserData>
-    {({ currentUser }) => (
+const TrainerRoute = ({
+  component: Component,
+  loading,
+  currentUser,
+  ...rest
+}) => (
+  <Fragment>
+    {loading ? (
+      <PageLoader />
+    ) : (
       <Route
         {...rest}
         render={props =>
@@ -35,7 +43,7 @@ const TrainerRoute = ({ component: Component, currentUser, ...rest }) => (
         }
       />
     )}
-  </UserData>
+  </Fragment>
 )
 
-export default TrainerRoute
+export default withData(TrainerRoute)

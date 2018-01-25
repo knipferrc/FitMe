@@ -15,7 +15,8 @@ class LoginForm extends PureComponent {
   static propTypes = {
     form: PropTypes.object,
     login: PropTypes.func,
-    history: PropTypes.object
+    history: PropTypes.object,
+    initializeUser: PropTypes.func
   }
 
   state = {
@@ -24,7 +25,7 @@ class LoginForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form, login, history } = this.props
+    const { form, login, history, initializeUser } = this.props
 
     this.setState({
       isSubmitting: true
@@ -34,8 +35,7 @@ class LoginForm extends PureComponent {
       if (!err) {
         try {
           const { data } = await login(values.email, values.password)
-          localStorage.setItem('accesstoken', data.login.accessToken)
-
+          initializeUser(data.login.accessToken)
           if (data.login.role === TRAINER) {
             history.push('/trainer-dashboard')
           } else if (data.login.role === ADMIN) {

@@ -15,7 +15,8 @@ class RegisterForm extends PureComponent {
   static propTypes = {
     form: PropTypes.object,
     register: PropTypes.func,
-    history: PropTypes.object
+    history: PropTypes.object,
+    initializeUser: PropTypes.func
   }
 
   state = {
@@ -24,7 +25,7 @@ class RegisterForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form, register, history } = this.props
+    const { form, register, history, initializeUser } = this.props
 
     this.setState({
       isSubmitting: true
@@ -39,13 +40,8 @@ class RegisterForm extends PureComponent {
             values.firstName,
             values.lastName
           )
-          localStorage.setItem('accesstoken', data.register.accessToken)
-
-          if (data.register.role === TRAINER) {
-            history.push('/dashboard')
-          } else if (data.register.role === ADMIN) {
-            history.push('/admin-dashboard')
-          }
+          initializeUser(data.register.accessToken)
+          history.push('/trainer-dashboard')
         } catch (e) {
           this.setState({
             isSubmitting: false

@@ -1,9 +1,15 @@
+import actions from '../../store/actions'
 import compose from 'recompose/compose'
+import { connect } from 'unistore/react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
+const mapToProps = ({ authed, accesstoken }) => ({ authed, accesstoken })
+
+const withUser = connect(mapToProps, actions)
+
 const CurrentUserQuery = gql`
-  query currentUser($accesstoken: String) {
+  query currentUser($accesstoken: String!) {
     currentUser(accesstoken: $accesstoken) {
       email
       firstName
@@ -14,9 +20,10 @@ const CurrentUserQuery = gql`
 `
 
 const withCurrentUser = graphql(CurrentUserQuery, {
+  skip: props => !props.authed,
   options: props => ({
     variables: {
-      accesstoken: localStorage.getItem('accesstoken') || ''
+      accesstoken: props.accesstoken
     }
   }),
   props: ({ data: { loading, error, currentUser } }) => ({
@@ -26,4 +33,4 @@ const withCurrentUser = graphql(CurrentUserQuery, {
   })
 })
 
-export default compose(withCurrentUser)
+export default compose(withUser, withCurrentUser)

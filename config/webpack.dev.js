@@ -5,7 +5,7 @@ const path = require('path')
 module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname + 'dist'),
+    contentBase: path.resolve(__dirname, '../dist'),
     publicPath: '/',
     historyApiFallback: true,
     port: 1234

@@ -61,7 +61,7 @@ PublicRoute.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string
   }),
-  component: PropTypes.node
+  component: PropTypes.func
 }
 
 export default withUser(PublicRoute)

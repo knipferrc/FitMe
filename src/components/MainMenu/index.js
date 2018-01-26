@@ -125,12 +125,16 @@ class MainMenu extends PureComponent {
     const { history, currentUser } = this.props
     const { selectedKeys } = this.state
 
-    if (currentUser.role === TRAINER) {
-      return this.renderTrainerMenu(history, selectedKeys)
-    } else if (currentUser.role === ADMIN) {
-      return this.renderAdminMenu(history, selectedKeys)
-    } else {
-      return this.renderClientMenu(history, selectedKeys)
+    switch (currentUser.role) {
+      case TRAINER:
+        return this.renderTrainerMenu(history, selectedKeys)
+        break
+      case ADMIN:
+        return this.renderAdminMenu(history, selectedKeys)
+        break
+      default:
+        return this.renderClientMenu(history, selectedKeys)
+        break
     }
   }
 }

@@ -17,12 +17,15 @@ class AdminRoute extends PureComponent {
   }
 
   getPathName = role => {
-    if (role === TRAINER) {
-      return '/trainer-dashboard'
-    } else if (role === CLIENT) {
-      return '/client-dashboard'
-    } else {
-      return '/'
+    switch (role) {
+      case TRAINER:
+        return '/trainer-dashboard'
+        break
+      case CLIENT:
+        return '/client-dashboard'
+      default:
+        return '/'
+        break
     }
   }
 
@@ -55,7 +58,7 @@ AdminRoute.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string
   }),
-  component: PropTypes.node
+  component: PropTypes.func
 }
 
 export default withUser(AdminRoute)

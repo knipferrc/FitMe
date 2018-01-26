@@ -17,12 +17,16 @@ class ClientRoute extends PureComponent {
   }
 
   getPathName = role => {
-    if (role === TRAINER) {
-      return '/trainer-dashboard'
-    } else if (role === ADMIN) {
-      return '/admin-dashboard'
-    } else {
-      return '/'
+    switch (role) {
+      case TRAINER:
+        return '/trainer-dashboard'
+        break
+      case ADMIN:
+        return '/admin-dashboard'
+        break
+      default:
+        return '/'
+        break
     }
   }
 
@@ -55,7 +59,7 @@ ClientRoute.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string
   }),
-  component: PropTypes.node
+  component: PropTypes.func
 }
 
 export default withUser(ClientRoute)

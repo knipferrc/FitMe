@@ -17,12 +17,16 @@ class TrainerRoute extends PureComponent {
   }
 
   getPathName = role => {
-    if (role === ADMIN) {
-      return '/admin-dashboard'
-    } else if (role === CLIENT) {
-      return '/client-dashboard'
-    } else {
-      return '/'
+    switch (role) {
+      case ADMIN:
+        return '/admin-dashboard'
+        break
+      case CLIENT:
+        return '/client-dashboard'
+        break
+      default:
+        return '/'
+        break
     }
   }
 
@@ -57,7 +61,7 @@ TrainerRoute.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string
   }),
-  component: PropTypes.node
+  component: PropTypes.func
 }
 
 export default withUser(TrainerRoute)

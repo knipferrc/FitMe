@@ -6,13 +6,6 @@ const actions = store => ({
       authed: true
     }
   },
-  logout: ({ authed, accesstoken }) => {
-    localStorage.removeItem('accesstoken')
-    return {
-      accesstoken: null,
-      authed: false
-    }
-  },
   setCurrentUser: ({ currentUser }, role, email, firstName, lastName) => {
     return {
       currentUser: {

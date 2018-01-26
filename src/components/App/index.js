@@ -21,6 +21,11 @@ injectGlobal`
   }
 `
 
+window.addEventListener('beforeunload', ev => {
+  ev.preventDefault()
+  return (ev.returnValue = 'Ar eyou sure you want to close?')
+})
+
 const App = () => (
   <ApolloProvider client={client}>
     <LocaleProvider locale={enUS}>

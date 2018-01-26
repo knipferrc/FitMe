@@ -4,7 +4,7 @@ import Icon from 'antd/lib/icon'
 import Menu from 'antd/lib/menu'
 import PropTypes from 'prop-types'
 import UserType from '../../utils/constants/UserType'
-import { withRouter } from 'react-router-dom'
+import data from './data'
 
 const { ADMIN, TRAINER } = UserType
 
@@ -135,4 +135,4 @@ class MainMenu extends PureComponent {
   }
 }
 
-export default withRouter(MainMenu)
+export default data(MainMenu)

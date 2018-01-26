@@ -2,7 +2,6 @@ import ClientPreview from './ClientPreview'
 import Col from 'antd/lib/col'
 import DefaultLayout from '../../../layouts/DefaultLayout'
 import ExerciseStats from './ExerciseStats'
-import PropTypes from 'prop-types'
 import React from 'react'
 import Row from 'antd/lib/row'
 import SchedulePreview from './SchedulePreview'
@@ -19,8 +18,8 @@ const StyledCol = styled(Col)`
   }
 `
 
-const TrainerDashboard = ({ currentUser }) => (
-  <DefaultLayout currentUser={currentUser}>
+const TrainerDashboard = () => (
+  <DefaultLayout>
     <DashboardContainer>
       <Row gutter={8} style={{ marginBottom: 10 }}>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
@@ -41,7 +40,5 @@ const TrainerDashboard = ({ currentUser }) => (
     </DashboardContainer>
   </DefaultLayout>
 )
-
-TrainerDashboard.propTypes = {}
 
 export default TrainerDashboard

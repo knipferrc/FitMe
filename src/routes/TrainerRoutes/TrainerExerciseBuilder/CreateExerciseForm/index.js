@@ -5,16 +5,12 @@ import Form from 'antd/lib/form'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
 import Select from 'antd/lib/select'
-import withData from './withData'
+import data from './data'
 
 const FormItem = Form.Item
 const Option = Select.Option
 
 class CreateExerciseForm extends PureComponent {
-  static propTypes = {
-    form: PropTypes.object
-  }
-
   state = {
     isSubmitting: false
   }
@@ -126,4 +122,8 @@ class CreateExerciseForm extends PureComponent {
   }
 }
 
-export default withData(CreateExerciseForm)
+CreateExerciseForm.propTypes = {
+  form: PropTypes.object
+}
+
+export default data(CreateExerciseForm)

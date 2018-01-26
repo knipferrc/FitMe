@@ -1,61 +1,67 @@
-import React, { Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
 import PageLoader from '../PageLoader'
+import PropTypes from 'prop-types'
 import UserType from '../../utils/constants/UserType'
-import withData from './withData'
+import withUser from '../../hoc/withUser'
 
-const { TRAINER, ADMIN, CLIENT } = UserType
+const { ADMIN, TRAINER, CLIENT } = UserType
 
-const getPathName = role => {
-  switch (role) {
-    case TRAINER:
-      return '/trainer-dashboard'
-      break
-    case ADMIN:
-      return '/admin-dashboard'
-      break
-    case CLIENT:
-      return '/client-dashboard'
-      break
-    default:
-      return '/'
+class PublicRoute extends PureComponent {
+  componentDidMount() {
+    if (this.props.currentUser) {
+      const { role, email, firstName, lastName } = this.props.currentUser
+      this.props.setCurrentUser(role, email, firstName, lastName)
+    }
+  }
+
+  getPathName = role => {
+    switch (role) {
+      case TRAINER:
+        return '/trainer-dashboard'
+        break
+      case ADMIN:
+        return '/admin-dashboard'
+        break
+      case CLIENT:
+        return '/client-dashboard'
+        break
+      default:
+        return '/'
+    }
+  }
+
+  render() {
+    const { component: Component, currentUser, ...rest } = this.props
+    return (
+      <Route
+        {...rest}
+        render={props =>
+          !currentUser ? (
+            <Component {...props} />
+          ) : (
+            <Redirect
+              to={{
+                pathname: this.getPathName(currentUser.role),
+                state: { from: props.location }
+              }}
+            />
+          )
+        }
+      />
+    )
   }
 }
 
-const renderRoute = (Component, currentUser, rest) => {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        !currentUser ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: getPathName(currentUser.role),
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    />
-  )
+PublicRoute.propTypes = {
+  currentUser: PropTypes.shape({
+    role: PropTypes.string,
+    email: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string
+  }),
+  component: PropTypes.node
 }
 
-const PublicRoute = ({
-  component: Component,
-  loading,
-  currentUser,
-  ...rest
-}) => (
-  <Fragment>
-    {loading ? (
-      <PageLoader />
-    ) : (
-      <Fragment>{renderRoute(Component, currentUser, rest)}</Fragment>
-    )}
-  </Fragment>
-)
-
-export default withData(PublicRoute)
+export default withUser(PublicRoute)

@@ -7,6 +7,7 @@ import Menu from 'antd/lib/menu'
 import Popover from 'antd/lib/popover'
 import PropTypes from 'prop-types'
 import React from 'react'
+import data from './data'
 import styled from 'styled-components'
 
 const NavbarContainer = styled.div`
@@ -103,4 +104,4 @@ Navbar.propTypes = {
   })
 }
 
-export default Navbar
+export default data(Navbar)

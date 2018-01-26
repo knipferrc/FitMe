@@ -6,19 +6,12 @@ import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
 import UserType from '../../../../utils/constants/UserType'
-import withData from './withData'
+import data from './data'
 
 const { ADMIN, TRAINER, CLIENT } = UserType
 const FormItem = Form.Item
 
 class LoginForm extends PureComponent {
-  static propTypes = {
-    form: PropTypes.object,
-    login: PropTypes.func,
-    history: PropTypes.object,
-    initializeUser: PropTypes.func
-  }
-
   state = {
     isSubmitting: false
   }
@@ -101,4 +94,11 @@ class LoginForm extends PureComponent {
   }
 }
 
-export default withData(LoginForm)
+LoginForm.propTypes = {
+  form: PropTypes.object,
+  login: PropTypes.func,
+  history: PropTypes.object,
+  initializeUser: PropTypes.func
+}
+
+export default data(LoginForm)

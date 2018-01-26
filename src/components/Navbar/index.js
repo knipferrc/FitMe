@@ -53,10 +53,26 @@ const handleLogout = () => {
   window.location.href = '/'
 }
 
-const dropdownMenu = (
+const getProfileLink = role => {
+  switch (role) {
+    case 'TRAINER':
+      return '/trainer-profile'
+      break
+    case 'ADMIN':
+      return '/admin-profile'
+      break
+    case 'CLIENT':
+      return '/client-profile'
+      break
+    default:
+      return '/'
+  }
+}
+
+const dropdownMenu = currentUser => (
   <Menu>
     <Menu.Item key="1">
-      <Link to="/my-profile">
+      <Link to={getProfileLink(currentUser.role)}>
         <Icon type="user" style={{ marginRight: 3 }} />My Profile
       </Link>
     </Menu.Item>
@@ -74,7 +90,7 @@ const Navbar = ({ currentUser }) => (
     <Brand>FitMe</Brand>
     <NavbarRight>
       <AccountDropdown>
-        <Dropdown overlay={dropdownMenu} trigger={['click']}>
+        <Dropdown overlay={dropdownMenu(currentUser)} trigger={['click']}>
           <Button icon="setting" style={{ marginLeft: 8 }}>
             {currentUser.email}
             <Icon type="down" />

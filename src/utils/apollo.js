@@ -24,7 +24,10 @@ const link = ApolloLink.split(
   new WebSocketLink({
     uri: wsUri,
     options: {
-      reconnect: true
+      reconnect: true,
+      connectionParams: {
+        authToken: localStorage.getItem('accesstoken')
+      }
     }
   }),
   new HttpLink({ uri: httpUri })

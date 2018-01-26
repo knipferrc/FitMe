@@ -11,6 +11,10 @@ const FormItem = Form.Item
 const Option = Select.Option
 
 class CreateExerciseForm extends PureComponent {
+  static propTypes = {
+    form: PropTypes.object
+  }
+
   state = {
     isSubmitting: false
   }
@@ -23,11 +27,7 @@ class CreateExerciseForm extends PureComponent {
       isSubmitting: true
     })
 
-    form.validateFieldsAndScroll(async (err, values) => {
-      if (!err) {
-      } else {
-      }
-    })
+    form.validateFieldsAndScroll(async (err, values) => {})
   }
 
   render() {
@@ -120,10 +120,6 @@ class CreateExerciseForm extends PureComponent {
       </Form>
     )
   }
-}
-
-CreateExerciseForm.propTypes = {
-  form: PropTypes.object
 }
 
 export default data(CreateExerciseForm)

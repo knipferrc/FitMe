@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 
 import PageLoader from '../components/PageLoader'
+import PropTypes from 'prop-types'
 import actions from '../store/actions'
 import compose from 'recompose/compose'
 import { connect } from 'unistore/react'
@@ -9,6 +10,10 @@ import { graphql } from 'react-apollo'
 
 export default ComposedComponent => {
   class WithUser extends PureComponent {
+    static propTypes = {
+      loading: PropTypes.bool
+    }
+
     render() {
       if (this.props.loading) {
         return <PageLoader />

@@ -1,14 +1,24 @@
 import React, { PureComponent } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-import PageLoader from '../PageLoader'
 import PropTypes from 'prop-types'
 import UserType from '../../utils/constants/UserType'
 import withUser from '../../hoc/withUser'
 
-const { ADMIN, TRAINER, CLIENT } = UserType
+const { ADMIN, TRAINER } = UserType
 
 class ClientRoute extends PureComponent {
+  static propTypes = {
+    setCurrentUser: PropTypes.func,
+    currentUser: PropTypes.shape({
+      role: PropTypes.string,
+      email: PropTypes.string,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string
+    }),
+    component: PropTypes.func
+  }
+
   componentDidMount() {
     if (this.props.currentUser) {
       const { role, email, firstName, lastName } = this.props.currentUser
@@ -20,13 +30,10 @@ class ClientRoute extends PureComponent {
     switch (role) {
       case TRAINER:
         return '/trainer-dashboard'
-        break
       case ADMIN:
         return '/admin-dashboard'
-        break
       default:
         return '/'
-        break
     }
   }
 
@@ -41,7 +48,9 @@ class ClientRoute extends PureComponent {
           ) : (
             <Redirect
               to={{
-                pathname: !currentUser ? '/' : getPathName(currentUser.role),
+                pathname: !currentUser
+                  ? '/'
+                  : this.getPathName(currentUser.role),
                 state: { from: props.location }
               }}
             />
@@ -50,16 +59,6 @@ class ClientRoute extends PureComponent {
       />
     )
   }
-}
-
-ClientRoute.propTypes = {
-  currentUser: PropTypes.shape({
-    role: PropTypes.string,
-    email: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string
-  }),
-  component: PropTypes.func
 }
 
 export default withUser(ClientRoute)

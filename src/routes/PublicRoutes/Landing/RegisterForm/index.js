@@ -5,13 +5,18 @@ import Form from 'antd/lib/form'
 import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
-import UserType from '../../../../utils/constants/UserType'
 import data from './data'
 
-const { ADMIN, TRAINER } = UserType
 const FormItem = Form.Item
 
 class RegisterForm extends PureComponent {
+  static propTypes = {
+    form: PropTypes.object,
+    register: PropTypes.func,
+    history: PropTypes.object,
+    initializeUser: PropTypes.func
+  }
+
   state = {
     isSubmitting: false
   }
@@ -39,7 +44,6 @@ class RegisterForm extends PureComponent {
           this.setState({
             isSubmitting: false
           })
-          console.log(e)
         }
       } else {
         this.setState({
@@ -138,13 +142,6 @@ class RegisterForm extends PureComponent {
       </Form>
     )
   }
-}
-
-RegisterForm.propTypes = {
-  form: PropTypes.object,
-  register: PropTypes.func,
-  history: PropTypes.object,
-  initializeUser: PropTypes.func
 }
 
 export default data(RegisterForm)

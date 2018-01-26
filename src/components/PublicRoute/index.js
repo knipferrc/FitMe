@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-import PageLoader from '../PageLoader'
 import PropTypes from 'prop-types'
 import UserType from '../../utils/constants/UserType'
 import withUser from '../../hoc/withUser'
@@ -9,6 +8,17 @@ import withUser from '../../hoc/withUser'
 const { ADMIN, TRAINER, CLIENT } = UserType
 
 class PublicRoute extends PureComponent {
+  static propTypes = {
+    setCurrentUser: PropTypes.func,
+    currentUser: PropTypes.shape({
+      role: PropTypes.string,
+      email: PropTypes.string,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string
+    }),
+    component: PropTypes.func
+  }
+
   componentDidMount() {
     if (this.props.currentUser) {
       const { role, email, firstName, lastName } = this.props.currentUser
@@ -20,13 +30,10 @@ class PublicRoute extends PureComponent {
     switch (role) {
       case TRAINER:
         return '/trainer-dashboard'
-        break
       case ADMIN:
         return '/admin-dashboard'
-        break
       case CLIENT:
         return '/client-dashboard'
-        break
       default:
         return '/'
     }
@@ -52,16 +59,6 @@ class PublicRoute extends PureComponent {
       />
     )
   }
-}
-
-PublicRoute.propTypes = {
-  currentUser: PropTypes.shape({
-    role: PropTypes.string,
-    email: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string
-  }),
-  component: PropTypes.func
 }
 
 export default withUser(PublicRoute)

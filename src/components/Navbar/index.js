@@ -57,13 +57,10 @@ const getProfileLink = role => {
   switch (role) {
     case 'TRAINER':
       return '/trainer-profile'
-      break
     case 'ADMIN':
       return '/admin-profile'
-      break
     case 'CLIENT':
       return '/client-profile'
-      break
     default:
       return '/'
   }

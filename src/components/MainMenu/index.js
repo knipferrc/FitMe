@@ -128,13 +128,10 @@ class MainMenu extends PureComponent {
     switch (currentUser.role) {
       case TRAINER:
         return this.renderTrainerMenu(history, selectedKeys)
-        break
       case ADMIN:
         return this.renderAdminMenu(history, selectedKeys)
-        break
       default:
         return this.renderClientMenu(history, selectedKeys)
-        break
     }
   }
 }

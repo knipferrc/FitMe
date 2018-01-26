@@ -12,6 +12,13 @@ const { ADMIN, TRAINER, CLIENT } = UserType
 const FormItem = Form.Item
 
 class LoginForm extends PureComponent {
+  static propTypes = {
+    form: PropTypes.object,
+    login: PropTypes.func,
+    history: PropTypes.object,
+    initializeUser: PropTypes.func
+  }
+
   state = {
     isSubmitting: false
   }
@@ -40,7 +47,6 @@ class LoginForm extends PureComponent {
           this.setState({
             isSubmitting: false
           })
-          console.log(e)
         }
       } else {
         this.setState({
@@ -92,13 +98,6 @@ class LoginForm extends PureComponent {
       </Form>
     )
   }
-}
-
-LoginForm.propTypes = {
-  form: PropTypes.object,
-  login: PropTypes.func,
-  history: PropTypes.object,
-  initializeUser: PropTypes.func
 }
 
 export default data(LoginForm)

@@ -4,6 +4,7 @@ import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getOperationAST } from 'graphql'
+import { setContext } from 'apollo-link-context'
 
 const httpUri =
   process.env.NODE_ENV === 'production'
@@ -11,6 +12,17 @@ const httpUri =
     : 'http://localhost:5000/graphql'
 
 const wsUri = 'ws://localhost:5000/subscriptions'
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('accesstoken')
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : null
+    }
+  }
+})
 
 const link = ApolloLink.split(
   operation => {
@@ -30,7 +42,7 @@ const link = ApolloLink.split(
       }
     }
   }),
-  new HttpLink({ uri: httpUri })
+  authLink.concat(new HttpLink({ uri: httpUri }))
 )
 
 const client = new ApolloClient({

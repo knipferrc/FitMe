@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import hoc from './hoc'
 import styled from 'styled-components'
+import axios from '../../utils/axios'
 
 const NavbarContainer = styled.div`
   height: 64px;
@@ -48,7 +49,8 @@ const MobileMenu = styled.div`
   }
 `
 
-const handleLogout = () => {
+const handleLogout = async () => {
+  await axios.get('logout')
   localStorage.removeItem('accesstoken')
   window.location.href = '/'
 }

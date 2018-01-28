@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 
+import message from 'antd/lib/message'
 import Button from 'antd/lib/button'
 import Form from 'antd/lib/form'
 import Icon from 'antd/lib/icon'
@@ -7,6 +8,7 @@ import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
 import UserType from '../../../../utils/constants/UserType'
 import data from './data'
+import axios from '../../../../utils/axios'
 
 const { ADMIN, TRAINER, CLIENT } = UserType
 const FormItem = Form.Item
@@ -23,6 +25,18 @@ class LoginForm extends PureComponent {
     isSubmitting: false
   }
 
+  doUserRedirect = role => {
+    const { history } = this.props
+
+    if (role === TRAINER) {
+      history.push('/trainer-dashboard')
+    } else if (role === ADMIN) {
+      history.push('/admin-dashboard')
+    } else if (role === CLIENT) {
+      history.push('/client-dashboard')
+    }
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     const { form, login, history, initializeUser } = this.props
@@ -34,16 +48,17 @@ class LoginForm extends PureComponent {
     form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         try {
-          const { data } = await login(values.email, values.password)
-          initializeUser(data.login.accessToken)
-          if (data.login.role === TRAINER) {
-            history.push('/trainer-dashboard')
-          } else if (data.login.role === ADMIN) {
-            history.push('/admin-dashboard')
-          } else if (data.login.role === CLIENT) {
-            history.push('/client-dashboard')
-          }
-        } catch (e) {
+          const { data } = await axios.post('login', {
+            email: values.email,
+            password: values.password
+          })
+
+          initializeUser(data.user.accessToken)
+          this.doUserRedirect(data.user.role)
+        } catch (error) {
+          console.log('THERE WAS A ERROR')
+          const { message: errorMessage } = error.response.data
+          message.error(errorMessage)
           this.setState({
             isSubmitting: false
           })

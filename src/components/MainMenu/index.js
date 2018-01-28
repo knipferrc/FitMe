@@ -4,7 +4,7 @@ import Icon from 'antd/lib/icon'
 import Menu from 'antd/lib/menu'
 import PropTypes from 'prop-types'
 import UserType from '../../utils/constants/UserType'
-import data from './data'
+import hoc from './hoc'
 
 const { ADMIN, TRAINER } = UserType
 
@@ -136,4 +136,4 @@ class MainMenu extends PureComponent {
   }
 }
 
-export default data(MainMenu)
+export default hoc(MainMenu)

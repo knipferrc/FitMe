@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react'
 
-import message from 'antd/lib/message'
 import Button from 'antd/lib/button'
 import Form from 'antd/lib/form'
 import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
 import UserType from '../../../../utils/constants/UserType'
-import data from './data'
 import axios from '../../../../utils/axios'
+import hoc from './hoc'
+import message from 'antd/lib/message'
 
 const { ADMIN, TRAINER, CLIENT } = UserType
 const FormItem = Form.Item
@@ -16,7 +16,6 @@ const FormItem = Form.Item
 class LoginForm extends PureComponent {
   static propTypes = {
     form: PropTypes.object,
-    login: PropTypes.func,
     history: PropTypes.object,
     initializeUser: PropTypes.func
   }
@@ -25,21 +24,25 @@ class LoginForm extends PureComponent {
     isSubmitting: false
   }
 
-  doUserRedirect = role => {
+  handleRedirect = role => {
     const { history } = this.props
 
-    if (role === TRAINER) {
-      history.push('/trainer-dashboard')
-    } else if (role === ADMIN) {
-      history.push('/admin-dashboard')
-    } else if (role === CLIENT) {
-      history.push('/client-dashboard')
+    switch (role) {
+      case TRAINER:
+        history.push('/trainer-dashboard')
+        break
+      case ADMIN:
+        history.push('/admin-dashboard')
+        break
+      case CLIENT:
+        history.push('/client-dashboard')
+        break
     }
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form, login, history, initializeUser } = this.props
+    const { form, initializeUser } = this.props
 
     this.setState({
       isSubmitting: true
@@ -54,7 +57,8 @@ class LoginForm extends PureComponent {
           })
 
           initializeUser(data.user.accessToken)
-          this.doUserRedirect(data.user.role)
+
+          this.handleRedirect(data.user.role)
         } catch (error) {
           const { message: errorMessage } = error.response.data
           message.error(errorMessage)
@@ -114,4 +118,4 @@ class LoginForm extends PureComponent {
   }
 }
 
-export default data(LoginForm)
+export default hoc(LoginForm)

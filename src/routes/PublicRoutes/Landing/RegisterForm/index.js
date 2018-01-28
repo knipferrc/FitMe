@@ -5,14 +5,14 @@ import Form from 'antd/lib/form'
 import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
-import data from './data'
+import axios from '../../../../utils/axios'
+import hoc from './hoc'
 
 const FormItem = Form.Item
 
 class RegisterForm extends PureComponent {
   static propTypes = {
     form: PropTypes.object,
-    register: PropTypes.func,
     history: PropTypes.object,
     initializeUser: PropTypes.func
   }
@@ -23,7 +23,7 @@ class RegisterForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form, register, history, initializeUser } = this.props
+    const { form, history, initializeUser } = this.props
 
     this.setState({
       isSubmitting: true
@@ -32,13 +32,15 @@ class RegisterForm extends PureComponent {
     form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         try {
-          const { data } = await register(
-            values.email,
-            values.password,
-            values.firstName,
-            values.lastName
-          )
-          initializeUser(data.register.accessToken)
+          const { data } = await axios.post('register', {
+            email: values.email,
+            password: values.password,
+            firstName: values.firstName,
+            lastName: values.lastName
+          })
+
+          initializeUser(data.user.accessToken)
+
           history.push('/trainer-dashboard')
         } catch (e) {
           this.setState({
@@ -144,4 +146,4 @@ class RegisterForm extends PureComponent {
   }
 }
 
-export default data(RegisterForm)
+export default hoc(RegisterForm)

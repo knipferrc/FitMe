@@ -9,13 +9,15 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
 export default ComposedComponent => {
-  class WithUser extends PureComponent {
+  class FetchCurrentUser extends PureComponent {
     static propTypes = {
       loading: PropTypes.bool
     }
 
     render() {
-      if (this.props.loading) {
+      const { loading } = this.props
+
+      if (loading) {
         return <PageLoader />
       }
       return <ComposedComponent {...this.props} />
@@ -23,8 +25,6 @@ export default ComposedComponent => {
   }
 
   const mapToProps = ({ authed, accesstoken }) => ({ authed, accesstoken })
-
-  const withUser = connect(mapToProps, actions)
 
   const CurrentUserQuery = gql`
     query currentUser($accesstoken: String!) {
@@ -51,5 +51,7 @@ export default ComposedComponent => {
     })
   })
 
-  return compose(withUser, withCurrentUser)(WithUser)
+  return compose(connect(mapToProps, actions), withCurrentUser)(
+    FetchCurrentUser
+  )
 }

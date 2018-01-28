@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 import UserType from '../../utils/constants/UserType'
-import withUser from '../../hoc/withUser'
+import fetchCurrentUser from '../../utils/fetchCurrentUser'
 
 const { TRAINER, CLIENT } = UserType
 
@@ -61,4 +61,4 @@ class AdminRoute extends PureComponent {
   }
 }
 
-export default withUser(AdminRoute)
+export default fetchCurrentUser(AdminRoute)

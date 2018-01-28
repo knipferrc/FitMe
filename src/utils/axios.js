@@ -22,8 +22,8 @@ export default {
     return axios.request(config)
   },
 
-  get(urlSegment, data) {
+  get(urlSegment, data = {}) {
     const config = getConfig('get', urlSegment, data)
-    return axios.request('get', urlSegment, data)
+    return axios.request(config)
   }
 }

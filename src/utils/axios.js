@@ -13,10 +13,10 @@ const getConfig = (method, urlSegment, data) => {
 
   const url = httpUri + urlSegment
 
-  return { url, headers, data }
+  return { method, url, headers, data }
 }
 
-export const Axios = {
+export default {
   post(urlSegment, data) {
     const config = getConfig('post', urlSegment, data)
     return axios.request(config)

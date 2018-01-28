@@ -56,7 +56,6 @@ class LoginForm extends PureComponent {
           initializeUser(data.user.accessToken)
           this.doUserRedirect(data.user.role)
         } catch (error) {
-          console.log('THERE WAS A ERROR')
           const { message: errorMessage } = error.response.data
           message.error(errorMessage)
           this.setState({

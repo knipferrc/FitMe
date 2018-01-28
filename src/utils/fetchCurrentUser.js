@@ -29,6 +29,7 @@ export default ComposedComponent => {
   const CurrentUserQuery = gql`
     query currentUser($accesstoken: String!) {
       currentUser(accesstoken: $accesstoken) {
+        id
         email
         firstName
         lastName

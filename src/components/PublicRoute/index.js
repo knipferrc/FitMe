@@ -11,7 +11,6 @@ class PublicRoute extends PureComponent {
   static propTypes = {
     setCurrentUser: PropTypes.func,
     currentUser: PropTypes.shape({
-      id: PropTypes.string,
       role: PropTypes.string,
       email: PropTypes.string,
       firstName: PropTypes.string,
@@ -22,8 +21,8 @@ class PublicRoute extends PureComponent {
 
   componentDidMount() {
     if (this.props.currentUser) {
-      const { id, role, email, firstName, lastName } = this.props.currentUser
-      this.props.setCurrentUser(id, role, email, firstName, lastName)
+      const { role, email, firstName, lastName } = this.props.currentUser
+      this.props.setCurrentUser(role, email, firstName, lastName)
     }
   }
 

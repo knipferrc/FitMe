@@ -25,7 +25,7 @@
     "react"
   ],
   "dependencies": {
-    "antd": "^3.1.5",
+    "antd": "^3.1.6",
     "apollo-cache-inmemory": "^1.1.5",
     "apollo-client": "^2.2.0",
     "apollo-link-context": "^1.0.3",

@@ -1,5 +1,5 @@
-import MainMenu from '../../components/MainMenu'
-import Navbar from '../../components/Navbar'
+import MainMenu from '../components/MainMenu'
+import Navbar from '../components/Navbar'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'

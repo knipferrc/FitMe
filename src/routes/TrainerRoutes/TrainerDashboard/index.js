@@ -39,7 +39,7 @@ const TrainerDashboard = ({ currentUser, history, location }) => (
       </Row>
       <Row>
         <Col span={24}>
-          <ClientPreview />
+          <ClientPreview trainerId={currentUser._id} />
         </Col>
       </Row>
     </DashboardContainer>

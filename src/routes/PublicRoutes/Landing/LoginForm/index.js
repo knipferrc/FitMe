@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 
+import Alert from 'antd/lib/alert'
 import Button from 'antd/lib/button'
 import Form from 'antd/lib/form'
 import Icon from 'antd/lib/icon'
@@ -8,7 +9,6 @@ import PropTypes from 'prop-types'
 import UserType from '../../../../utils/constants/UserType'
 import axios from '../../../../utils/axios'
 import hoc from './hoc'
-import message from 'antd/lib/message'
 
 const { ADMIN, TRAINER, CLIENT } = UserType
 const FormItem = Form.Item
@@ -21,7 +21,8 @@ class LoginForm extends PureComponent {
   }
 
   state = {
-    isSubmitting: false
+    isSubmitting: false,
+    errorMessage: null
   }
 
   handleRedirect = role => {
@@ -60,10 +61,10 @@ class LoginForm extends PureComponent {
 
           this.handleRedirect(data.user.role)
         } catch (error) {
-          const { message: errorMessage } = error.response.data
-          message.error(errorMessage)
+          const { message } = error.response.data
           this.setState({
-            isSubmitting: false
+            isSubmitting: false,
+            errorMessage: message
           })
         }
       } else {
@@ -76,7 +77,7 @@ class LoginForm extends PureComponent {
 
   render() {
     const { form: { getFieldDecorator } } = this.props
-    const { isSubmitting } = this.state
+    const { isSubmitting, errorMessage } = this.state
 
     return (
       <Form onSubmit={this.handleSubmit} style={{ maxWidth: '100%' }}>
@@ -103,6 +104,11 @@ class LoginForm extends PureComponent {
             />
           )}
         </FormItem>
+        {errorMessage && (
+          <FormItem>
+            <Alert message={errorMessage} type="error" showIcon />
+          </FormItem>
+        )}
         <FormItem>
           <Button
             loading={isSubmitting}

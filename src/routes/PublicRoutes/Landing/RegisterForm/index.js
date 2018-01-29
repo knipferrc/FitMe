@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 
+import Alert from 'antd/lib/alert'
 import Button from 'antd/lib/button'
 import Form from 'antd/lib/form'
 import Icon from 'antd/lib/icon'
@@ -18,7 +19,8 @@ class RegisterForm extends PureComponent {
   }
 
   state = {
-    isSubmitting: false
+    isSubmitting: false,
+    errorMessage: null
   }
 
   handleSubmit = e => {
@@ -42,8 +44,10 @@ class RegisterForm extends PureComponent {
           initializeUser(data.user.accessToken)
 
           history.push('/trainer-dashboard')
-        } catch (e) {
+        } catch (error) {
+          const { message } = error.response.data
           this.setState({
+            errorMessage: message,
             isSubmitting: false
           })
         }
@@ -66,7 +70,8 @@ class RegisterForm extends PureComponent {
 
   render() {
     const { form: { getFieldDecorator } } = this.props
-    const { isSubmitting } = this.state
+    const { isSubmitting, errorMessage } = this.state
+
     return (
       <Form onSubmit={this.handleSubmit} style={{ maxWidth: '100%' }}>
         <FormItem>
@@ -131,6 +136,13 @@ class RegisterForm extends PureComponent {
             />
           )}
         </FormItem>
+
+        {errorMessage && (
+          <FormItem>
+            <Alert message={errorMessage} type="error" showIcon />
+          </FormItem>
+        )}
+
         <FormItem>
           <Button
             loading={isSubmitting}

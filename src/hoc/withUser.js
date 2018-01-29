@@ -2,16 +2,21 @@ import React, { PureComponent } from 'react'
 
 import PageLoader from '../components/PageLoader'
 import PropTypes from 'prop-types'
-import actions from '../store/actions'
-import compose from 'recompose/compose'
-import { connect } from 'unistore/react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
 export default ComposedComponent => {
-  class FetchCurrentUser extends PureComponent {
+  class WithUser extends PureComponent {
     static propTypes = {
-      loading: PropTypes.bool
+      loading: PropTypes.bool,
+      error: PropTypes.object,
+      currentUser: PropTypes.shape({
+        _id: PropTypes.string,
+        role: PropTypes.string,
+        email: PropTypes.string,
+        firstName: PropTypes.string,
+        lastName: PropTypes.string
+      })
     }
 
     render() {
@@ -24,11 +29,10 @@ export default ComposedComponent => {
     }
   }
 
-  const mapToProps = ({ authed, accesstoken }) => ({ authed, accesstoken })
-
   const CurrentUserQuery = gql`
     query currentUser($accesstoken: String!) {
       currentUser(accesstoken: $accesstoken) {
+        _id
         email
         firstName
         lastName
@@ -38,10 +42,10 @@ export default ComposedComponent => {
   `
 
   const withCurrentUser = graphql(CurrentUserQuery, {
-    skip: props => !props.authed,
-    options: props => ({
+    skip: () => localStorage.getItem('accesstoken') === null,
+    options: () => ({
       variables: {
-        accesstoken: props.accesstoken
+        accesstoken: localStorage.getItem('accesstoken')
       }
     }),
     props: ({ data: { loading, error, currentUser } }) => ({
@@ -51,7 +55,5 @@ export default ComposedComponent => {
     })
   })
 
-  return compose(connect(mapToProps, actions), withCurrentUser)(
-    FetchCurrentUser
-  )
+  return withCurrentUser(WithUser)
 }

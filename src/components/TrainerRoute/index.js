@@ -3,27 +3,20 @@ import { Redirect, Route } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 import UserType from '../../utils/constants/UserType'
-import fetchCurrentUser from '../../utils/fetchCurrentUser'
+import withUser from '../../hoc/withUser'
 
 const { ADMIN, TRAINER, CLIENT } = UserType
 
 class TrainerRoute extends PureComponent {
   static propTypes = {
-    setCurrentUser: PropTypes.func,
     currentUser: PropTypes.shape({
+      _id: PropTypes.string,
       role: PropTypes.string,
       email: PropTypes.string,
       firstName: PropTypes.string,
       lastName: PropTypes.string
     }),
     component: PropTypes.func
-  }
-
-  componentDidMount() {
-    if (this.props.currentUser) {
-      const { role, email, firstName, lastName } = this.props.currentUser
-      this.props.setCurrentUser(role, email, firstName, lastName)
-    }
   }
 
   getPathName = role => {
@@ -44,7 +37,7 @@ class TrainerRoute extends PureComponent {
         {...rest}
         render={props =>
           currentUser && currentUser.role === TRAINER ? (
-            <Component {...props} />
+            <Component currentUser={currentUser} {...props} />
           ) : (
             <Redirect
               to={{
@@ -61,4 +54,4 @@ class TrainerRoute extends PureComponent {
   }
 }
 
-export default fetchCurrentUser(TrainerRoute)
+export default withUser(TrainerRoute)

@@ -7,15 +7,13 @@ import Icon from 'antd/lib/icon'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
 import axios from '../../../../utils/axios'
-import hoc from './hoc'
 
 const FormItem = Form.Item
 
 class RegisterForm extends PureComponent {
   static propTypes = {
     form: PropTypes.object,
-    history: PropTypes.object,
-    initializeUser: PropTypes.func
+    history: PropTypes.object
   }
 
   state = {
@@ -25,7 +23,7 @@ class RegisterForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form, history, initializeUser } = this.props
+    const { form, history } = this.props
 
     this.setState({
       isSubmitting: true
@@ -41,7 +39,7 @@ class RegisterForm extends PureComponent {
             lastName: values.lastName
           })
 
-          initializeUser(data.user.accessToken)
+          localStorage.setItem('accesstoken', data.user.accessToken)
 
           history.push('/trainer-dashboard')
         } catch (error) {
@@ -136,13 +134,11 @@ class RegisterForm extends PureComponent {
             />
           )}
         </FormItem>
-
         {errorMessage && (
           <FormItem>
             <Alert message={errorMessage} type="error" showIcon />
           </FormItem>
         )}
-
         <FormItem>
           <Button
             loading={isSubmitting}
@@ -158,4 +154,4 @@ class RegisterForm extends PureComponent {
   }
 }
 
-export default hoc(RegisterForm)
+export default Form.create()(RegisterForm)

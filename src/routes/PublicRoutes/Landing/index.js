@@ -1,6 +1,7 @@
 import Card from 'antd/lib/card'
 import Col from 'antd/lib/col'
 import LoginForm from './LoginForm'
+import PropTypes from 'prop-types'
 import React from 'react'
 import RegisterForm from './RegisterForm'
 import Row from 'antd/lib/row'
@@ -23,7 +24,7 @@ const ImageContainer = styled.div`
   margin-bottom: 25px;
 `
 
-const Landing = () => (
+const Landing = ({ history }) => (
   <SimpleLayout>
     <LandingContainer>
       <Row type="flex" justify="center">
@@ -34,10 +35,10 @@ const Landing = () => (
             </ImageContainer>
             <Tabs defaultActiveKey="1" tabBarStyle={{ textAlign: 'center' }}>
               <TabPane tab="Login" key="1">
-                <LoginForm />
+                <LoginForm history={history} />
               </TabPane>
               <TabPane tab="Register" key="2">
-                <RegisterForm />
+                <RegisterForm history={history} />
               </TabPane>
             </Tabs>
           </Card>
@@ -46,5 +47,9 @@ const Landing = () => (
     </LandingContainer>
   </SimpleLayout>
 )
+
+Landing.propTypes = {
+  history: PropTypes.object
+}
 
 export default Landing

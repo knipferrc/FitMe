@@ -8,7 +8,6 @@ import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
 import UserType from '../../../../utils/constants/UserType'
 import axios from '../../../../utils/axios'
-import hoc from './hoc'
 
 const { ADMIN, TRAINER, CLIENT } = UserType
 const FormItem = Form.Item
@@ -16,8 +15,7 @@ const FormItem = Form.Item
 class LoginForm extends PureComponent {
   static propTypes = {
     form: PropTypes.object,
-    history: PropTypes.object,
-    initializeUser: PropTypes.func
+    history: PropTypes.object
   }
 
   state = {
@@ -43,7 +41,7 @@ class LoginForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form, initializeUser } = this.props
+    const { form } = this.props
 
     this.setState({
       isSubmitting: true
@@ -57,7 +55,7 @@ class LoginForm extends PureComponent {
             password: values.password
           })
 
-          initializeUser(data.user.accessToken)
+          localStorage.setItem('accesstoken', data.user.accessToken)
 
           this.handleRedirect(data.user.role)
         } catch (error) {
@@ -124,4 +122,4 @@ class LoginForm extends PureComponent {
   }
 }
 
-export default hoc(LoginForm)
+export default Form.create()(LoginForm)

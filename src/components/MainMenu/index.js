@@ -4,20 +4,20 @@ import Icon from 'antd/lib/icon'
 import Menu from 'antd/lib/menu'
 import PropTypes from 'prop-types'
 import UserType from '../../utils/constants/UserType'
-import hoc from './hoc'
 
 const { ADMIN, TRAINER } = UserType
 
 class MainMenu extends PureComponent {
   static propTypes = {
-    history: PropTypes.object,
-    location: PropTypes.object,
     currentUser: PropTypes.shape({
+      _id: PropTypes.string,
+      role: PropTypes.string,
       email: PropTypes.string,
       firstName: PropTypes.string,
-      lastName: PropTypes.string,
-      role: PropTypes.string
+      lastName: PropTypes.string
     }),
+    history: PropTypes.object,
+    location: PropTypes.object,
     isMobile: PropTypes.bool
   }
 
@@ -136,4 +136,4 @@ class MainMenu extends PureComponent {
   }
 }
 
-export default hoc(MainMenu)
+export default MainMenu

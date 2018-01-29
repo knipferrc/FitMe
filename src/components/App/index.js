@@ -1,13 +1,11 @@
 import { ApolloProvider } from 'react-apollo'
 import { BrowserRouter } from 'react-router-dom'
 import LocaleProvider from 'antd/lib/locale-provider'
-import { Provider } from 'unistore/react'
 import React from 'react'
 import Routes from '../../routes'
 import client from '../../utils/apollo'
 import enUS from 'antd/lib/locale-provider/en_US'
 import { injectGlobal } from 'styled-components'
-import store from '../../store'
 
 injectGlobal`
   html,
@@ -24,11 +22,9 @@ injectGlobal`
 const App = () => (
   <ApolloProvider client={client}>
     <LocaleProvider locale={enUS}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
-      </Provider>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </LocaleProvider>
   </ApolloProvider>
 )

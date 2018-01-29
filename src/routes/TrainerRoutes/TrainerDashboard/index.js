@@ -2,6 +2,7 @@ import ClientPreview from './ClientPreview'
 import Col from 'antd/lib/col'
 import DefaultLayout from '../../../layouts/DefaultLayout'
 import ExerciseStats from './ExerciseStats'
+import PropTypes from 'prop-types'
 import React from 'react'
 import Row from 'antd/lib/row'
 import SchedulePreview from './SchedulePreview'
@@ -18,12 +19,16 @@ const StyledCol = styled(Col)`
   }
 `
 
-const TrainerDashboard = () => (
-  <DefaultLayout>
+const TrainerDashboard = ({ currentUser, history, location }) => (
+  <DefaultLayout
+    currentUser={currentUser}
+    history={history}
+    location={location}
+  >
     <DashboardContainer>
       <Row gutter={8} style={{ marginBottom: 10 }}>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
-          <WorkoutStats />
+          <WorkoutStats trainerId={currentUser._id} />
         </StyledCol>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
           <ExerciseStats />
@@ -40,5 +45,18 @@ const TrainerDashboard = () => (
     </DashboardContainer>
   </DefaultLayout>
 )
+
+TrainerDashboard.propTypes = {
+  currentUser: PropTypes.shape({
+    _id: PropTypes.string,
+    role: PropTypes.string,
+    email: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string
+  }),
+  history: PropTypes.object,
+  location: PropTypes.object,
+  children: PropTypes.node
+}
 
 export default TrainerDashboard

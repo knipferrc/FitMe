@@ -5,7 +5,6 @@ import Form from 'antd/lib/form'
 import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
 import Select from 'antd/lib/select'
-import data from './data'
 
 const FormItem = Form.Item
 const Option = Select.Option
@@ -122,4 +121,4 @@ class CreateExerciseForm extends PureComponent {
   }
 }
 
-export default data(CreateExerciseForm)
+export default Form.create()(CreateExerciseForm)

@@ -39,10 +39,8 @@
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "recompose": "^0.26.0",
-    "styled-components": "^3.1.0",
-    "subscriptions-transport-ws": "^0.9.5",
-    "unistore": "https://github.com/developit/unistore"
+    "styled-components": "^3.1.2",
+    "subscriptions-transport-ws": "^0.9.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

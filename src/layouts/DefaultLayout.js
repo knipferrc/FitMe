@@ -31,17 +31,30 @@ const ContentContainer = styled.div`
   }
 `
 
-const DefaultLayout = ({ children }) => (
+const DefaultLayout = ({ currentUser, history, location, children }) => (
   <DefaultLayoutContainer>
-    <Navbar />
+    <Navbar currentUser={currentUser} />
     <MainMenuContainer>
-      <MainMenu />
+      <MainMenu
+        currentUser={currentUser}
+        history={history}
+        location={location}
+      />
     </MainMenuContainer>
     <ContentContainer>{children}</ContentContainer>
   </DefaultLayoutContainer>
 )
 
 DefaultLayout.propTypes = {
+  currentUser: PropTypes.shape({
+    _id: PropTypes.string,
+    role: PropTypes.string,
+    email: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string
+  }),
+  history: PropTypes.object,
+  location: PropTypes.object,
   children: PropTypes.node
 }
 

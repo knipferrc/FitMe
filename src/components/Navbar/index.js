@@ -7,9 +7,8 @@ import Menu from 'antd/lib/menu'
 import Popover from 'antd/lib/popover'
 import PropTypes from 'prop-types'
 import React from 'react'
-import hoc from './hoc'
-import styled from 'styled-components'
 import axios from '../../utils/axios'
+import styled from 'styled-components'
 
 const NavbarContainer = styled.div`
   height: 64px;
@@ -113,10 +112,12 @@ const Navbar = ({ currentUser }) => (
 
 Navbar.propTypes = {
   currentUser: PropTypes.shape({
+    _id: PropTypes.string,
+    role: PropTypes.string,
     email: PropTypes.string,
     firstName: PropTypes.string,
     lastName: PropTypes.string
   })
 }
 
-export default hoc(Navbar)
+export default Navbar

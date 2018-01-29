@@ -31,7 +31,7 @@ const TrainerDashboard = ({ currentUser, history, location }) => (
           <WorkoutStats trainerId={currentUser._id} />
         </StyledCol>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
-          <ExerciseStats />
+          <ExerciseStats trainerId={currentUser._id} />
         </StyledCol>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
           <SchedulePreview />

@@ -17,6 +17,7 @@ const WorkoutStats = ({ error, loading, trainersWorkoutCount }) => {
   if (error) {
     return <div>Error</div>
   }
+
   if (loading) {
     return (
       <Card

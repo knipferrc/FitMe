@@ -1,6 +1,6 @@
 import { ApolloProvider } from 'react-apollo'
 import { BrowserRouter } from 'react-router-dom'
-import LocaleProvider from 'antd/lib/locale-provider'
+import { LocaleProvider } from 'antd'
 import React from 'react'
 import Routes from '../../routes'
 import client from '../../utils/apollo'

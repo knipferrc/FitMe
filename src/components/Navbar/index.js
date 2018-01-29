@@ -1,10 +1,7 @@
-import Button from 'antd/lib/button'
-import Dropdown from 'antd/lib/dropdown'
-import Icon from 'antd/lib/icon'
+import { Button, Dropdown, Icon, Menu, Popover } from 'antd'
+
 import { Link } from 'react-router-dom'
 import MainMenu from '../MainMenu'
-import Menu from 'antd/lib/menu'
-import Popover from 'antd/lib/popover'
 import PropTypes from 'prop-types'
 import React from 'react'
 import axios from '../../utils/axios'

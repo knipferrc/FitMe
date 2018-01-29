@@ -1,4 +1,4 @@
-import Card from 'antd/lib/card'
+import { Card } from 'antd'
 import PropTypes from 'prop-types'
 import React from 'react'
 import hoc from './hoc'

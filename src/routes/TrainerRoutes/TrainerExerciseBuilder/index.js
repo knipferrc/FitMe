@@ -1,9 +1,9 @@
-import Col from 'antd/lib/col'
+import { Col, Row } from 'antd'
+
 import CreateExerciseForm from './CreateExerciseForm'
 import DefaultLayout from '../../../layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Row from 'antd/lib/row'
 
 const TrainerExerciseBuilder = ({ currentUser, history, location }) => (
   <DefaultLayout

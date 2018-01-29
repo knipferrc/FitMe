@@ -1,6 +1,6 @@
-import Card from 'antd/lib/card'
+import { Card, Table } from 'antd'
+
 import React from 'react'
-import Table from 'antd/lib/table'
 
 const dataSource = [
   {

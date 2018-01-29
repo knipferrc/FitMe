@@ -1,12 +1,10 @@
-import Card from 'antd/lib/card'
-import Col from 'antd/lib/col'
+import { Card, Col, Row, Tabs } from 'antd'
+
 import LoginForm from './LoginForm'
 import PropTypes from 'prop-types'
 import React from 'react'
 import RegisterForm from './RegisterForm'
-import Row from 'antd/lib/row'
 import SimpleLayout from '../../../layouts/SimpleLayout'
-import Tabs from 'antd/lib/tabs'
 import logo from '../../../assets/img/logo.png'
 import styled from 'styled-components'
 

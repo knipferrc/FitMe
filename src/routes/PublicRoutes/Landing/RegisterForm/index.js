@@ -1,10 +1,6 @@
+import { Alert, Button, Form, Icon, Input } from 'antd'
 import React, { PureComponent } from 'react'
 
-import Alert from 'antd/lib/alert'
-import Button from 'antd/lib/button'
-import Form from 'antd/lib/form'
-import Icon from 'antd/lib/icon'
-import Input from 'antd/lib/input'
 import PropTypes from 'prop-types'
 import axios from '../../../../utils/axios'
 

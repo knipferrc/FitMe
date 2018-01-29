@@ -1,10 +1,10 @@
+import { Col, Row } from 'antd'
+
 import ClientPreview from './ClientPreview'
-import Col from 'antd/lib/col'
 import DefaultLayout from '../../../layouts/DefaultLayout'
 import ExerciseStats from './ExerciseStats'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Row from 'antd/lib/row'
 import SchedulePreview from './SchedulePreview'
 import WorkoutStats from './WorkoutStats'
 import styled from 'styled-components'

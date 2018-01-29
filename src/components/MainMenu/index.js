@@ -1,7 +1,6 @@
+import { Icon, Menu } from 'antd'
 import React, { PureComponent } from 'react'
 
-import Icon from 'antd/lib/icon'
-import Menu from 'antd/lib/menu'
 import PropTypes from 'prop-types'
 import UserType from '../../utils/constants/UserType'
 

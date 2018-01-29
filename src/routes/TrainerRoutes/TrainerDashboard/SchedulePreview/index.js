@@ -1,4 +1,4 @@
-import Card from 'antd/lib/card'
+import { Card } from 'antd'
 import React from 'react'
 
 const SchedulePreview = () => (

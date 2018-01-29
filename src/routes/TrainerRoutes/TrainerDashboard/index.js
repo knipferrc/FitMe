@@ -1,11 +1,11 @@
 import { Col, Row } from 'antd'
 
+import AppointmentPreview from './AppointmentPreview'
 import ClientPreview from './ClientPreview'
 import DefaultLayout from '../../../layouts/DefaultLayout'
 import ExerciseStats from './ExerciseStats'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SchedulePreview from './SchedulePreview'
 import WorkoutStats from './WorkoutStats'
 import styled from 'styled-components'
 
@@ -34,7 +34,7 @@ const TrainerDashboard = ({ currentUser, history, location }) => (
           <ExerciseStats trainerId={currentUser._id} />
         </StyledCol>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
-          <SchedulePreview />
+          <AppointmentPreview trainerId={currentUser._id} />
         </StyledCol>
       </Row>
       <Row>

@@ -2,17 +2,17 @@ import DefaultLayout from '../../../layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const TrainerSchedule = ({ currentUser, history, location }) => (
+const TrainerAppointments = ({ currentUser, history, location }) => (
   <DefaultLayout
     currentUser={currentUser}
     history={history}
     location={location}
   >
-    <h1>My Schedule</h1>
+    <h1>My Appointments</h1>
   </DefaultLayout>
 )
 
-TrainerSchedule.propTypes = {
+TrainerAppointments.propTypes = {
   currentUser: PropTypes.shape({
     _id: PropTypes.string,
     role: PropTypes.string,
@@ -25,4 +25,4 @@ TrainerSchedule.propTypes = {
   children: PropTypes.node
 }
 
-export default TrainerSchedule
+export default TrainerAppointments

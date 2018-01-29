@@ -61,8 +61,8 @@ class MainMenu extends PureComponent {
       <Menu.Item key="/trainer-exercise-builder">
         <Icon type="database" />Exercise Builder
       </Menu.Item>
-      <Menu.Item key="/trainer-schedule">
-        <Icon type="calendar" /> My Schedule
+      <Menu.Item key="/trainer-appointments">
+        <Icon type="calendar" /> Appointments
       </Menu.Item>
       <Menu.Item key="/trainer-chat">
         <Icon type="rocket" />Live Chat

@@ -4,7 +4,7 @@ import React from 'react'
 import hoc from './hoc'
 import styled from 'styled-components'
 
-const WorkoutCount = styled.div`
+const ExerciseCount = styled.div`
   font-size: 5em;
   text-align: center;
 `
@@ -35,7 +35,7 @@ const ExerciseStats = ({ error, loading, trainersExerciseCount }) => {
       title={<CardTitle>Total Exercises</CardTitle>}
       style={{ height: 210 }}
     >
-      <WorkoutCount>{trainersExerciseCount}</WorkoutCount>
+      <ExerciseCount>{trainersExerciseCount}</ExerciseCount>
     </Card>
   )
 }

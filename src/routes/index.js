@@ -6,13 +6,13 @@ import LandingRoute from './PublicRoutes/Landing'
 import PublicRoute from '../components/PublicRoute'
 import React from 'react'
 import { Switch } from 'react-router-dom'
+import TrainerAppointmentsRoute from './TrainerRoutes/TrainerAppointments'
 import TrainerClientManagementRoute from './TrainerRoutes/TrainerClientManagement'
 import TrainerDashboardRoute from './TrainerRoutes/TrainerDashboard'
 import TrainerExerciseBuilderRoute from './TrainerRoutes/TrainerExerciseBuilder'
 import TrainerLiveChatRoute from './TrainerRoutes/TrainerChat'
 import TrainerProfileRoute from './TrainerRoutes/TrainerProfile'
 import TrainerRoute from '../components/TrainerRoute'
-import TrainerScheduleRoute from './TrainerRoutes/TrainerSchedule'
 import TrainerWorkoutBuilderRoute from './TrainerRoutes/TrainerWorkoutBuilder'
 
 const Routes = () => (
@@ -42,9 +42,9 @@ const Routes = () => (
       component={TrainerExerciseBuilderRoute}
     />
     <TrainerRoute
-      path="/trainer-schedule"
+      path="/trainer-appointments"
       exact
-      component={TrainerScheduleRoute}
+      component={TrainerAppointmentsRoute}
     />
     <TrainerRoute path="/trainer-chat" exact component={TrainerLiveChatRoute} />
     <TrainerRoute

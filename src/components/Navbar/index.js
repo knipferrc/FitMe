@@ -71,12 +71,12 @@ const dropdownMenu = currentUser => (
   <Menu>
     <Menu.Item key="1">
       <Link to={getProfileLink(currentUser.role)}>
-        <Icon type="user" style={{ marginRight: 3 }} />My Profile
+        <Icon type="user" style={{ marginRight: 5 }} />My Profile
       </Link>
     </Menu.Item>
     <Menu.Item key="2">
       <a href="#!" onClick={handleLogout}>
-        <Icon type="logout" style={{ marginRight: 3 }} />
+        <Icon type="logout" style={{ marginRight: 5 }} />
         Logout
       </a>
     </Menu.Item>

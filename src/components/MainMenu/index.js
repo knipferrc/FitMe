@@ -51,13 +51,13 @@ class MainMenu extends PureComponent {
       }
     >
       <Menu.Item key="/trainer-dashboard" style={{ marginTop: 0 }}>
-        <Icon type="appstore-o" />Dashboard
+        <Icon type="dashboard" />Dashboard
       </Menu.Item>
       <Menu.Item key="/trainer-client-management">
         <Icon type="team" />Client Management
       </Menu.Item>
       <Menu.Item key="/trainer-workout-builder">
-        <Icon type="api" />Workout Builder
+        <Icon type="appstore-o" />Workout Builder
       </Menu.Item>
       <Menu.Item key="/trainer-exercise-builder">
         <Icon type="database" />Exercise Builder
@@ -66,7 +66,7 @@ class MainMenu extends PureComponent {
         <Icon type="calendar" /> My Schedule
       </Menu.Item>
       <Menu.Item key="/trainer-chat">
-        <Icon type="contacts" />Live Chat
+        <Icon type="rocket" />Live Chat
       </Menu.Item>
       {this.props.isMobile && (
         <Menu.Item key="logout">

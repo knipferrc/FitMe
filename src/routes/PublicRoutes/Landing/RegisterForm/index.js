@@ -115,7 +115,12 @@ class RegisterForm extends PureComponent {
             rules: [{ required: true, message: 'Please enter your first name' }]
           })(
             <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={
+                <Icon
+                  type="right-square"
+                  style={{ color: 'rgba(0,0,0,.25)' }}
+                />
+              }
               type="text"
               placeholder="First Name"
               name="firstName"
@@ -127,7 +132,9 @@ class RegisterForm extends PureComponent {
             rules: [{ required: true, message: 'Please input your last name' }]
           })(
             <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={
+                <Icon type="left-square" style={{ color: 'rgba(0,0,0,.25)' }} />
+              }
               type="text"
               placeholder="Last Name"
               name="lastName"

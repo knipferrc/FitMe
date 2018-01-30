@@ -4,8 +4,8 @@ import LoginForm from './LoginForm'
 import PropTypes from 'prop-types'
 import React from 'react'
 import RegisterForm from './RegisterForm'
-import SimpleLayout from '../../../layouts/SimpleLayout'
-import logo from '../../../assets/img/logo.png'
+import SimpleLayout from 'layouts/SimpleLayout'
+import logo from 'assets/img/logo.png'
 import styled from 'styled-components'
 
 const TabPane = Tabs.TabPane

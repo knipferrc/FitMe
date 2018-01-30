@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd'
 
 import CreateExerciseForm from './CreateExerciseForm'
-import DefaultLayout from '../../../layouts/DefaultLayout'
+import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
 

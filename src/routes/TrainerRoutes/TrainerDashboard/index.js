@@ -2,7 +2,7 @@ import { Col, Row } from 'antd'
 
 import AppointmentPreview from './AppointmentPreview'
 import ClientPreview from './ClientPreview'
-import DefaultLayout from '../../../layouts/DefaultLayout'
+import DefaultLayout from 'layouts/DefaultLayout'
 import ExerciseStats from './ExerciseStats'
 import PropTypes from 'prop-types'
 import React from 'react'

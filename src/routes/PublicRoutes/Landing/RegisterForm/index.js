@@ -2,7 +2,7 @@ import { Alert, Button, Form, Icon, Input } from 'antd'
 import React, { PureComponent } from 'react'
 
 import PropTypes from 'prop-types'
-import axios from '../../../../utils/axios'
+import axios from 'utils/axios'
 
 const FormItem = Form.Item
 

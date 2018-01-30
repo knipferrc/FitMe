@@ -1,4 +1,4 @@
-import DefaultLayout from '../../../layouts/DefaultLayout'
+import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
 

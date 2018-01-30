@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 
-import PageLoader from '../components/PageLoader'
+import PageLoader from 'components/PageLoader'
 import PropTypes from 'prop-types'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'

@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
-import UserType from '../../utils/constants/UserType'
-import withUser from '../../hoc/withUser'
+import UserType from 'utils/constants/UserType'
+import withUser from 'hoc/withUser'
 
 const { ADMIN, TRAINER } = UserType
 

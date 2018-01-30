@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import MainMenu from '../MainMenu'
 import PropTypes from 'prop-types'
 import React from 'react'
-import axios from '../../utils/axios'
+import axios from 'utils/axios'
 import styled from 'styled-components'
 
 const NavbarContainer = styled.div`

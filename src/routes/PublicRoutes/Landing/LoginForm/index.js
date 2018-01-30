@@ -2,8 +2,8 @@ import { Alert, Button, Form, Icon, Input } from 'antd'
 import React, { PureComponent } from 'react'
 
 import PropTypes from 'prop-types'
-import UserType from '../../../../utils/constants/UserType'
-import axios from '../../../../utils/axios'
+import UserType from 'utils/constants/UserType'
+import axios from 'utils/axios'
 
 const { ADMIN, TRAINER, CLIENT } = UserType
 const FormItem = Form.Item

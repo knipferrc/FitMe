@@ -2,7 +2,7 @@ import { Icon, Menu } from 'antd'
 import React, { PureComponent } from 'react'
 
 import PropTypes from 'prop-types'
-import UserType from '../../utils/constants/UserType'
+import UserType from 'utils/constants/UserType'
 
 const { ADMIN, TRAINER } = UserType
 

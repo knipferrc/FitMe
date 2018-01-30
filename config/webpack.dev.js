@@ -17,9 +17,9 @@ module.exports = merge(common, {
         use: [
           {
             loader: 'url-loader'
-          },
+          }
         ]
-      },
+      }
     ]
   }
 })

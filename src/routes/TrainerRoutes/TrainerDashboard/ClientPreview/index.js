@@ -22,7 +22,7 @@ const columns = [
   }
 ]
 
-const ClientPreview = ({ error, loading, getTrainersClients }) => {
+const ClientPreview = ({ error, loading, trainersClients }) => {
   if (error) {
     return <div>Error</div>
   }
@@ -34,7 +34,7 @@ const ClientPreview = ({ error, loading, getTrainersClients }) => {
   return (
     <Card title="My Clients" bodyStyle={{ padding: 10 }}>
       <Table
-        dataSource={getTrainersClients}
+        dataSource={trainersClients}
         columns={columns}
         locale={{ emptyText: 'You currently have no clients' }}
       />
@@ -45,7 +45,7 @@ const ClientPreview = ({ error, loading, getTrainersClients }) => {
 ClientPreview.propTypes = {
   error: PropTypes.object,
   loading: PropTypes.bool,
-  getTrainersClients: PropTypes.array
+  trainersClients: PropTypes.array
 }
 
 export default hoc(ClientPreview)

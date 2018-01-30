@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
 const TrainersExerciseCountQuery = gql`
-  query trainersExerciseCount($trainerId: ID!) {
+  query TrainersExerciseCount($trainerId: ID!) {
     trainersExerciseCount(trainerId: $trainerId)
   }
 `

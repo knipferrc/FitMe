@@ -30,8 +30,8 @@ export default ComposedComponent => {
   }
 
   const CurrentUserQuery = gql`
-    query currentUser($accesstoken: String!) {
-      currentUser(accesstoken: $accesstoken) {
+    query CurrentUser($accessToken: String!) {
+      currentUser(accessToken: $accessToken) {
         _id
         email
         firstName
@@ -42,10 +42,10 @@ export default ComposedComponent => {
   `
 
   const withCurrentUser = graphql(CurrentUserQuery, {
-    skip: () => localStorage.getItem('accesstoken') === null,
+    skip: () => localStorage.getItem('accessToken') === null,
     options: () => ({
       variables: {
-        accesstoken: localStorage.getItem('accesstoken')
+        accessToken: localStorage.getItem('accessToken')
       }
     }),
     props: ({ data: { loading, error, currentUser } }) => ({

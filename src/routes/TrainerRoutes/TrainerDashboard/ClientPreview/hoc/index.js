@@ -2,8 +2,8 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
 const TrainersClientsQuery = gql`
-  query getsTrainersClients($trainerId: ID!) {
-    getTrainersClients(trainerId: $trainerId) {
+  query TrainersClients($trainerId: ID!) {
+    trainersClients(trainerId: $trainerId) {
       email
       firstName
       lastName
@@ -17,10 +17,10 @@ const withTrainersClients = graphql(TrainersClientsQuery, {
       trainerId: props.trainerId
     }
   }),
-  props: ({ data: { loading, error, getTrainersClients } }) => ({
+  props: ({ data: { loading, error, trainersClients } }) => ({
     loading,
     error,
-    getTrainersClients
+    trainersClients
   })
 })
 

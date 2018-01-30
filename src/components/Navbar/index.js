@@ -47,7 +47,7 @@ const MobileMenu = styled.div`
 
 const handleLogout = async () => {
   await axios.get('logout')
-  localStorage.removeItem('accesstoken')
+  localStorage.removeItem('accessToken')
   window.location.href = '/'
 }
 

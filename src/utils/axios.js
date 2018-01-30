@@ -3,7 +3,7 @@ import axios from 'axios'
 const getConfig = (method, urlSegment, data) => {
   const headers = {
     'Content-Type': 'application/json',
-    authorization: localStorage.getItem('accesstoken')
+    authorization: localStorage.getItem('accessToken')
   }
 
   const httpUri =

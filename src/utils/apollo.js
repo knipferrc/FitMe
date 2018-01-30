@@ -14,7 +14,7 @@ const httpUri =
 const wsUri = 'ws://localhost:5000/subscriptions'
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('accesstoken')
+  const token = localStorage.getItem('accessToken')
 
   return {
     headers: {
@@ -38,7 +38,7 @@ const link = ApolloLink.split(
     options: {
       reconnect: true,
       connectionParams: {
-        authToken: localStorage.getItem('accesstoken')
+        authToken: localStorage.getItem('accessToken')
       }
     }
   }),

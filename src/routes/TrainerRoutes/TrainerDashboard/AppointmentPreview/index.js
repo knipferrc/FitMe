@@ -13,7 +13,7 @@ const CardTitle = styled.div`
   text-align: center;
 `
 
-const AppointmentPreview = ({ error, loading, getNextAppointment }) => {
+const AppointmentPreview = ({ error, loading, trainersNextAppointment }) => {
   if (error) {
     return <div>Error</div>
   }
@@ -35,8 +35,8 @@ const AppointmentPreview = ({ error, loading, getNextAppointment }) => {
       title={<CardTitle>Next Appointment</CardTitle>}
       style={{ height: 210 }}
     >
-      {getNextAppointment ? (
-        <div>{getNextAppointment.workoutDate}</div>
+      {trainersNextAppointment ? (
+        <div>{trainersNextAppointment.workoutDate}</div>
       ) : (
         <NoAppointments>
           You currently have no upcoming appointments
@@ -49,7 +49,7 @@ const AppointmentPreview = ({ error, loading, getNextAppointment }) => {
 AppointmentPreview.propTypes = {
   error: PropTypes.object,
   loading: PropTypes.bool,
-  getNextAppointment: PropTypes.object
+  trainersNextAppointment: PropTypes.object
 }
 
 export default hoc(AppointmentPreview)

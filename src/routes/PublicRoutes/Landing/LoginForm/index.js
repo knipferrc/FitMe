@@ -51,7 +51,7 @@ class LoginForm extends PureComponent {
             password: values.password
           })
 
-          localStorage.setItem('accesstoken', data.user.accessToken)
+          localStorage.setItem('accessToken', data.user.accessToken)
 
           this.handleRedirect(data.user.role)
         } catch (error) {

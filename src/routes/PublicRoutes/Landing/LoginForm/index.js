@@ -24,13 +24,13 @@ class LoginForm extends PureComponent {
 
     switch (role) {
       case TRAINER:
-        history.push('/trainer-dashboard')
+        history.push('/trainer/dashboard')
         break
       case ADMIN:
-        history.push('/admin-dashboard')
+        history.push('/admin/dashboard')
         break
       case CLIENT:
-        history.push('/client-dashboard')
+        history.push('/client/dashboard')
         break
     }
   }

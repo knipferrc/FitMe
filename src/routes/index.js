@@ -1,63 +1,57 @@
-import AdminDashboardRoute from './AdminRoutes/AdminDashboard'
 import AdminRoute from 'components/AdminRoute'
-import ClientDashboard from './ClientRoutes/ClientDashboard'
+import AdminsDashboard from './AdminRoutes/Dashboard'
 import ClientRoute from 'components/ClientRoute'
-import LandingRoute from './PublicRoutes/Landing'
+import ClientsDashboard from './ClientRoutes/Dashboard'
+import Landing from './PublicRoutes/Landing'
 import PublicRoute from 'components/PublicRoute'
 import React from 'react'
 import { Switch } from 'react-router-dom'
-import TrainerAppointmentsRoute from './TrainerRoutes/TrainerAppointments'
-import TrainerClientManagementRoute from './TrainerRoutes/TrainerClientManagement'
-import TrainerDashboardRoute from './TrainerRoutes/TrainerDashboard'
-import TrainerExerciseBuilderRoute from './TrainerRoutes/TrainerExerciseBuilder'
-import TrainerLiveChatRoute from './TrainerRoutes/TrainerChat'
-import TrainerProfileRoute from './TrainerRoutes/TrainerProfile'
 import TrainerRoute from 'components/TrainerRoute'
-import TrainerWorkoutBuilderRoute from './TrainerRoutes/TrainerWorkoutBuilder'
+import TrainersAppointments from './TrainerRoutes/Appointments'
+import TrainersClientManagement from './TrainerRoutes/ClientManagement'
+import TrainersDashboard from './TrainerRoutes/Dashboard'
+import TrainersExerciseBuilder from './TrainerRoutes/ExerciseBuilder'
+import TrainersProfile from './TrainerRoutes/Profile'
+import TrainersWorkoutBuilder from './TrainerRoutes/WorkoutBuilder'
 
 const Routes = () => (
   <Switch>
     {/* PUBLIC ROUTES */}
-    <PublicRoute path="/" exact component={LandingRoute} />
+    <PublicRoute exact path="/" component={Landing} />
 
     {/* TRAINER ROUTES */}
     <TrainerRoute
-      path="/trainer-dashboard"
       exact
-      component={TrainerDashboardRoute}
+      path="/trainer/dashboard"
+      component={TrainersDashboard}
     />
     <TrainerRoute
-      path="/trainer-client-management"
       exact
-      component={TrainerClientManagementRoute}
+      path="/trainer/client-management"
+      component={TrainersClientManagement}
     />
     <TrainerRoute
-      path="/trainer-workout-builder"
       exact
-      component={TrainerWorkoutBuilderRoute}
+      path="/trainer/workout-builder"
+      component={TrainersWorkoutBuilder}
     />
     <TrainerRoute
-      path="/trainer-exercise-builder"
       exact
-      component={TrainerExerciseBuilderRoute}
+      path="/trainer/exercise-builder"
+      component={TrainersExerciseBuilder}
     />
     <TrainerRoute
-      path="/trainer-appointments"
       exact
-      component={TrainerAppointmentsRoute}
+      path="/trainer/appointments"
+      component={TrainersAppointments}
     />
-    <TrainerRoute path="/trainer-chat" exact component={TrainerLiveChatRoute} />
-    <TrainerRoute
-      path="/trainer-profile"
-      exact
-      component={TrainerProfileRoute}
-    />
+    <TrainerRoute path="/trainer/profile" exact component={TrainersProfile} />
 
     {/* CLIENT ROUTES */}
-    <ClientRoute path="/client-dashboard" exact component={ClientDashboard} />
+    <ClientRoute exact path="/client/dashboard" component={ClientsDashboard} />
 
     {/* ADMIN ROUTES */}
-    <AdminRoute path="/admin-dashboard" exact component={AdminDashboardRoute} />
+    <AdminRoute exact path="/admin/dashboard" component={AdminsDashboard} />
   </Switch>
 )
 

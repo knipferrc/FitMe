@@ -2,17 +2,17 @@ import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const TrainerWorkoutBuilder = ({ currentUser, history, location }) => (
+const Dashboard = ({ currentUser, history, location }) => (
   <DefaultLayout
     currentUser={currentUser}
     history={history}
     location={location}
   >
-    <h1>Workout Builder</h1>
+    <h1>Admin Dashboard</h1>
   </DefaultLayout>
 )
 
-TrainerWorkoutBuilder.propTypes = {
+Dashboard.propTypes = {
   currentUser: PropTypes.shape({
     _id: PropTypes.string,
     role: PropTypes.string,
@@ -25,4 +25,4 @@ TrainerWorkoutBuilder.propTypes = {
   children: PropTypes.node
 }
 
-export default TrainerWorkoutBuilder
+export default Dashboard

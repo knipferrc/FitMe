@@ -22,9 +22,9 @@ class TrainerRoute extends PureComponent {
   getPathName = role => {
     switch (role) {
       case ADMIN:
-        return '/admin-dashboard'
+        return '/admin/dashboard'
       case CLIENT:
-        return '/client-dashboard'
+        return '/client/dashboard'
       default:
         return '/'
     }

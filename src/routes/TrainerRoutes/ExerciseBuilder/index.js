@@ -1,18 +1,25 @@
+import { Col, Row } from 'antd'
+
+import CreateExerciseForm from './CreateExerciseForm'
 import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const AdminDashboard = ({ currentUser, history, location }) => (
+const ExerciseBuilder = ({ currentUser, history, location }) => (
   <DefaultLayout
     currentUser={currentUser}
     history={history}
     location={location}
   >
-    <h1>Admin Dashboard</h1>
+    <Row>
+      <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+        <CreateExerciseForm />
+      </Col>
+    </Row>
   </DefaultLayout>
 )
 
-AdminDashboard.propTypes = {
+ExerciseBuilder.propTypes = {
   currentUser: PropTypes.shape({
     _id: PropTypes.string,
     role: PropTypes.string,
@@ -25,4 +32,4 @@ AdminDashboard.propTypes = {
   children: PropTypes.node
 }
 
-export default AdminDashboard
+export default ExerciseBuilder

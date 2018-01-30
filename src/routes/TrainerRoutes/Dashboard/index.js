@@ -19,7 +19,7 @@ const StyledCol = styled(Col)`
   }
 `
 
-const TrainerDashboard = ({ currentUser, history, location }) => (
+const Dashboard = ({ currentUser, history, location }) => (
   <DefaultLayout
     currentUser={currentUser}
     history={history}
@@ -46,7 +46,7 @@ const TrainerDashboard = ({ currentUser, history, location }) => (
   </DefaultLayout>
 )
 
-TrainerDashboard.propTypes = {
+Dashboard.propTypes = {
   currentUser: PropTypes.shape({
     _id: PropTypes.string,
     role: PropTypes.string,
@@ -59,4 +59,4 @@ TrainerDashboard.propTypes = {
   children: PropTypes.node
 }
 
-export default TrainerDashboard
+export default Dashboard

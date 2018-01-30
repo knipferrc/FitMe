@@ -22,11 +22,11 @@ class PublicRoute extends PureComponent {
   getPathName = role => {
     switch (role) {
       case TRAINER:
-        return '/trainer-dashboard'
+        return '/trainer/dashboard'
       case ADMIN:
-        return '/admin-dashboard'
+        return '/admin/dashboard'
       case CLIENT:
-        return '/client-dashboard'
+        return '/client/dashboard'
       default:
         return '/'
     }

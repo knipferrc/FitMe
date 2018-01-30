@@ -37,7 +37,7 @@ class RegisterForm extends PureComponent {
 
           localStorage.setItem('accessToken', data.user.accessToken)
 
-          history.push('/trainer-dashboard')
+          history.push('/trainer/dashboard')
         } catch (error) {
           const { message } = error.response.data
           this.setState({

@@ -1,15 +1,15 @@
 import { Col, Row } from 'antd'
 
-import AppointmentPreview from './AppointmentPreview'
-import ClientPreview from './ClientPreview'
 import DefaultLayout from 'layouts/DefaultLayout'
-import ExerciseStats from './ExerciseStats'
+import NextAppointment from './NextAppointment'
 import PropTypes from 'prop-types'
 import React from 'react'
-import WorkoutStats from './WorkoutStats'
+import TotalClients from './TotalClients'
+import TotalExercises from './TotalExercises'
+import TotalWorkouts from './TotalWorkouts'
 import styled from 'styled-components'
 
-const DashboardContainer = styled.div`
+const Container = styled.div`
   padding: 5px;
 `
 
@@ -25,24 +25,24 @@ const TrainerDashboard = ({ currentUser, history, location }) => (
     history={history}
     location={location}
   >
-    <DashboardContainer>
+    <Container>
       <Row gutter={8} style={{ marginBottom: 10 }}>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
-          <WorkoutStats trainerId={currentUser._id} />
+          <TotalClients trainerId={currentUser._id} />
         </StyledCol>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
-          <ExerciseStats trainerId={currentUser._id} />
+          <TotalExercises trainerId={currentUser._id} />
         </StyledCol>
         <StyledCol xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
-          <AppointmentPreview trainerId={currentUser._id} />
+          <TotalWorkouts trainerId={currentUser._id} />
         </StyledCol>
       </Row>
       <Row>
         <Col span={24}>
-          <ClientPreview trainerId={currentUser._id} />
+          <NextAppointment trainerId={currentUser._id} />
         </Col>
       </Row>
-    </DashboardContainer>
+    </Container>
   </DefaultLayout>
 )
 

@@ -4,7 +4,7 @@ import React from 'react'
 import hoc from './hoc'
 import styled from 'styled-components'
 
-const ExerciseCount = styled.div`
+const CountText = styled.div`
   font-size: 5em;
   text-align: center;
 `
@@ -13,7 +13,7 @@ const CardTitle = styled.div`
   text-align: center;
 `
 
-const ExerciseStats = ({ error, loading, trainersExerciseCount }) => {
+const TotalExercises = ({ error, loading, trainersTotalExercises }) => {
   if (error) {
     return <div>Error</div>
   }
@@ -35,15 +35,15 @@ const ExerciseStats = ({ error, loading, trainersExerciseCount }) => {
       title={<CardTitle>Total Exercises</CardTitle>}
       style={{ height: 210 }}
     >
-      <ExerciseCount>{trainersExerciseCount}</ExerciseCount>
+      <CountText>{trainersTotalExercises}</CountText>
     </Card>
   )
 }
 
-ExerciseStats.propTypes = {
+TotalExercises.propTypes = {
   error: PropTypes.object,
   loading: PropTypes.bool,
-  trainersExerciseCount: PropTypes.number
+  trainersTotalExercises: PropTypes.number
 }
 
-export default hoc(ExerciseStats)
+export default hoc(TotalExercises)

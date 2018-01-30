@@ -4,7 +4,7 @@ import React from 'react'
 import hoc from './hoc'
 import styled from 'styled-components'
 
-const NoAppointments = styled.div`
+const NoAppointmentsText = styled.div`
   font-size: 1.3em;
   text-align: center;
 `
@@ -13,7 +13,7 @@ const CardTitle = styled.div`
   text-align: center;
 `
 
-const AppointmentPreview = ({ error, loading, trainersNextAppointment }) => {
+const NextAppointment = ({ error, loading, trainersNextAppointment }) => {
   if (error) {
     return <div>Error</div>
   }
@@ -38,18 +38,18 @@ const AppointmentPreview = ({ error, loading, trainersNextAppointment }) => {
       {trainersNextAppointment ? (
         <div>{trainersNextAppointment.workoutDate}</div>
       ) : (
-        <NoAppointments>
+        <NoAppointmentsText>
           You currently have no upcoming appointments
-        </NoAppointments>
+        </NoAppointmentsText>
       )}
     </Card>
   )
 }
 
-AppointmentPreview.propTypes = {
+NextAppointment.propTypes = {
   error: PropTypes.object,
   loading: PropTypes.bool,
   trainersNextAppointment: PropTypes.object
 }
 
-export default hoc(AppointmentPreview)
+export default hoc(NextAppointment)

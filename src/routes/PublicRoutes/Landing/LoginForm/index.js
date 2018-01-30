@@ -1,5 +1,6 @@
 import { Alert, Button, Form, Icon, Input } from 'antd'
 import React, { PureComponent } from 'react'
+import GoogleLogin from 'react-google-login'
 
 import PropTypes from 'prop-types'
 import UserType from '../../../../utils/constants/UserType'
@@ -69,12 +70,24 @@ class LoginForm extends PureComponent {
     })
   }
 
+  googleResponse = async response => {
+    console.log('RESPONSE: ', response)
+    await axios.post('google/auth', { accessToken: response.accessToken })
+  }
+
   render() {
     const { form: { getFieldDecorator } } = this.props
     const { isSubmitting, errorMessage } = this.state
 
     return (
       <Form onSubmit={this.handleSubmit} style={{ maxWidth: '100%' }}>
+        <GoogleLogin
+          clientId="180667422701-lsl99jba477tde5ldlmdd3grrsj9gqfe.apps.googleusercontent.com"
+          onSuccess={this.googleResponse}
+          onFailure={this.googleResponse}
+        >
+          Test
+        </GoogleLogin>
         <FormItem>
           {getFieldDecorator('email', {
             rules: [{ required: true, message: 'Please input your email' }]

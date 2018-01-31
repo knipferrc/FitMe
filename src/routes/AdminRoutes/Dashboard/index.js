@@ -1,6 +1,13 @@
+import { Col, Row } from 'antd'
 import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { PureComponent } from 'react'
+import styled from 'styled-components'
+import AllTrainers from './AllTrainers'
+
+const Container = styled.div`
+  padding: 5px;
+`
 
 const Dashboard = ({ currentUser, history, location }) => (
   <DefaultLayout
@@ -8,7 +15,12 @@ const Dashboard = ({ currentUser, history, location }) => (
     history={history}
     location={location}
   >
-    <h1>Admin Dashboard</h1>
+    <Container>
+      <Col span={24}>
+        <h1>Admin Dashboard</h1>
+        <AllTrainers />
+      </Col>
+    </Container>
   </DefaultLayout>
 )
 

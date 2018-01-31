@@ -88,7 +88,6 @@ export default class ClientManagement extends PureComponent {
                   style={{ width: '100%' }}
                   actions={[
                     <Icon key="settings" type="setting" />,
-                    <Icon key="edit" type="edit" />,
                     <Icon key="more" type="ellipsis" />
                   ]}
                 >

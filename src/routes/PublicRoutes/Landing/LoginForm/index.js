@@ -72,7 +72,7 @@ class LoginForm extends PureComponent {
 
   googleResponse = async response => {
     console.log('RESPONSE: ', response)
-    await axios.post('google/auth', { accessToken: response.accessToken })
+    await axios.post('google/auth', { access_token: response.accessToken })
   }
 
   render() {

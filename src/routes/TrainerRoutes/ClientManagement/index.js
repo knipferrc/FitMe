@@ -1,6 +1,7 @@
 import { Avatar, Button, Card, Col, Icon, Input, Pagination, Row } from 'antd'
 import React, { PureComponent } from 'react'
 
+import AddClientModal from './AddClientModal'
 import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -36,8 +37,25 @@ export default class ClientManagement extends PureComponent {
     children: PropTypes.node
   }
 
+  state = {
+    addClientModalOpen: false
+  }
+
+  openModal = () => {
+    this.setState({
+      addClientModalOpen: true
+    })
+  }
+
+  closeModal = () => {
+    this.setState({
+      addClientModalOpen: false
+    })
+  }
+
   render() {
     const { currentUser, history, location } = this.props
+    const { addClientModalOpen } = this.state
     return (
       <DefaultLayout
         currentUser={currentUser}
@@ -89,7 +107,17 @@ export default class ClientManagement extends PureComponent {
             <Pagination defaultCurrent={1} total={50} />
           </Row>
           <AddClientButton>
-            <Button size="large" type="primary" shape="circle" icon="plus" />
+            <Button
+              size="large"
+              type="primary"
+              shape="circle"
+              icon="plus"
+              onClick={this.openModal}
+            />
+            <AddClientModal
+              addClientModalOpen={addClientModalOpen}
+              handleClose={this.closeModal}
+            />
           </AddClientButton>
         </Container>
       </DefaultLayout>

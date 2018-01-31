@@ -1,9 +1,9 @@
-import { Col, Row } from 'antd'
+import AllTrainers from './AllTrainers'
+import { Col } from 'antd'
 import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
-import React, { PureComponent } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import AllTrainers from './AllTrainers'
 
 const Container = styled.div`
   padding: 5px;

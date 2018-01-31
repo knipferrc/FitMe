@@ -2,14 +2,15 @@ import { Alert, Button, Form, Icon, Input } from 'antd'
 import React, { PureComponent } from 'react'
 
 import PropTypes from 'prop-types'
-import axios from 'utils/axios'
+import hoc from './hoc'
 
 const FormItem = Form.Item
 
 class RegisterForm extends PureComponent {
   static propTypes = {
     form: PropTypes.object,
-    history: PropTypes.object
+    history: PropTypes.object,
+    register: PropTypes.func
   }
 
   state = {
@@ -19,7 +20,7 @@ class RegisterForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form, history } = this.props
+    const { form, history, register } = this.props
 
     this.setState({
       isSubmitting: true
@@ -28,15 +29,13 @@ class RegisterForm extends PureComponent {
     form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         try {
-          const { data } = await axios.post('register', {
-            email: values.email,
-            password: values.password,
-            firstName: values.firstName,
-            lastName: values.lastName
-          })
-
-          localStorage.setItem('accessToken', data.user.accessToken)
-
+          const { data } = await register(
+            values.email,
+            values.password,
+            values.firstName,
+            values.lastName
+          )
+          localStorage.setItem('accessToken', data.register.accessToken)
           history.push('/trainer/dashboard')
         } catch (error) {
           const { message } = error.response.data
@@ -157,4 +156,4 @@ class RegisterForm extends PureComponent {
   }
 }
 
-export default Form.create()(RegisterForm)
+export default hoc(RegisterForm)

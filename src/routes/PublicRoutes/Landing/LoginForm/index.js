@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 
 import PropTypes from 'prop-types'
 import UserType from 'utils/constants/UserType'
-import axios from 'utils/axios'
+import hoc from './hoc'
 
 const { ADMIN, TRAINER, CLIENT } = UserType
 const FormItem = Form.Item
@@ -11,7 +11,8 @@ const FormItem = Form.Item
 class LoginForm extends PureComponent {
   static propTypes = {
     form: PropTypes.object,
-    history: PropTypes.object
+    history: PropTypes.object,
+    login: PropTypes.func
   }
 
   state = {
@@ -37,7 +38,7 @@ class LoginForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form } = this.props
+    const { form, login } = this.props
 
     this.setState({
       isSubmitting: true
@@ -46,14 +47,11 @@ class LoginForm extends PureComponent {
     form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         try {
-          const { data } = await axios.post('login', {
-            email: values.email,
-            password: values.password
-          })
+          const { data } = await login(values.email, values.password)
 
-          localStorage.setItem('accessToken', data.user.accessToken)
+          localStorage.setItem('accessToken', data.login.accessToken)
 
-          this.handleRedirect(data.user.role)
+          this.handleRedirect(data.login.role)
         } catch (error) {
           const { message } = error.response.data
           this.setState({
@@ -118,4 +116,4 @@ class LoginForm extends PureComponent {
   }
 }
 
-export default Form.create()(LoginForm)
+export default hoc(LoginForm)

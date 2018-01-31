@@ -30,9 +30,9 @@ const NewOrUpdatedTrainerSubscription = gql`
 `
 
 const withAllTrainers = graphql(AllTrainersQuery, {
-  props: ({ data: { loading, error, allTrainers, subscribeToMore } }) => ({
-    loading,
+  props: ({ data: { error, loading, allTrainers, subscribeToMore } }) => ({
     error,
+    loading,
     allTrainers,
     subscribeToNewOrUpdatedTrainer: params => {
       subscribeToMore({

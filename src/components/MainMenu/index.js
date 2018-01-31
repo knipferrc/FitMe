@@ -120,7 +120,6 @@ class MainMenu extends PureComponent {
   render() {
     const { history, currentUser } = this.props
     const { selectedKeys } = this.state
-
     switch (currentUser.role) {
       case TRAINER:
         return this.renderTrainerMenu(history, selectedKeys)

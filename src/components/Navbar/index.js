@@ -78,7 +78,7 @@ const dropdownMenu = currentUser => (
   </Menu>
 )
 
-const Navbar = ({ currentUser }) => (
+const Navbar = ({ currentUser, history, location }) => (
   <NavbarContainer>
     <Brand>FitMe</Brand>
     <NavbarRight>
@@ -94,7 +94,14 @@ const Navbar = ({ currentUser }) => (
         <Popover
           placement="bottomRight"
           arrowPointAtCenter
-          content={<MainMenu currentUser={currentUser} isMobile />}
+          content={
+            <MainMenu
+              currentUser={currentUser}
+              location={location}
+              history={history}
+              isMobile
+            />
+          }
           trigger="click"
           title="Main Menu"
         >
@@ -106,6 +113,8 @@ const Navbar = ({ currentUser }) => (
 )
 
 Navbar.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
   currentUser: PropTypes.shape({
     _id: PropTypes.string,
     role: PropTypes.string,

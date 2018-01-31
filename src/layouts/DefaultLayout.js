@@ -33,7 +33,7 @@ const ContentContainer = styled.div`
 
 const DefaultLayout = ({ currentUser, history, location, children }) => (
   <DefaultLayoutContainer>
-    <Navbar currentUser={currentUser} />
+    <Navbar currentUser={currentUser} location={location} history={history} />
     <MainMenuContainer>
       <MainMenu
         currentUser={currentUser}

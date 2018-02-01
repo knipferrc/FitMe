@@ -7,10 +7,8 @@ const AllTrainersQuery = gql`
       _id
       role
       email
-      password
       firstName
       lastName
-      whosClient
     }
   }
 `
@@ -21,10 +19,8 @@ const NewOrUpdatedTrainerSubscription = gql`
       _id
       role
       email
-      password
       firstName
       lastName
-      whosClient
     }
   }
 `

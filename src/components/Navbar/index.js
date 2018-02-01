@@ -70,10 +70,10 @@ const dropdownMenu = currentUser => (
       </Link>
     </Menu.Item>
     <Menu.Item key="2">
-      <a href="#!" onClick={handleLogout}>
+      <div onClick={handleLogout}>
         <Icon type="logout" style={{ marginRight: 5 }} />
         Logout
-      </a>
+      </div>
     </Menu.Item>
   </Menu>
 )

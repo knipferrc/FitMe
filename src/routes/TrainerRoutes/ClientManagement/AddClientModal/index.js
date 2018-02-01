@@ -10,12 +10,50 @@ class AddClientModal extends PureComponent {
   static propTypes = {
     addClientModalOpen: PropTypes.bool,
     handleClose: PropTypes.func,
-    form: PropTypes.object
+    form: PropTypes.object,
+    createClient: PropTypes.func,
+    trainerId: PropTypes.string
   }
 
   state = {
     isSubmitting: false,
     errorMessage: null
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const { form, createClient, trainerId, handleClose } = this.props
+
+    this.setState({
+      isSubmitting: true
+    })
+
+    form.validateFieldsAndScroll(async (err, values) => {
+      if (!err) {
+        try {
+          await createClient(
+            values.email,
+            values.password,
+            values.firstName,
+            values.lastName,
+            trainerId
+          )
+          this.setState({
+            isSubmitting: false
+          })
+          handleClose()
+        } catch (error) {
+          this.setState({
+            errorMessage: 'error',
+            isSubmitting: false
+          })
+        }
+      } else {
+        this.setState({
+          isSubmitting: false
+        })
+      }
+    })
   }
 
   render() {
@@ -24,14 +62,16 @@ class AddClientModal extends PureComponent {
       handleClose,
       form: { getFieldDecorator }
     } = this.props
-    const { errorMessage } = this.state
+    const { errorMessage, isSubmitting } = this.state
 
     return (
       <Modal
         title="Create Client"
         visible={addClientModalOpen}
-        onOk={this.handleOk}
+        onOk={this.handleSubmit}
+        okText="Create"
         onCancel={handleClose}
+        confirmLoading={isSubmitting}
       >
         <Form onSubmit={this.handleSubmit} style={{ maxWidth: '100%' }}>
           {errorMessage && (

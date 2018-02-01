@@ -116,6 +116,7 @@ export default class ClientManagement extends PureComponent {
             <AddClientModal
               addClientModalOpen={addClientModalOpen}
               handleClose={this.closeModal}
+              trainerId={currentUser._id}
             />
           </AddClientButton>
         </Container>

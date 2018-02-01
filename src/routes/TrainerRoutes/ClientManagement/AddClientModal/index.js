@@ -8,8 +8,8 @@ const FormItem = Form.Item
 
 class AddClientModal extends PureComponent {
   static propTypes = {
-    addClientModalOpen: PropTypes.bool,
-    handleClose: PropTypes.func,
+    visible: PropTypes.bool,
+    handleCancel: PropTypes.func,
     form: PropTypes.object,
     createClient: PropTypes.func,
     trainerId: PropTypes.string
@@ -22,7 +22,7 @@ class AddClientModal extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form, createClient, trainerId, handleClose } = this.props
+    const { form, createClient, trainerId, handleCancel } = this.props
 
     this.setState({
       isSubmitting: true
@@ -41,7 +41,7 @@ class AddClientModal extends PureComponent {
           this.setState({
             isSubmitting: false
           })
-          handleClose()
+          handleCancel()
         } catch (error) {
           this.setState({
             errorMessage: 'error',
@@ -57,20 +57,16 @@ class AddClientModal extends PureComponent {
   }
 
   render() {
-    const {
-      addClientModalOpen,
-      handleClose,
-      form: { getFieldDecorator }
-    } = this.props
+    const { visible, handleCancel, form: { getFieldDecorator } } = this.props
     const { errorMessage, isSubmitting } = this.state
 
     return (
       <Modal
         title="Create Client"
-        visible={addClientModalOpen}
+        visible={visible}
         onOk={this.handleSubmit}
         okText="Create"
-        onCancel={handleClose}
+        onCancel={handleCancel}
         confirmLoading={isSubmitting}
       >
         <Form onSubmit={this.handleSubmit} style={{ maxWidth: '100%' }}>

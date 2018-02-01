@@ -8,10 +8,13 @@ import { setContext } from 'apollo-link-context'
 
 const httpUri =
   process.env.NODE_ENV === 'production'
-    ? 'TODO - production url'
+    ? 'https://gotfitme.com/graphql'
     : 'http://localhost:5000/graphql'
 
-const wsUri = 'ws://localhost:5000/subscriptions'
+const wsUri =
+  process.env.NODE_ENV === 'production'
+    ? 'ws://gofitme.com/subscriptions'
+    : 'ws://localhost:5000/subscriptions'
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('accessToken')

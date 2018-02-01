@@ -84,7 +84,7 @@ class MainMenu extends PureComponent {
       }
     >
       <Menu.Item key="/client/dashboard" style={{ marginTop: 0 }}>
-        <Icon type="appstore-o" />Client Dashboard
+        <Icon type="dashboard" />Client Dashboard
       </Menu.Item>
       {this.props.isMobile && (
         <Menu.Item key="logout">
@@ -106,7 +106,7 @@ class MainMenu extends PureComponent {
       }
     >
       <Menu.Item key="/admin/dashboard" style={{ marginTop: 0 }}>
-        <Icon type="appstore-o" />Admin Dashboard
+        <Icon type="dashboard" />Admin Dashboard
       </Menu.Item>
       {this.props.isMobile && (
         <Menu.Item key="logout">

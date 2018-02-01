@@ -23,7 +23,7 @@ const AddClientButton = styled.div`
   padding: 10px;
 `
 
-export default class ClientManagement extends PureComponent {
+class ClientManagement extends PureComponent {
   static propTypes = {
     currentUser: PropTypes.shape({
       _id: PropTypes.string,
@@ -38,24 +38,25 @@ export default class ClientManagement extends PureComponent {
   }
 
   state = {
-    addClientModalOpen: false
+    addClientModalVisible: false
   }
 
-  openModal = () => {
+  openAddClientModal = () => {
     this.setState({
-      addClientModalOpen: true
+      addClientModalVisible: true
     })
   }
 
-  closeModal = () => {
+  closeAddClientModal = () => {
     this.setState({
-      addClientModalOpen: false
+      addClientModalVisible: false
     })
   }
 
   render() {
     const { currentUser, history, location } = this.props
-    const { addClientModalOpen } = this.state
+    const { addClientModalVisible } = this.state
+
     return (
       <DefaultLayout
         currentUser={currentUser}
@@ -67,8 +68,8 @@ export default class ClientManagement extends PureComponent {
             <Col span={24}>
               <Search
                 placeholder="input search text"
-                enterButton="Search"
                 size="large"
+                enterButton
               />
             </Col>
           </Row>
@@ -111,11 +112,11 @@ export default class ClientManagement extends PureComponent {
               type="primary"
               shape="circle"
               icon="plus"
-              onClick={this.openModal}
+              onClick={this.openAddClientModal}
             />
             <AddClientModal
-              addClientModalOpen={addClientModalOpen}
-              handleClose={this.closeModal}
+              visible={addClientModalVisible}
+              handleCancel={this.closeAddClientModal}
               trainerId={currentUser._id}
             />
           </AddClientButton>
@@ -124,3 +125,5 @@ export default class ClientManagement extends PureComponent {
     )
   }
 }
+
+export default ClientManagement

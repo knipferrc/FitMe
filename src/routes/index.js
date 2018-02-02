@@ -3,6 +3,7 @@ import AdminsDashboard from './AdminRoutes/Dashboard'
 import ClientRoute from 'components/ClientRoute'
 import ClientsDashboard from './ClientRoutes/Dashboard'
 import Landing from './PublicRoutes/Landing'
+import ForgotPassword from './PublicRoutes/ForgotPassword'
 import PublicRoute from 'components/PublicRoute'
 import React from 'react'
 import { Switch } from 'react-router-dom'
@@ -18,6 +19,7 @@ const Routes = () => (
   <Switch>
     {/* PUBLIC ROUTES */}
     <PublicRoute exact path="/" component={Landing} />
+    <PublicRoute exact path="/forgotPassword" component={ForgotPassword} />
 
     {/* TRAINER ROUTES */}
     <TrainerRoute

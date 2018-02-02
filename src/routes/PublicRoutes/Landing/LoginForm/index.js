@@ -1,5 +1,6 @@
 import { Alert, Button, Form, Icon, Input } from 'antd'
 import React, { PureComponent } from 'react'
+import { Link } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 import UserType from 'utils/constants/UserType'
@@ -53,7 +54,7 @@ class LoginForm extends PureComponent {
 
           this.handleRedirect(data.login.role)
         } catch (error) {
-          const { message } = error.response.data
+          const message = error.graphQLErrors.map(err => err.message)
           this.setState({
             isSubmitting: false,
             errorMessage: message
@@ -95,6 +96,9 @@ class LoginForm extends PureComponent {
               name="password"
             />
           )}
+          <div style={{ float: 'right' }}>
+            <Link to="/forgotPassword">Forgot Password?</Link>
+          </div>
         </FormItem>
         {errorMessage && (
           <FormItem>

@@ -38,7 +38,7 @@ class RegisterForm extends PureComponent {
           localStorage.setItem('accessToken', data.register.accessToken)
           history.push('/trainer/dashboard')
         } catch (error) {
-          const { message } = error.response.data
+          const message = error.graphQLErrors.map(err => err.message)
           this.setState({
             errorMessage: message,
             isSubmitting: false

@@ -1,7 +1,8 @@
 import { Card, Col, Row, Tabs } from 'antd'
+import { Link } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import ForgotPasswordForm from './ForgotPasswordForm'
 import SimpleLayout from 'layouts/SimpleLayout'
 import logo from 'assets/img/logo.png'
@@ -9,38 +10,64 @@ import styled from 'styled-components'
 
 const TabPane = Tabs.TabPane
 
-const LandingContainer = styled.div`
+const ForgotPasswordContainer = styled.div`
   padding-top: 20px;
   padding-left: 5px;
   padding-right: 5px;
 `
 
-const ImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 25px;
-`
+class ForgotPassword extends PureComponent {
+  static propTypes = {
+    history: PropTypes.object
+  }
 
-const Landing = ({ history }) => (
-  <SimpleLayout>
-    <LandingContainer>
-      <Row type="flex" justify="center">
-        <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-          <Card title="Forgot Password?" bordered={false}>
-            <p>
-              Type your email associated with your account in the field below to
-              receive your validation code by email.
-            </p>
-            <ForgotPasswordForm history={history} />
-          </Card>
-        </Col>
-      </Row>
-    </LandingContainer>
-  </SimpleLayout>
-)
+  state = {
+    showConfirmation: false
+  }
 
-Landing.propTypes = {
-  history: PropTypes.object
+  toggleShowConfirmation = () => {
+    this.setState({
+      showConfirmation: !this.state.showConfirmation
+    })
+  }
+
+  render() {
+    const { showConfirmation } = this.state
+
+    return (
+      <SimpleLayout>
+        <ForgotPasswordContainer>
+          <Row type="flex" justify="center">
+            <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+              <Card title="Forgot Password?" bordered={false}>
+                {!showConfirmation && (
+                  <Fragment>
+                    <p>
+                      Type your email associated with your account in the field
+                      below to receive your validation code by email.
+                    </p>
+                    <ForgotPasswordForm
+                      history={history}
+                      toggleShowConfirmation={this.toggleShowConfirmation}
+                    />
+                  </Fragment>
+                )}
+                {showConfirmation && (
+                  <Fragment>
+                    <p>
+                      Please check your email in a few minutes and follow the
+                      instructions provided to reset your password.
+                    </p>
+                    <Link to="/login">Return to Login</Link>
+                  </Fragment>
+                )}
+              </Card>
+            </Col>
+          </Row>
+        </ForgotPasswordContainer>
+      </SimpleLayout>
+    )
+  }
 }
 
-export default Landing
+export default ForgotPassword

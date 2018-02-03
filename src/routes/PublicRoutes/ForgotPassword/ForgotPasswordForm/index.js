@@ -10,26 +10,46 @@ class ForgotPasswordForm extends PureComponent {
   static propTypes = {
     form: PropTypes.object,
     history: PropTypes.object,
-    sendResetPasswordEmail: PropTypes.func
+    sendResetPasswordEmail: PropTypes.func,
+    toggleShowConfirmation: PropTypes.func
   }
 
   state = {
     isSubmitting: false,
-    errorMessage: null
+    errorMessage: null,
+    showConfirmation: false
+  }
+
+  toggleSubmitting = (errorMessage = null) => {
+    this.setState({
+      isSubmitting: !this.state.isSubmitting,
+      errorMessage
+    })
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form } = this.props
+    const {
+      form,
+      sendResetPasswordEmail,
+      toggleSubmitting,
+      toggleShowConfirmation
+    } = this.props
 
-    this.setState({
-      isSubmitting: true
-    })
+    this.toggleSubmitting()
 
     form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         try {
-        } catch (error) {}
+          const { data } = await sendResetPasswordEmail(values.email)
+          toggleShowConfirmation()
+        } catch (error) {
+          console.log('ERROR: ', error)
+          const message = error.graphQLErrors[0].message
+          this.toggleSubmitting(message)
+        }
+      } else {
+        this.toggleSubmitting()
       }
     })
   }

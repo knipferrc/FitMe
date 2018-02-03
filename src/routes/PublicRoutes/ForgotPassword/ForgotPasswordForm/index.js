@@ -44,7 +44,6 @@ class ForgotPasswordForm extends PureComponent {
           const { data } = await sendResetPasswordEmail(values.email)
           toggleShowConfirmation()
         } catch (error) {
-          console.log('ERROR: ', error)
           const message = error.graphQLErrors[0].message
           this.toggleSubmitting(message)
         }

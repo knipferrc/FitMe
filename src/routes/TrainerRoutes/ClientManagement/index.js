@@ -1,12 +1,13 @@
-import { Avatar, Button, Card, Col, Icon, Input, Pagination, Row } from 'antd'
+import { Button, Col, Input, Pagination, Row } from 'antd'
 import React, { PureComponent } from 'react'
 
 import AddClientModal from './AddClientModal'
 import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import ClientCard from './ClientCard'
+import hoc from './hoc'
 
-const { Meta } = Card
 const Search = Input.Search
 
 const Container = styled.div`
@@ -34,7 +35,16 @@ class ClientManagement extends PureComponent {
     }),
     history: PropTypes.object,
     location: PropTypes.object,
-    children: PropTypes.node
+    children: PropTypes.node,
+    error: PropTypes.object,
+    loading: PropTypes.bool,
+    trainersClients: PropTypes.arrayOf(
+      PropTypes.shape({
+        email: PropTypes.string,
+        firstName: PropTypes.string,
+        lastName: PropTypes.string
+      })
+    )
   }
 
   state = {
@@ -54,8 +64,23 @@ class ClientManagement extends PureComponent {
   }
 
   render() {
-    const { currentUser, history, location } = this.props
+    const {
+      currentUser,
+      history,
+      location,
+      error,
+      loading,
+      trainersClients
+    } = this.props
     const { addClientModalVisible } = this.state
+
+    if (error) {
+      return <div>error</div>
+    }
+
+    if (loading) {
+      return <div>Loading...</div>
+    }
 
     return (
       <DefaultLayout
@@ -74,7 +99,7 @@ class ClientManagement extends PureComponent {
             </Col>
           </Row>
           <Row gutter={16}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((data, index) => (
+            {trainersClients.map((client, index) => (
               <Col
                 style={{ padding: 10 }}
                 xs={24}
@@ -85,21 +110,11 @@ class ClientManagement extends PureComponent {
                 xxl={6}
                 key={index}
               >
-                <Card
-                  style={{ width: '100%' }}
-                  actions={[
-                    <Icon key="settings" type="setting" />,
-                    <Icon key="more" type="ellipsis" />
-                  ]}
-                >
-                  <Meta
-                    avatar={
-                      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                    }
-                    title="Card title"
-                    description="This is the description"
-                  />
-                </Card>
+                <ClientCard
+                  email={client.email}
+                  firstName={client.firstName}
+                  lastName={client.lastName}
+                />
               </Col>
             ))}
           </Row>
@@ -126,4 +141,4 @@ class ClientManagement extends PureComponent {
   }
 }
 
-export default ClientManagement
+export default hoc(ClientManagement)

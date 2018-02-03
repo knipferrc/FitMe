@@ -9,14 +9,14 @@ const CreateClientMutation = gql`
     $password: String!
     $firstName: String!
     $lastName: String!
-    $whosClient: ID!
+    $trainerId: ID!
   ) {
     createClient(
       email: $email
       password: $password
       firstName: $firstName
       lastName: $lastName
-      whosClient: $whosClient
+      trainerId: $trainerId
     ) {
       firstName
       lastName
@@ -26,9 +26,9 @@ const CreateClientMutation = gql`
 
 const withCreateClient = graphql(CreateClientMutation, {
   props: ({ mutate }) => ({
-    createClient: (email, password, firstName, lastName, whosClient) =>
+    createClient: (email, password, firstName, lastName, trainerId) =>
       mutate({
-        variables: { email, password, firstName, lastName, whosClient }
+        variables: { email, password, firstName, lastName, trainerId }
       })
   })
 })

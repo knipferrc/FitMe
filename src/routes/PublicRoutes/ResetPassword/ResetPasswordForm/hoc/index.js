@@ -1,18 +1,9 @@
 import { compose, graphql } from 'react-apollo'
 
 import { Form } from 'antd'
-import gql from 'graphql-tag'
+import ResetPasswordMutation from './resetPassword.graphql'
 
-const ResetPassword = gql`
-  mutation resetPassword($password: String!, $token: String!) {
-    resetPassword(password: $password, token: $token) {
-      accessToken
-      role
-    }
-  }
-`
-
-const withResetPassword = graphql(ResetPassword, {
+const withResetPassword = graphql(ResetPasswordMutation, {
   props: ({ mutate }) => ({
     resetPassword: (password, token) =>
       mutate({ variables: { password, token } })

@@ -1,15 +1,5 @@
-import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-
-const TrainersClientsQuery = gql`
-  query TrainersClients($trainerId: ID!) {
-    trainersClients(trainerId: $trainerId) {
-      email
-      firstName
-      lastName
-    }
-  }
-`
+import TrainersClientsQuery from './trainersClients.graphql'
 
 const withTrainersClients = graphql(TrainersClientsQuery, {
   options: props => ({

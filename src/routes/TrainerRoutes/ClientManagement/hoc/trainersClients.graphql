@@ -1,0 +1,7 @@
+query TrainersClients($trainerId: ID!) {
+  trainersClients(trainerId: $trainerId) {
+    email
+    firstName
+    lastName
+  }
+}

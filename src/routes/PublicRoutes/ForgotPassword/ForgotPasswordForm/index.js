@@ -29,12 +29,7 @@ class ForgotPasswordForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault()
-    const {
-      form,
-      sendResetPasswordEmail,
-      toggleSubmitting,
-      toggleShowConfirmation
-    } = this.props
+    const { form, sendResetPasswordEmail, toggleShowConfirmation } = this.props
 
     this.toggleSubmitting()
 

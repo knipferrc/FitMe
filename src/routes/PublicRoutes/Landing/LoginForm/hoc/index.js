@@ -1,16 +1,7 @@
 import { compose, graphql } from 'react-apollo'
 
 import { Form } from 'antd'
-import gql from 'graphql-tag'
-
-const LoginMutation = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      accessToken
-      role
-    }
-  }
-`
+import LoginMutation from './login.graphql'
 
 const withLogin = graphql(LoginMutation, {
   props: ({ mutate }) => ({

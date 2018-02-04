@@ -1,14 +1,11 @@
-import { Card, Col, Row, Tabs } from 'antd'
+import { Card, Col, Row } from 'antd'
 import { Link } from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 import React, { PureComponent, Fragment } from 'react'
 import ForgotPasswordForm from './ForgotPasswordForm'
 import SimpleLayout from 'layouts/SimpleLayout'
-import logo from 'assets/img/logo.png'
 import styled from 'styled-components'
-
-const TabPane = Tabs.TabPane
 
 const ForgotPasswordContainer = styled.div`
   padding-top: 20px;

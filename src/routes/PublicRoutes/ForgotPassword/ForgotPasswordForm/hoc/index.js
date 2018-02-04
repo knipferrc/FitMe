@@ -1,15 +1,9 @@
 import { compose, graphql } from 'react-apollo'
 
 import { Form } from 'antd'
-import gql from 'graphql-tag'
+import SendResetPasswordEmailMutation from './sendResetPasswordEmail.graphql'
 
-const SendResetPasswordEmail = gql`
-  mutation sendResetPasswordEmail($email: String!) {
-    sendResetPasswordEmail(email: $email)
-  }
-`
-
-const withSendResetPasswordEmail = graphql(SendResetPasswordEmail, {
+const withSendResetPasswordEmail = graphql(SendResetPasswordEmailMutation, {
   props: ({ mutate }) => ({
     sendResetPasswordEmail: email => mutate({ variables: { email } })
   })

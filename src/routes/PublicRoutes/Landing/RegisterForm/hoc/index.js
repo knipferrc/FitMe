@@ -1,26 +1,7 @@
 import { compose, graphql } from 'react-apollo'
 
 import { Form } from 'antd'
-import gql from 'graphql-tag'
-
-const RegisterMutation = gql`
-  mutation register(
-    $email: String!
-    $password: String!
-    $firstName: String!
-    $lastName: String!
-  ) {
-    register(
-      email: $email
-      password: $password
-      firstName: $firstName
-      lastName: $lastName
-    ) {
-      accessToken
-      role
-    }
-  }
-`
+import RegisterMutation from './register.graphql'
 
 const withRegister = graphql(RegisterMutation, {
   props: ({ mutate }) => ({

@@ -1,29 +1,8 @@
-import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
-const AllTrainersQuery = gql`
-  query AllTrainers {
-    allTrainers {
-      _id
-      role
-      email
-      firstName
-      lastName
-    }
-  }
-`
-
-const NewOrUpdatedTrainerSubscription = gql`
-  subscription NewOrUpdatedTrainer {
-    newOrUpdatedTrainer {
-      _id
-      role
-      email
-      firstName
-      lastName
-    }
-  }
-`
+import AllTrainersQuery from './allTrainers.graphql'
+import NewOrUpdatedTrainerSubscription from './newOrUpdatedTrainer.graphql'
+import TrainerRemovedSubscription from './trainerRemoved.graphql'
 
 const withAllTrainers = graphql(AllTrainersQuery, {
   props: ({ data: { error, loading, allTrainers, subscribeToMore } }) => ({
@@ -46,6 +25,27 @@ const withAllTrainers = graphql(AllTrainersQuery, {
               newOrUpdatedTrainer,
               ...prev.allTrainers.filter(
                 trainer => trainer._id !== newOrUpdatedTrainer._id
+              )
+            ]
+          }
+        }
+      })
+    },
+    subscribeToTrainerRemoved: params => {
+      subscribeToMore({
+        document: TrainerRemovedSubscription,
+        updateQuery: (prev, { subscriptionData }) => {
+          if (!subscriptionData.data) {
+            return prev
+          }
+
+          const deletedTrainer = subscriptionData.data.trainerRemoved
+
+          return {
+            ...prev,
+            allTrainers: [
+              ...prev.allTrainers.filter(
+                trainer => trainer._id !== deletedTrainer._id
               )
             ]
           }

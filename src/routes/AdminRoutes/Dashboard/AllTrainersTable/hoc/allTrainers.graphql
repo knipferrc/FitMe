@@ -1,0 +1,9 @@
+query allTrainers {
+  allTrainers {
+    _id
+    role
+    email
+    firstName
+    lastName
+  }
+}

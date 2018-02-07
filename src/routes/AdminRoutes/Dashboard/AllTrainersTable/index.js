@@ -45,7 +45,7 @@ class AllTrainers extends PureComponent {
             key="action"
             render={(text, record) => (
               <Fragment>
-                <a onClick={() => clickDelete(record._id)}>Delete</a>
+                <a onClick={() => clickDelete(record)}>Delete</a>
               </Fragment>
             )}
           />

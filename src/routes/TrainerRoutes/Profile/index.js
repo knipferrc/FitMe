@@ -4,6 +4,7 @@ import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
 import EditProfileForm from './EditProfileForm'
+import EditProfileCard from './EditProfileCard'
 
 const Profile = ({ currentUser, history, location }) => (
   <DefaultLayout
@@ -14,9 +15,9 @@ const Profile = ({ currentUser, history, location }) => (
     <Row>
       <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
         <Col span={24}>
-          <Card title="Edit Profile">
+          <EditProfileCard>
             <EditProfileForm currentUser={currentUser} />
-          </Card>
+          </EditProfileCard>
         </Col>
       </Col>
     </Row>

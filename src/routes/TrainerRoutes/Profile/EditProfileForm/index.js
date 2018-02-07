@@ -71,10 +71,7 @@ class EditProfileForm extends PureComponent {
         layout="inline"
       >
         <FormItem label="E-mail" {...formItemLayout}>
-          {getFieldDecorator('email', {
-            initialValue: email,
-            rules: [{ required: true, message: 'Email required' }]
-          })(<Input placeholder="Email" name="email" />)}
+          <Input defaultValue={email} disabled />
         </FormItem>
         <FormItem label="First Name" {...formItemLayout}>
           {getFieldDecorator('firstName', {

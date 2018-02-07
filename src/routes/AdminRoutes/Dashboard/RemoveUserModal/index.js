@@ -13,9 +13,11 @@ class RemoveUserModal extends PureComponent {
   }
 
   handleSubmit = async () => {
-    const { userId, removeTrainer } = this.props
+    const { userId, removeTrainer, handleCancel } = this.props
 
     await removeTrainer(userId)
+
+    handleCancel()
   }
 
   render() {

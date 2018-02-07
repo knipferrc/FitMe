@@ -1,6 +1,9 @@
+import { Row, Col, Card } from 'antd'
+
 import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
+import EditProfileForm from './EditProfileForm'
 
 const Profile = ({ currentUser, history, location }) => (
   <DefaultLayout
@@ -8,7 +11,15 @@ const Profile = ({ currentUser, history, location }) => (
     history={history}
     location={location}
   >
-    <h1>My Profile</h1>
+    <Row>
+      <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+        <Col span={24}>
+          <Card title="Edit Profile">
+            <EditProfileForm currentUser={currentUser} />
+          </Card>
+        </Col>
+      </Col>
+    </Row>
   </DefaultLayout>
 )
 

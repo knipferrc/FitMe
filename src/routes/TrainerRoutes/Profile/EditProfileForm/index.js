@@ -1,4 +1,4 @@
-import { Button, Form, Input, Select } from 'antd'
+import { Button, Form, Input, Icon, Select, Avatar, Upload } from 'antd'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
@@ -54,6 +54,10 @@ class EditProfileForm extends PureComponent {
     form.validateFieldsAndScroll(async (err, values) => {})
   }
 
+  uploadFile = file => {
+    console.log({ file })
+  }
+
   render() {
     const { form: { getFieldDecorator }, currentUser } = this.props
     const { isSubmitting } = this.state
@@ -70,6 +74,26 @@ class EditProfileForm extends PureComponent {
         }}
         layout="inline"
       >
+        <FormItem
+          label={<Avatar size="large" icon="user" />}
+          colon={false}
+          {...formItemLayout}
+        >
+          {getFieldDecorator('upload', {
+            valuePropName: 'fileList',
+            getValueFromEvent: this.normFile
+          })(
+            <Upload
+              name="profileImage"
+              listType="picture"
+              customRequest={() => this.uploadFile()}
+            >
+              <Button>
+                <Icon type="upload" /> Click to upload
+              </Button>
+            </Upload>
+          )}
+        </FormItem>
         <FormItem label="E-mail" {...formItemLayout}>
           <Input defaultValue={email} disabled />
         </FormItem>
@@ -85,7 +109,7 @@ class EditProfileForm extends PureComponent {
             rules: [{ required: true, message: 'Last name required' }]
           })(<Input placeholder="Last Name" name="lastName" />)}
         </FormItem>
-        <FormItem {...formItemLayout}>
+        <FormItem style={{ display: 'flex', justifyContent: 'center' }}>
           <Button loading={isSubmitting} type="primary" htmlType="submit">
             Save
           </Button>

@@ -15,7 +15,10 @@ const Profile = ({ currentUser, history, location }) => (
     <Row>
       <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
         <Col span={24}>
-          <EditProfileCard>
+          <EditProfileCard
+            firstName={currentUser.firstName}
+            lastName={currentUser.lastName}
+          >
             <EditProfileForm currentUser={currentUser} />
           </EditProfileCard>
         </Col>

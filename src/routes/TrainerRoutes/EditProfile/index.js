@@ -1,4 +1,4 @@
-import { Row, Col, Card } from 'antd'
+import { Card } from 'antd'
 
 import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
@@ -12,18 +12,12 @@ const Profile = ({ currentUser, history, location }) => (
     history={history}
     location={location}
   >
-    <Row>
-      <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
-        <Col span={24}>
-          <EditProfileCard
-            firstName={currentUser.firstName}
-            lastName={currentUser.lastName}
-          >
-            <EditProfileForm currentUser={currentUser} />
-          </EditProfileCard>
-        </Col>
-      </Col>
-    </Row>
+    <EditProfileCard
+      firstName={currentUser.firstName}
+      lastName={currentUser.lastName}
+    >
+      <EditProfileForm currentUser={currentUser} />
+    </EditProfileCard>
   </DefaultLayout>
 )
 

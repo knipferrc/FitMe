@@ -52,7 +52,7 @@ const handleLogout = async () => {
 const getProfileLink = role => {
   switch (role) {
     case 'TRAINER':
-      return '/trainer/profile'
+      return '/trainer/editProfile'
     case 'ADMIN':
       return '/admin/profile'
     case 'CLIENT':

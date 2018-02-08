@@ -13,7 +13,7 @@ import TrainersAppointments from './TrainerRoutes/Appointments'
 import TrainersClientManagement from './TrainerRoutes/ClientManagement'
 import TrainersDashboard from './TrainerRoutes/Dashboard'
 import TrainersExerciseBuilder from './TrainerRoutes/ExerciseBuilder'
-import TrainersProfile from './TrainerRoutes/Profile'
+import TrainersEditProfile from './TrainerRoutes/EditProfile'
 import TrainersWorkoutBuilder from './TrainerRoutes/WorkoutBuilder'
 
 const Routes = () => (
@@ -49,7 +49,11 @@ const Routes = () => (
       path="/trainer/appointments"
       component={TrainersAppointments}
     />
-    <TrainerRoute path="/trainer/profile" exact component={TrainersProfile} />
+    <TrainerRoute
+      path="/trainer/editProfile"
+      exact
+      component={TrainersEditProfile}
+    />
 
     {/* CLIENT ROUTES */}
     <ClientRoute exact path="/client/dashboard" component={ClientsDashboard} />

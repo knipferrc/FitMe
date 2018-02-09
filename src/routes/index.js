@@ -15,6 +15,7 @@ import TrainersDashboard from './TrainerRoutes/Dashboard'
 import TrainersExerciseBuilder from './TrainerRoutes/ExerciseBuilder'
 import TrainersEditProfile from './TrainerRoutes/EditProfile'
 import TrainersWorkoutBuilder from './TrainerRoutes/WorkoutBuilder'
+import SharedRoute from 'components/SharedRoute'
 import ChangePassword from './SharedRoutes/ChangePassword'
 
 const Routes = () => (
@@ -24,7 +25,7 @@ const Routes = () => (
     <PublicRoute exact path="/forgotPassword" component={ForgotPassword} />
     <PublicRoute exact path="/resetPassword" component={ResetPassword} />
 
-    <TrainerRoute exact path="/changePassword" component={ChangePassword} />
+    <SharedRoute exact path="/changePassword" component={ChangePassword} />
 
     {/* TRAINER ROUTES */}
     <TrainerRoute

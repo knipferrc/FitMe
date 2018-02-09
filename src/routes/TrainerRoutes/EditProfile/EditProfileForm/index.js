@@ -1,4 +1,5 @@
 import { Button, Form, Input, Icon, Select, Avatar, Upload } from 'antd'
+import { Link } from 'react-router-dom'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
@@ -109,6 +110,7 @@ class EditProfileForm extends PureComponent {
             rules: [{ required: true, message: 'Last name required' }]
           })(<Input placeholder="Last Name" name="lastName" />)}
         </FormItem>
+        <Link to="/changePassword">Change Password</Link>
         <FormItem style={{ display: 'flex', justifyContent: 'center' }}>
           <Button loading={isSubmitting} type="primary" htmlType="submit">
             Save

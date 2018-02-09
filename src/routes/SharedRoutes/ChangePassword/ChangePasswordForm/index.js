@@ -69,10 +69,12 @@ class ChangePasswordForm extends PureComponent {
     form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         try {
-          const { data } = await changePassword(values.password)
+          const { data } = await changePassword(
+            values.currentPassword,
+            values.newPassword
+          )
           this.handleRedirect(data.changePassword.role)
         } catch (error) {
-          console.log('ERROR: ', error)
           const errorMessage = error.graphQLErrors[0].message
           this.toggleSubmitting(errorMessage)
         }
@@ -84,7 +86,7 @@ class ChangePasswordForm extends PureComponent {
 
   checkPassword = (rule, value, cb) => {
     const { form } = this.props
-    if (value && value !== form.getFieldValue('password')) {
+    if (value && value !== form.getFieldValue('newPassword')) {
       cb('Your passwords must match')
     } else {
       cb()
@@ -98,19 +100,31 @@ class ChangePasswordForm extends PureComponent {
     return (
       <Form onSubmit={this.handleSubmit} style={{ maxWidth: '100%' }}>
         <FormItem {...formItemLayout}>
-          {getFieldDecorator('password', {
+          {getFieldDecorator('currentPassword', {
+            rules: [{ required: true }]
+          })(
+            <Input
+              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              type="password"
+              placeholder="Current Password"
+              name="currentPassword"
+            />
+          )}
+        </FormItem>
+        <FormItem {...formItemLayout}>
+          {getFieldDecorator('newPassword', {
             rules: [{ required: true, message: 'Please input your password' }]
           })(
             <Input
               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
               type="password"
-              placeholder="Password"
-              name="password"
+              placeholder="New Password"
+              name="newPassword"
             />
           )}
         </FormItem>
         <FormItem {...formItemLayout}>
-          {getFieldDecorator('confirmPassword', {
+          {getFieldDecorator('confirmNewPassword', {
             rules: [
               { required: true, message: 'Please confirm your password' },
               { validator: this.checkPassword }
@@ -119,8 +133,8 @@ class ChangePasswordForm extends PureComponent {
             <Input
               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
               type="password"
-              placeholder="Confirm Password"
-              name="confirmPassword"
+              placeholder="Confirm New Password"
+              name="confirmNewPassword"
             />
           )}
         </FormItem>

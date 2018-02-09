@@ -5,7 +5,8 @@ import ChangePasswordMutation from './changePassword.graphql'
 
 const withChangePassword = graphql(ChangePasswordMutation, {
   props: ({ mutate }) => ({
-    changePassword: password => mutate({ variables: { password } })
+    changePassword: (currentPassword, newPassword) =>
+      mutate({ variables: { currentPassword, newPassword } })
   })
 })
 

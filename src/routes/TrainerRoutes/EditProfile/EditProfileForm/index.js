@@ -1,14 +1,21 @@
-import { Button, Form, Input, Icon, Select, Avatar, Upload } from 'antd'
+import { Alert, Button, Form, Input, Icon, Select, Avatar, Upload } from 'antd'
 import { Link } from 'react-router-dom'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
+import hoc from './hoc'
 import PropTypes from 'prop-types'
 
 const Option = Select.Option
 
 const FormItem = styled(({ ...rest }) => <Form.Item {...rest} />)`
   margin-bottom: 15px !important;
+`
+
+const AlertContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 `
 
 const formItemLayout = {
@@ -41,18 +48,46 @@ class EditProfileForm extends PureComponent {
   }
 
   state = {
-    isSubmitting: false
+    isSubmitting: false,
+    errorMessage: null,
+    showSuccessMessage: false
+  }
+
+  toggleSubmitting = (errorMessage = null) => {
+    this.setState({
+      isSubmitting: !this.state.isSubmitting,
+      errorMessage
+    })
+  }
+
+  closeSuccessMessage = () => {
+    this.setState({
+      showSuccessMessage: false
+    })
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    const { form } = this.props
+    const { form, updateTrainerProfile } = this.props
 
-    this.setState({
-      isSubmitting: true
+    this.toggleSubmitting()
+
+    form.validateFieldsAndScroll(async (err, values) => {
+      if (!err) {
+        try {
+          await updateTrainerProfile(values.firstName, values.lastName)
+          this.setState({
+            isSubmitting: !this.state.isSubmitting,
+            showSuccessMessage: true
+          })
+        } catch (error) {
+          const errorMessage = error.graphQLErrors[0].message
+          this.toggleSubmitting(errorMessage)
+        }
+      } else {
+        this.toggleSubmitting()
+      }
     })
-
-    form.validateFieldsAndScroll(async (err, values) => {})
   }
 
   uploadFile = file => {
@@ -61,7 +96,7 @@ class EditProfileForm extends PureComponent {
 
   render() {
     const { form: { getFieldDecorator }, currentUser } = this.props
-    const { isSubmitting } = this.state
+    const { isSubmitting, errorMessage, showSuccessMessage } = this.state
 
     const { email, firstName, lastName } = currentUser
 
@@ -111,7 +146,30 @@ class EditProfileForm extends PureComponent {
           })(<Input placeholder="Last Name" name="lastName" />)}
         </FormItem>
         <Link to="/changePassword">Change Password</Link>
-        <FormItem style={{ display: 'flex', justifyContent: 'center' }}>
+        {showSuccessMessage && (
+          <AlertContainer>
+            <Alert
+              message="Updated Successfully"
+              type="success"
+              closable
+              onClose={this.closeSuccessMessage}
+              style={{ width: '30%' }}
+            />
+          </AlertContainer>
+        )}
+        {errorMessage && (
+          <AlertContainer>
+            <Alert
+              message={errorMessage}
+              type="error"
+              showIcon
+              style={{ width: '30%' }}
+            />
+          </AlertContainer>
+        )}
+        <FormItem
+          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+        >
           <Button loading={isSubmitting} type="primary" htmlType="submit">
             Save
           </Button>
@@ -121,4 +179,4 @@ class EditProfileForm extends PureComponent {
   }
 }
 
-export default Form.create()(EditProfileForm)
+export default hoc(EditProfileForm)

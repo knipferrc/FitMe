@@ -1,10 +1,11 @@
-import AllTrainersTable from './AllTrainersTable'
 import { Col } from 'antd'
 import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
+import UserCard from './UserCard'
+import hoc from './hoc'
 import RemoveUserModal from './RemoveUserModal'
 
 const Container = styled.div`
@@ -23,6 +24,11 @@ class Dashboard extends PureComponent {
     history: PropTypes.object,
     location: PropTypes.object,
     children: PropTypes.node
+  }
+
+  componentDidMount() {
+    this.props.subscribeToNewOrUpdatedTrainer()
+    this.props.subscribeToTrainerRemoved()
   }
 
   state = {
@@ -44,8 +50,14 @@ class Dashboard extends PureComponent {
   }
 
   render() {
-    const { currentUser, history, location } = this.props
+    console.log({ props: this.props })
+
+    const { currentUser, history, location, allTrainers, loading } = this.props
     const { removeUserModalVisible, selectedUserId } = this.state
+
+    if (loading) {
+      return <h3>Loading...</h3>
+    }
 
     return (
       <DefaultLayout
@@ -56,7 +68,7 @@ class Dashboard extends PureComponent {
         <Container>
           <Col span={24}>
             <h1>Admin Dashboard</h1>
-            <AllTrainersTable clickDelete={this.openRemoveUserModal} />
+            {allTrainers.map(trainer => <UserCard />)}
             <RemoveUserModal
               visible={removeUserModalVisible}
               handleCancel={this.closeRemoveUserModal}
@@ -69,4 +81,4 @@ class Dashboard extends PureComponent {
   }
 }
 
-export default Dashboard
+export default hoc(Dashboard)

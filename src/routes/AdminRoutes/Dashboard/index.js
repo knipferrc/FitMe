@@ -1,4 +1,4 @@
-import { Col } from 'antd'
+import { Col, Row } from 'antd'
 import DefaultLayout from 'layouts/DefaultLayout'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
@@ -12,6 +12,10 @@ const Container = styled.div`
   padding: 5px;
 `
 
+const CardContainer = styled.div`
+  display: flex;
+`
+
 class Dashboard extends PureComponent {
   static propTypes = {
     currentUser: PropTypes.shape({
@@ -23,7 +27,9 @@ class Dashboard extends PureComponent {
     }),
     history: PropTypes.object,
     location: PropTypes.object,
-    children: PropTypes.node
+    children: PropTypes.node,
+    subscribeToNewOrUpdatedTrainer: PropTypes.func,
+    subscribeToTrainerRemoved: PropTypes.func
   }
 
   componentDidMount() {
@@ -50,8 +56,6 @@ class Dashboard extends PureComponent {
   }
 
   render() {
-    console.log({ props: this.props })
-
     const { currentUser, history, location, allTrainers, loading } = this.props
     const { removeUserModalVisible, selectedUserId } = this.state
 
@@ -68,7 +72,15 @@ class Dashboard extends PureComponent {
         <Container>
           <Col span={24}>
             <h1>Admin Dashboard</h1>
-            {allTrainers.map(trainer => <UserCard />)}
+            <CardContainer>
+              {allTrainers.map((trainer, index) => (
+                <UserCard
+                  {...trainer}
+                  openRemoveUserModal={this.openRemoveUserModal}
+                  key={trainer._id}
+                />
+              ))}
+            </CardContainer>
             <RemoveUserModal
               visible={removeUserModalVisible}
               handleCancel={this.closeRemoveUserModal}

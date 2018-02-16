@@ -73,7 +73,7 @@ class Dashboard extends PureComponent {
           <Col span={24}>
             <h1>Admin Dashboard</h1>
             <CardContainer>
-              {allTrainers.map((trainer, index) => (
+              {allTrainers.map(trainer => (
                 <UserCard
                   {...trainer}
                   openRemoveUserModal={this.openRemoveUserModal}

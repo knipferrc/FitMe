@@ -9,6 +9,8 @@ class RemoveUserModal extends PureComponent {
     visible: PropTypes.bool,
     handleCancel: PropTypes.func,
     userId: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
     removeTrainer: PropTypes.func
   }
 
@@ -21,7 +23,7 @@ class RemoveUserModal extends PureComponent {
   }
 
   render() {
-    const { visible, handleCancel, userId } = this.props
+    const { visible, handleCancel, firstName, lastName } = this.props
 
     return (
       <Modal
@@ -31,7 +33,12 @@ class RemoveUserModal extends PureComponent {
         okText="Remove User"
         onCancel={handleCancel}
       >
-        <p>Are you sure you want to remove this user? {userId}</p>
+        <p>
+          Are you sure you want to remove{' '}
+          <b>
+            {firstName} {lastName}
+          </b>?
+        </p>
       </Modal>
     )
   }

@@ -18,7 +18,10 @@ const UserCard = ({ _id, firstName, lastName, email, openRemoveUserModal }) => {
         <Icon type="setting" />,
         <Icon type="edit" />,
         <Tooltip title="Remove User" placement="bottom">
-          <Icon type="delete" onClick={() => openRemoveUserModal(_id)} />
+          <Icon
+            type="delete"
+            onClick={() => openRemoveUserModal(_id, firstName, lastName)}
+          />
         </Tooltip>
       ]}
     >

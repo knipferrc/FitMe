@@ -39,13 +39,17 @@ class Dashboard extends PureComponent {
 
   state = {
     removeUserModalVisible: false,
-    selectedUserId: ''
+    selectedUserId: '',
+    selectedUserFirstName: '',
+    selectedUserLastName: ''
   }
 
-  openRemoveUserModal = userId => {
+  openRemoveUserModal = (userId, firstName, lastName) => {
     this.setState({
       removeUserModalVisible: true,
-      selectedUserId: userId
+      selectedUserId: userId,
+      selectedUserFirstName: firstName,
+      selectedUserLastName: lastName
     })
   }
 
@@ -57,7 +61,12 @@ class Dashboard extends PureComponent {
 
   render() {
     const { currentUser, history, location, allTrainers, loading } = this.props
-    const { removeUserModalVisible, selectedUserId } = this.state
+    const {
+      removeUserModalVisible,
+      selectedUserId,
+      selectedUserFirstName,
+      selectedUserLastName
+    } = this.state
 
     if (loading) {
       return <h3>Loading...</h3>
@@ -85,6 +94,8 @@ class Dashboard extends PureComponent {
               visible={removeUserModalVisible}
               handleCancel={this.closeRemoveUserModal}
               userId={selectedUserId}
+              firstName={selectedUserFirstName}
+              lastName={selectedUserLastName}
             />
           </Col>
         </Container>

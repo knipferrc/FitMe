@@ -54,7 +54,7 @@ const getProfileLink = role => {
     case 'TRAINER':
       return '/trainer/editProfile'
     case 'ADMIN':
-      return '/admin/profile'
+      return '/admin/editProfile'
     case 'CLIENT':
       return '/client/profile'
     default:

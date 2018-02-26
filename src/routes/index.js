@@ -13,7 +13,7 @@ import TrainersAppointments from './TrainerRoutes/Appointments'
 import TrainersClientManagement from './TrainerRoutes/ClientManagement'
 import TrainersDashboard from './TrainerRoutes/Dashboard'
 import TrainersExerciseBuilder from './TrainerRoutes/ExerciseBuilder'
-import TrainersEditProfile from './TrainerRoutes/EditProfile'
+import EditProfile from './SharedRoutes/EditProfile'
 import TrainersWorkoutBuilder from './TrainerRoutes/WorkoutBuilder'
 import SharedRoute from 'components/SharedRoute'
 import ChangePassword from './SharedRoutes/ChangePassword'
@@ -26,6 +26,8 @@ const Routes = () => (
     <PublicRoute exact path="/resetPassword" component={ResetPassword} />
 
     <SharedRoute exact path="/changePassword" component={ChangePassword} />
+    <SharedRoute exact path="/admin/editProfile" component={EditProfile} />
+    <SharedRoute exact path="/trainer/editProfile" component={EditProfile} />
 
     {/* TRAINER ROUTES */}
     <TrainerRoute
@@ -52,11 +54,6 @@ const Routes = () => (
       exact
       path="/trainer/appointments"
       component={TrainersAppointments}
-    />
-    <TrainerRoute
-      path="/trainer/editProfile"
-      exact
-      component={TrainersEditProfile}
     />
 
     {/* CLIENT ROUTES */}

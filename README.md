@@ -1,2 +1,3 @@
 # FitMe
-Fitness management made easy
+
+- Fitness management for trainers

@@ -1,6 +1,0 @@
-mutation updateTrainerProfile($firstName: String!, $lastName: String!) {
-  updateTrainerProfile(firstName: $firstName, lastName: $lastName) {
-    firstName
-    lastName
-  }
-}

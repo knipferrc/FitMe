@@ -1,16 +1,9 @@
 {
   "name": "fitme",
-  "version": "0.0.3",
-  "description": "FitMe - Fitness management made easy",
+  "version": "0.0.1",
+  "description": "Fitness management for personal trainers",
+  "license": "MIT",
   "author": "Tyler Knipfer <knipferrc@gmail.com>",
-  "license": "GPL-3.0",
-  "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --open --config config/webpack.dev.js",
-    "build": "NODE_ENV=production webpack --config config/webpack.prod.js",
-    "lint": "eslint .",
-    "precommit": "lint-staged",
-    "format": "prettier --write \"src/**/*.js\""
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/knipferrc/fitme.git"
@@ -19,55 +12,39 @@
     "url": "https://github.com/knipferrc/fitme/issues"
   },
   "keywords": [
+    "react",
+    "webpack",
     "fitness",
-    "graphql",
-    "fitme",
-    "react"
+    "fitme"
   ],
-  "dependencies": {
-    "antd": "^3.2.1",
-    "apollo-cache-inmemory": "^1.1.9",
-    "apollo-client": "^2.2.5",
-    "apollo-link-context": "^1.0.6",
-    "apollo-link-http": "^1.5.0",
-    "apollo-link-ws": "^1.0.6",
-    "graphql": "^0.13.1",
-    "graphql-tag": "^2.8.0",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-apollo": "^2.0.4",
-    "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2",
-    "styled-components": "^3.1.6",
-    "subscriptions-transport-ws": "^0.9.6"
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-serve --config ./webpack.config.js --port 3000 --open",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "format": "prettier --write '**/*.{tsx,ts,css,md,js}'"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-import": "^1.6.5",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
-    "babel-preset-react-app": "^3.1.1",
-    "clean-webpack-plugin": "^0.1.18",
-    "css-loader": "^0.28.10",
-    "eslint": "^4.18.1",
-    "eslint-plugin-react": "^7.7.0",
-    "file-loader": "^1.1.9",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^2.30.1",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.10.2",
-    "style-loader": "^0.20.2",
-    "url-loader": "^0.6.2",
-    "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.1",
-    "webpack-merge": "^4.1.1"
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.5",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.0.1",
+    "eslint-plugin-react": "^7.10.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.13.7",
+    "prop-types": "^15.6.2",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-serve": "^1.0.4"
   },
-  "lint-staged": {
-    "src/**/*.js": [
-      "prettier --write",
-      "git add"
-    ]
+  "dependencies": {
+    "pulltorefreshjs": "^0.1.14",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "styled-components": "^3.3.3"
   }
 }

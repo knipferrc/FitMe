@@ -1,6 +1,0 @@
-mutation removeTrainer($userId: String!) {
-  removeTrainer(userId: $userId) {
-    _id
-    role
-  }
-}

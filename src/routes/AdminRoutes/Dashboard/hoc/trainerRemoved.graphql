@@ -1,9 +1,0 @@
-subscription TrainerRemoved {
-  trainerRemoved {
-    _id
-    role
-    email
-    firstName
-    lastName
-  }
-}

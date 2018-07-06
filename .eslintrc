@@ -7,18 +7,20 @@
     "browser": true,
     "node": true
   },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     }
   },
   "rules": {
-    "react/prop-types": [
-      2
-    ]
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ]
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "no-console": 0
+  }
 }

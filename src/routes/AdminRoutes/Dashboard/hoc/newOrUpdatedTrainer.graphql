@@ -1,9 +1,0 @@
-subscription NewOrUpdatedTrainer {
-  newOrUpdatedTrainer {
-    _id
-    role
-    email
-    firstName
-    lastName
-  }
-}

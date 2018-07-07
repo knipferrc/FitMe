@@ -1,21 +1,23 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from '../../routes'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import { injectGlobal } from 'styled-components'
 
 injectGlobal`
   html, body, main, #root {
-    margin: 0;
-    padding: 0;
     height: 100%;
-    font-family: Helvetica;
+    width: 100%;
   }
 `
 
 const App = () => (
-  <BrowserRouter>
-    <Routes />
-  </BrowserRouter>
+  <Fragment>
+    <CssBaseline />
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+  </Fragment>
 )
 
 export default App

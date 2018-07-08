@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from '../../routes'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import { injectGlobal } from 'styled-components'
+import 'tailwindcss/dist/tailwind.min.css'
 
 injectGlobal`
   html, body, main, #root {
@@ -12,12 +12,9 @@ injectGlobal`
 `
 
 const App = () => (
-  <Fragment>
-    <CssBaseline />
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
-  </Fragment>
+  <BrowserRouter>
+    <Routes />
+  </BrowserRouter>
 )
 
 export default App

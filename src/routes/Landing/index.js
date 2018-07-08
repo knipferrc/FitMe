@@ -1,54 +1,58 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
-import styled from 'styled-components'
-import grey from '@material-ui/core/colors/grey'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import TextField from '@material-ui/core/TextField'
-import AccountCircle from '@material-ui/icons/AccountCircle'
-
-const StyledGrid = styled(Grid)`
-  height: 100%;
-  background: ${grey[200]};
-`
 
 const Landing = () => (
-  <StyledGrid container justify="center" alignItems="center">
-    <Card>
-      <CardContent>
-        <Grid item>
-          <TextField
-            label="Email Address"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              )
-            }}
+  <div className="flex items-center justify-center h-full bg-grey-lighter">
+    <div className="w-full max-w-xs">
+      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div className="mb-4">
+          <label
+            className="block text-grey-darker text-sm font-bold mb-2"
+            htmlFor="username"
+          >
+            Username
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight"
+            id="username"
+            type="text"
+            placeholder="Username"
           />
-        </Grid>
-        <Grid item>
-          <TextField
-            label="Password"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              )
-            }}
+        </div>
+        <div className="mb-6">
+          <label
+            className="block text-grey-darker text-sm font-bold mb-2"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight"
+            id="password"
+            type="password"
+            placeholder="******************"
           />
-        </Grid>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Login</Button>
-      </CardActions>
-    </Card>
-  </StyledGrid>
+          <p className="text-red text-xs italic">Please choose a password.</p>
+        </div>
+        <div className="flex items-center justify-between">
+          <button
+            className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
+            type="button"
+          >
+            Sign In
+          </button>
+          <a
+            className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker"
+            href="#"
+          >
+            Forgot Password?
+          </a>
+        </div>
+      </form>
+      <p className="text-center text-grey text-xs">
+        ©2018 FitMe. All rights reserved.
+      </p>
+    </div>
+  </div>
 )
 
 export default Landing
